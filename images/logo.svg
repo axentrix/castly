@@ -1,0 +1,18 @@
+<svg id="llogo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="219" height="50" viewBox="0 0 219 50">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_4696" data-name="Rectangle 4696" width="219" height="50" transform="translate(281 37)" fill="#fff" stroke="#707070" stroke-width="1"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <path id="Path_13001" data-name="Path 13001" d="M-2023.8,9069.321l349.728-22.349v55.711Z" transform="translate(2091 -9002)" fill="none" stroke="#707070" stroke-width="1"/>
+    </clipPath>
+  </defs>
+  <g id="Mask_Group_14158" data-name="Mask Group 14158" transform="translate(-281 -37)" clip-path="url(#clip-path)">
+    <g id="Group_21929" data-name="Group 21929" transform="translate(143.072 4.658)">
+      <text id="VirgoTalent" transform="translate(139 69)" fill="#236feb" font-size="45" font-family="Lobster, 'Lobster \31 \.4'"><tspan x="0" y="0">VirgoTalent</tspan></text>
+      <g id="Mask_Group_7" data-name="Mask Group 7" transform="translate(-26)" clip-path="url(#clip-path-2)">
+        <text id="VirgoTalent-2" data-name="VirgoTalent" transform="translate(165 69)" fill="#0098e5" font-size="45" font-family="Lobster, 'Lobster \31 \.4'"><tspan x="0" y="0">VirgoTalent</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>
