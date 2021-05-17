@@ -525,12 +525,11 @@ header {
   z-index: 999777;
 }
 header .header-section {
-  margin-bottom: 30px;
   width: 100%;
 }
 header .header-section .navbar {
   box-shadow: none;
-  margin-top: 40px;
+  margin-top: 10px;
   height: 90px;
   transition: all 0.3s;
   padding: 0;
@@ -568,7 +567,8 @@ header .header-section.aos-animate .navbar .navbar-nav a {
 header .header-section.aos-animate .navbar-brand {
   padding: 0;
 }
-header .header-section.aos-animate .navbar-brand img {
+header .header-section.aos-animate .navbar-brand img.mainlogo {
+  width: 180px;
   max-width: 180px;
 }
 header .navbar-toggler {
@@ -1732,7 +1732,16 @@ main {
   transform: translate(-50%, -50%);
 }
 #home .bg .carousel {
+  width: 1920px;
+  height: 1080px;
+  max-width: 1920px;
+  max-height: 1080px;
   position: absolute;
+  left: 50%;
+  top: 50%;
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 #home .logowhite {
   max-width: 200px;
@@ -1976,9 +1985,6 @@ input:focus {
 }
 #home.rsvp-section .outlined {
   text-indent: 0px !important;
-}
-.white {
-  background: transparent !important;
 }
 .white p {
   color: #ffffff;
@@ -2698,6 +2704,7 @@ ul.rates li span:nth-child(2) {
   margin-top: 25px;
 }
 .collapsible-header {
+  position: relative;
   padding-left: 25px;
   padding-top: 15px;
   padding-bottom: 15px;
@@ -2713,8 +2720,9 @@ ul.rates li span:nth-child(2) {
   border-radius: 50%;
   background: #d5dfef;
   content: "";
-  left: 15px;
+  left: 5px;
   margin-top: 5px;
+  top: 15px;
 }
 .collapsible-header.open:before {
   position: absolute;
@@ -2723,7 +2731,8 @@ ul.rates li span:nth-child(2) {
   border-radius: 50%;
   border: 1px solid #236feb;
   content: "";
-  left: 10px;
+  left: 0px;
+  top: 15px;
 }
 .collapsible-header.open:after {
   position: absolute;
@@ -2732,8 +2741,9 @@ ul.rates li span:nth-child(2) {
   border-radius: 50%;
   background: #236feb;
   content: "";
-  left: 15px;
+  left: 5px;
   margin-top: 5px;
+  top: 15px;
 }
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
@@ -2806,6 +2816,9 @@ ul.faq {
 #portfolio-carousel .carousel-indicators .carousel-dots-each {
   background: transparent;
 }
+.portfolio-item {
+  margin-bottom: 15px;
+}
 .portfolio-item figure {
   position: relative;
   overflow: hidden;
@@ -2853,6 +2866,20 @@ ul.faq {
   flex-direction: row;
 }
 @media (max-width: 767px) {
+  .card {
+    margin-bottom: 15px;
+  }
+  .text-right {
+    text-align: center !important;
+  }
+  .text-right a {
+    display: block;
+    margin-top: -15px !important;
+    margin-bottom: 15px;
+  }
+  #portfolio-carousel .carousel-indicators {
+    top: 70%;
+  }
   section h2 {
     margin-bottom: 15px;
   }
@@ -2885,5 +2912,10 @@ ul.faq {
   }
   .footer-menu ul {
     margin-left: unset !important;
+  }
+}
+@media (max-width: 501px) {
+  .nav-pills .nav-item {
+    width: 49%;
   }
 }
