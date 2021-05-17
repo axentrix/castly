@@ -1,53 +1,58 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap');
-@import url('../font/stylesheet.css');
-@bgcolor: #f8f8ff;
-@overlay: rgba(27, 28, 48, 0.8);
+
+@bgcolor: #F1F4F9;
+@overlay: rgba(27, 28, 48, 0.6);
 @maincolor: #236FEB;
 @secondarycolor: #023265;
 @thirdiarycolor: #013A78;
 @darkbg: #06284E;
+@darkheader:#121F36;
 @lightblue:#00BAF2;
 @formbg: rgba(7, 63, 125, 0.9);
 @greybg: #ECECFF;
 @bodytext: #121F36;
 @lightgrey:#F8F8FF;
 @darkgrey:#D5DFEF;
-@bordercolor: #CABFD8;
+@bordercolor: #D1D9E6;
 @darkbordercolor: #3F4B50;
 @menucolor:#2F303D;
 @white: #ffffff;
-
+@bluegreen:#36E4FF;
 @maincolor1:#2375FF;
 @maincolor2:#0E4CB4;
 @maincolor3:#153E84;
-
-
+@explanation:#97AAC9;
+@verylightblue2:#E5EFFF;
 @blue1: #AEEFF9;
 
 @blue2: #D5E1F4;
 
+@blue3:#E3EBF8;
+@infocolor:#1E2E48;
 
+@transparentbg:rgba(30, 46, 72, 0.6);
 @blue3: #DFF9FD;
 
 @overlayone:rgba(22, 30, 46, 1);
 @overlaytwo:rgba(35, 86, 216, 0.7);
-
-
+@verylightblue:#CFF1F8;
+@transparentborder: rgba(187, 205, 233, 0.5);
 @gradientoverlay: linear-gradient(0deg, @overlayone 10%, @overlaytwo 90%);
-
+@knowledgegradient:linear-gradient(90deg, @verylightblue 10%, @bgcolor 90%); 
 
 button{
     outline:none;
 }
 .btn{
         border-radius:4px;
-        padding:12px 32px;
+        padding:12px 42px;
         display:flex;
         align-items:center;
         justify-content:center;
         text-transform:uppercase;
         font-size:14px;
         font-weight:bold;
+        min-width:200px;
 position:relative;
 
 span{
@@ -72,7 +77,18 @@ a:hover, a:focus{
     color: @white;
     background:@maincolor;
 
-    &:hover {
+    &:hover {color:@white;
+        background: darken(@maincolor, 10%);
+    }
+}
+
+
+.btn-contact {min-width:300px;
+    border: none;
+    color: @white;
+    background:@darkbg;
+
+    &:hover {color:@white;
         background: darken(@maincolor, 10%);
     }
 }
@@ -83,8 +99,8 @@ a:hover, a:focus{
     background:@white;
    
 
-    &:hover {
-        background: darken(@maincolor, 10%);
+    &:hover {color:@maincolor;
+        background: darken(@verylightblue, 10%);
     }
 }
 .btn-secondary {display:block;
