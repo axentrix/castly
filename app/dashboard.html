@@ -1,0 +1,1045 @@
+<html><head>
+    <link rel="stylesheet" href="https:///use.fontawesome.com/releases/v5.15.3/css/all.css">
+    <link rel="stylesheet" href="assets/css/castly-icons.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="assets/css/common.css">
+    <link rel="stylesheet" href="assets/css/casting.css">
+    <link rel="stylesheet" href="assets/css/loader.css">
+    <link rel="icon" href="assets/img/icon.ico">
+    <title>Virgo Talent - Casting Dashboard</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="assets/js/moment.min.js"></script>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/utils.js"></script>
+    <script src="assets/js/loader.js"></script>
+    <script src="assets/js/casting.js"></script>
+</head>
+<body>
+    <div class="header" style="background: #121f36; padding: 1em; display: flex; align-items: center; color: white; gap: 1em; 
+width: calc(100% - 1em); margin-left: -50px; padding-left: 50px; padding-right: calc(50px + 1em); position: sticky; top: 0; z-index: 10;">
+<a href="/"><img class="logo" src="assets/img/logo.svg" style="margin-right: 2em; width:180px;"></a>
+<div style="display: flex; gap: 2em; flex-grow: 1;">
+    <a href="/casting.php"><div class="clickable hflex align-center gap1"><i class="icon-dashboard"></i> DASHBOARD</div></a>
+    <a href="/client.php"><div class="clickable hflex align-center gap1"><i class="icon-directory"></i> CLIENT DIRECTORY</div></a>
+</div>
+<div style="display: flex; gap: 1.2em; align-items: center;">
+    <div><i class="clickable icon-more"></i></div>
+    <div><img src="https://dl.airtable.com/.attachmentThumbnails/618720c902d20b285f44258e86cd7540/bf1cf92e" style="width: 2em; height: 2em; border-radius: 2em; object-fit: cover; object-position: top; border: 0.2em solid #EEF2F930;"></div>
+</div>
+</div>        <div class="container mt-6 mb-6">
+        <i class="icon-tomorrow mr-2" style="font-size: 4em; color: var(--theme-color-primary);"></i>
+        <div style="display: flex; flex-direction: column; flex-grow: 1;">
+            <div style="font-size: 1.5em; font-weight: bold;">Tomorrow</div>
+            <div tomorrow="" class="subtitle"">May 19 Wednesday</div>
+        </div>
+        <a href="/billing.php" class="btn btn-info mr-2" >
+            <i class="icon icon-dollar"></i>&nbsp; BILLING
+        </a>
+        <a href="#" class="add-project-button btn btn-primary mr-2"  >
+            <i class="icon-project1"></i>ADD NEW PROJECT
+        </a>
+        <a  href="#" class="btn btn-info add-task-button" >
+            <i class="icon-finalnotes"></i>&nbsp; ADD NEW TASK
+        </a>
+    </div>
+    <div style="display: flex; gap: 1em;" class="container">
+        <div class="card card-dashboard">
+            BOOKED
+            <div  class="accent">
+                <i class="icon-talents"></i><span class="badge"><i class="icon icon-check"></i></span>
+                <span booked="" class="badge-check-up statistics">1</span>
+            </div>
+        </div>
+        <div class="card card-dashboard">
+            FINAL DETAILS SENT
+            <div class="accent">
+                <i class="icon-talents"></i><span class="badge"><i class="icon icon-finalnotes"></i></span>
+                <span final-details-sent="" class="statistics badge-detail-up">0</span>
+            </div>
+        </div>
+        <div class="card card-dashboard">
+            CONFIRMED FINAL DETAILS
+            <div  class="accent">
+                <i class="icon-finalnotes"></i><span class="badge"><i class="icon-check"></i></span>
+                <span final-details-confirmed="" class="badge-check-up icon-check statistics">0</span>
+            </div>
+        </div>
+        <div class="card card-dashboard">
+            EMERGENCIES
+            <div  class="accent">
+                <i class="icon-emergency"></i><span class="badge"><i class="fa fa-minus"></i></span>
+                <span emergency="">1</span>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="mt-6 d-flex justify-content-center ">
+            <div class="tab-item clickable active" for="active-projects">PROJECTS</div>
+            <div class="tab-item clickable" for="tasks">TASKS</div>
+        </div>
+        <div class="tab-content active" id="active-projects">
+            <div class="vflex">
+                <div class="search-container pt-4 pb-4">
+                    <div class="search-wrapper">
+                        <input type="text" placeholder="Search projects..." class="search search-project">
+                        <i class="icon icon-search"></i>
+                    </div>
+                </div>
+                <div class="table-header">
+                    <div style="flex-grow: 1; width: 0;">SHOOT DATE</div>
+                    <div style="flex-grow: 2; width: 0;">PROJECT NAME</div>
+                    <div style="flex-grow: 1; width: 0;">PAYROLL COMPANY</div>
+                    <div style="flex-grow: 3; width: 0; ">STATUS</div>
+                    <div style="flex-grow: 1; width: 0; ">PROJECT STATUS</div>
+                    <div style="flex-grow: 1; width: 0;"></div>
+                </div>
+                <div class="table-item card template" style="display: flex; align-items: center;">
+                    <div shoot-date="" class="shoot-date" style="flex-grow: 1; width: 0;">-</div>
+                    <div style="flex-grow: 2; width: 0;">
+                        <a project-name="" style="color: var(--theme-color-primary); font-size: 1.2em;">-</a>
+                        <div rate-union="" class="rate-union">-</div>
+                    </div>
+                    <div payroll="" class="payroll" style="flex-grow: 1; width: 0;">-</div>
+                    <div style="flex-grow: 3; width: 0;" class="hflex">
+                        <div style="flex-grow: 1;" class="status-available status hflex">
+                            <span><i class="icon-available"></i></span>
+                            <div class="vflex">
+                                <div confirmed="">0 CONFIRMED</div>
+                                <div denied="">0 DENIED</div>
+                                <div unanswered="">0 UNANSWERED</div>
+                            </div>
+                        </div>
+                        <div style="flex-grow: 1;" class="status-booked status hflex">
+                            <span><i class="icon-booked"></i></span>
+                            <div class="vflex">
+                                <div confirmed="">0 CONFIRMED</div>
+                                <div denied="">0 DENIED</div>
+                                <div unanswered="">0 UNANSWERED</div>
+                            </div>
+                        </div>
+                        <div style="flex-grow: 1;" class="status-finalnotessent status hflex">
+                            <span><i class="icon-finalnotessent"></i></span>
+                            <div class="vflex">
+                                <div confirmed="">0 CONFIRMED</div>
+                                <div denied="">0 DENIED</div>
+                                <div unanswered="">0 UNANSWERED</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div project-status="" class="project-status"" style="flex-grow: 1; width: 0; ">
+                        Active
+                    </div>
+                    <div style="flex-grow: 1; width: 0; text-align: right;">
+                        <a add-button="" class="btn-add-talent" >
+                            <i class="icon-addtalent  clickable"></i>
+                        </a>
+                        <a class="btn-more" >
+                            <i tabindex="0" class="fa fa-bars  clickable">
+                                <div class="displayNone" style="position: absolute; top: 100%; right: 0; background: #FEFEFE; color: var(--text-color-primary);">
+                                    <div style="white-space: nowrap; background: gray; color: white; font-size: 0.7em;">Change Status to ...</div>
+                                    <div class="status-item">Active</div>
+                                    <div class="status-item">Billed</div>
+                                    <div class="status-item">Cancelled</div>
+                                </div>
+                            </i>
+                        </a>
+                    </div>
+                </div><div class="table-item card" style="display: flex; align-items: center;">
+                    <div shoot-date="" class="shoot-date" style="flex-grow: 1; width: 0;">05/31/2021</div>
+                    <div style="flex-grow: 2; width: 0;">
+                        <a project-name="" style="color: var(--theme-color-primary); font-size: 1.2em;" href="/search.php?filterSag=SAG%2BNU,SAGAFTRA&amp;projectID=87&amp;viewType=projectDetail">Xsolla SAG Educational Mon &amp; Tue</a>
+                        <div rate-union="" class="rate-union">$140/8hrs SAGAFTRA</div>
+                    </div>
+                    <div payroll="" class="payroll" style="flex-grow: 1; width: 0;"></div>
+                    <div style="flex-grow: 3; width: 0;" class="hflex">
+                        <div style="flex-grow: 1;" class="status-available status hflex active">
+                            <span><i class="icon-available"></i></span>
+                            <div class="vflex">
+                                <div confirmed="">2 AVAILABLE</div>
+                                <div denied="">0 UNAVAILABLE</div>
+                                <div unanswered="">0 UNANSWERED</div>
+                            </div>
+                        </div>
+                        <div style="flex-grow: 1;" class="status-booked status hflex">
+                            <span><i class="icon-booked"></i></span>
+                            <div class="vflex">
+                                <div confirmed="">0 BOOKED</div>
+                                <div denied="">0 DENIED</div>
+                                <div unanswered="">0 UNANSWERED</div>
+                            </div>
+                        </div>
+                        <div style="flex-grow: 1;" class="status-finalnotessent status hflex">
+                            <span><i class="icon-finalnotessent"></i></span>
+                            <div class="vflex">
+                                <div confirmed="">0 CONFIRMED</div>
+                                <div denied="">0 EMERGENCY</div>
+                                <div unanswered="">0 UNANSWERED</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div project-status="" class="project-status"" style="flex-grow: 1; width: 0; ">Active</div>
+                    <div style="flex-grow: 1; width: 0; text-align: right;">
+                        <a add-button="" class="btn-add-talent"  href="/search.php?filterSag=SAG%2BNU,SAGAFTRA&amp;projectID=87&amp;viewType=addToProject">
+                            <i class="icon-addtalent  clickable"></i>
+                        </a>
+                        <a class="btn-more" >
+                            <i tabindex="0" class="fa fa-bars  clickable">
+                                <div class="displayNone" style="position: absolute; top: 100%; right: 0; background: #FEFEFE; color: var(--text-color-primary);">
+                                    <div style="white-space: nowrap; background: gray; color: white; font-size: 0.7em;">Change Status to ...</div>
+                                    <div class="status-item">Active</div>
+                                    <div class="status-item">Billed</div>
+                                    <div class="status-item">Cancelled</div>
+                                </div>
+                            </i>
+                        </a>
+                    </div>
+                </div><div class="table-item card" style="display: flex; align-items: center;">
+                    <div shoot-date="" class="shoot-date" style="flex-grow: 1; width: 0;">05/20/2021</div>
+                    <div style="flex-grow: 2; width: 0;">
+                        <a project-name="" style="color: var(--theme-color-primary); font-size: 1.2em;" href="/search.php?filterSag=SAG%2BNU,Non-Union&amp;projectID=57&amp;viewType=projectDetail">Amazon Prime NU</a>
+                        <div rate-union="" class="rate-union">$250/10hrs Non-Union</div>
+                    </div>
+                    <div payroll="" class="payroll" style="flex-grow: 1; width: 0;"></div>
+                    <div style="flex-grow: 3; width: 0;" class="hflex">
+                        <div style="flex-grow: 1;" class="status-available status hflex active">
+                            <span><i class="icon-available"></i></span>
+                            <div class="vflex">
+                                <div confirmed="">17 AVAILABLE</div>
+                                <div denied="">1 UNAVAILABLE</div>
+                                <div unanswered="">1 UNANSWERED</div>
+                            </div>
+                        </div>
+                        <div style="flex-grow: 1;" class="status-booked status hflex active">
+                            <span><i class="icon-booked"></i></span>
+                            <div class="vflex">
+                                <div confirmed="">27 BOOKED</div>
+                                <div denied="">0 DENIED</div>
+                                <div unanswered="">0 UNANSWERED</div>
+                            </div>
+                        </div>
+                        <div style="flex-grow: 1;" class="status-finalnotessent status hflex">
+                            <span><i class="icon-finalnotessent"></i></span>
+                            <div class="vflex">
+                                <div confirmed="">0 CONFIRMED</div>
+                                <div denied="">0 EMERGENCY</div>
+                                <div unanswered="">0 UNANSWERED</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div project-status="" class="project-status"" style="flex-grow: 1; width: 0; ">Active</div>
+                    <div style="flex-grow: 1; width: 0; text-align: right;">
+                        <a add-button="" class="btn-add-talent"  href="/search.php?filterSag=SAG%2BNU,Non-Union&amp;projectID=57&amp;viewType=addToProject">
+                            <i class="icon-addtalent  clickable"></i>
+                        </a>
+                        <a class="btn-more" >
+                            <i tabindex="0" class="fa fa-bars  clickable">
+                                <div class="displayNone" style="position: absolute; top: 100%; right: 0; background: #FEFEFE; color: var(--text-color-primary);">
+                                    <div style="white-space: nowrap; background: gray; color: white; font-size: 0.7em;">Change Status to ...</div>
+                                    <div class="status-item">Active</div>
+                                    <div class="status-item">Billed</div>
+                                    <div class="status-item">Cancelled</div>
+                                </div>
+                            </i>
+                        </a>
+                    </div>
+                </div><div class="table-item card" style="display: flex; align-items: center;">
+                    <div shoot-date="" class="shoot-date" style="flex-grow: 1; width: 0;">05/19/2021</div>
+                    <div style="flex-grow: 2; width: 0;">
+                        <a project-name="" style="color: var(--theme-color-primary); font-size: 1.2em;" href="/search.php?filterSag=SAG%2BNU,SAGAFTRA&amp;projectID=114&amp;viewType=projectDetail">Test Project</a>
+                        <div rate-union="" class="rate-union">$400/1hrs SAGAFTRA</div>
+                    </div>
+                    <div payroll="" class="payroll" style="flex-grow: 1; width: 0;">CAPS</div>
+                    <div style="flex-grow: 3; width: 0;" class="hflex">
+                        <div style="flex-grow: 1;" class="status-available status hflex active">
+                            <span><i class="icon-available"></i></span>
+                            <div class="vflex">
+                                <div confirmed="">0 AVAILABLE</div>
+                                <div denied="">0 UNAVAILABLE</div>
+                                <div unanswered="">1 UNANSWERED</div>
+                            </div>
+                        </div>
+                        <div style="flex-grow: 1;" class="status-booked status hflex">
+                            <span><i class="icon-booked"></i></span>
+                            <div class="vflex">
+                                <div confirmed="">0 BOOKED</div>
+                                <div denied="">0 DENIED</div>
+                                <div unanswered="">0 UNANSWERED</div>
+                            </div>
+                        </div>
+                        <div style="flex-grow: 1;" class="status-finalnotessent status hflex active">
+                            <span><i class="icon-finalnotessent"></i></span>
+                            <div class="vflex">
+                                <div confirmed="">0 CONFIRMED</div>
+                                <div denied="">1 EMERGENCY</div>
+                                <div unanswered="">0 UNANSWERED</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div project-status="" class="project-status"" style="flex-grow: 1; width: 0; ">Billed</div>
+                    <div style="flex-grow: 1; width: 0; text-align: right;">
+                        <a add-button="" class="btn-add-talent"  href="/search.php?filterSag=SAG%2BNU,SAGAFTRA&amp;projectID=114&amp;viewType=addToProject">
+                            <i class="icon-addtalent  clickable"></i>
+                        </a>
+                        <a class="btn-more" >
+                            <i tabindex="0" class="fa fa-bars  clickable">
+                                <div class="displayNone" style="position: absolute; top: 100%; right: 0; background: #FEFEFE; color: var(--text-color-primary);">
+                                    <div style="white-space: nowrap; background: gray; color: white; font-size: 0.7em;">Change Status to ...</div>
+                                    <div class="status-item">Active</div>
+                                    <div class="status-item">Billed</div>
+                                    <div class="status-item">Cancelled</div>
+                                </div>
+                            </i>
+                        </a>
+                    </div>
+                </div><div class="table-item card" style="display: flex; align-items: center;">
+                    <div shoot-date="" class="shoot-date" style="flex-grow: 1; width: 0;">05/17/2021</div>
+                    <div style="flex-grow: 2; width: 0;">
+                        <a project-name="" style="color: var(--theme-color-primary); font-size: 1.2em;" href="/search.php?filterSag=SAG%2BNU,SAGAFTRA&amp;projectID=89&amp;viewType=projectDetail">Cleopatra</a>
+                        <div rate-union="" class="rate-union">$388/8hrs SAGAFTRA</div>
+                    </div>
+                    <div payroll="" class="payroll" style="flex-grow: 1; width: 0;"></div>
+                    <div style="flex-grow: 3; width: 0;" class="hflex">
+                        <div style="flex-grow: 1;" class="status-available status hflex">
+                            <span><i class="icon-available"></i></span>
+                            <div class="vflex">
+                                <div confirmed="">0 AVAILABLE</div>
+                                <div denied="">0 UNAVAILABLE</div>
+                                <div unanswered="">0 UNANSWERED</div>
+                            </div>
+                        </div>
+                        <div style="flex-grow: 1;" class="status-booked status hflex">
+                            <span><i class="icon-booked"></i></span>
+                            <div class="vflex">
+                                <div confirmed="">0 BOOKED</div>
+                                <div denied="">0 DENIED</div>
+                                <div unanswered="">0 UNANSWERED</div>
+                            </div>
+                        </div>
+                        <div style="flex-grow: 1;" class="status-finalnotessent status hflex">
+                            <span><i class="icon-finalnotessent"></i></span>
+                            <div class="vflex">
+                                <div confirmed="">0 CONFIRMED</div>
+                                <div denied="">0 EMERGENCY</div>
+                                <div unanswered="">0 UNANSWERED</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div project-status="" class="project-status"" style="flex-grow: 1; width: 0; ">Active</div>
+                    <div style="flex-grow: 1; width: 0; text-align: right;">
+                        <a add-button="" class="btn-add-talent"  href="/search.php?filterSag=SAG%2BNU,SAGAFTRA&amp;projectID=89&amp;viewType=addToProject">
+                            <i class="icon-addtalent  clickable"></i>
+                        </a>
+                        <a class="btn-more" >
+                            <i tabindex="0" class="fa fa-bars  clickable">
+                                <div class="displayNone" style="position: absolute; top: 100%; right: 0; background: #FEFEFE; color: var(--text-color-primary);">
+                                    <div style="white-space: nowrap; background: gray; color: white; font-size: 0.7em;">Change Status to ...</div>
+                                    <div class="status-item">Active</div>
+                                    <div class="status-item">Billed</div>
+                                    <div class="status-item">Cancelled</div>
+                                </div>
+                            </i>
+                        </a>
+                    </div>
+                </div><div class="table-item card" style="display: flex; align-items: center;">
+                    <div shoot-date="" class="shoot-date" style="flex-grow: 1; width: 0;">05/17/2021</div>
+                    <div style="flex-grow: 2; width: 0;">
+                        <a project-name="" style="color: var(--theme-color-primary); font-size: 1.2em;" href="/search.php?filterSag=SAG%2BNU,Non-Union&amp;projectID=120&amp;viewType=projectDetail">Fashion Shoot</a>
+                        <div rate-union="" class="rate-union">$200/8hrs Non-Union</div>
+                    </div>
+                    <div payroll="" class="payroll" style="flex-grow: 1; width: 0;"></div>
+                    <div style="flex-grow: 3; width: 0;" class="hflex">
+                        <div style="flex-grow: 1;" class="status-available status hflex">
+                            <span><i class="icon-available"></i></span>
+                            <div class="vflex">
+                                <div confirmed="">0 AVAILABLE</div>
+                                <div denied="">0 UNAVAILABLE</div>
+                                <div unanswered="">0 UNANSWERED</div>
+                            </div>
+                        </div>
+                        <div style="flex-grow: 1;" class="status-booked status hflex">
+                            <span><i class="icon-booked"></i></span>
+                            <div class="vflex">
+                                <div confirmed="">0 BOOKED</div>
+                                <div denied="">0 DENIED</div>
+                                <div unanswered="">0 UNANSWERED</div>
+                            </div>
+                        </div>
+                        <div style="flex-grow: 1;" class="status-finalnotessent status hflex">
+                            <span><i class="icon-finalnotessent"></i></span>
+                            <div class="vflex">
+                                <div confirmed="">0 CONFIRMED</div>
+                                <div denied="">0 EMERGENCY</div>
+                                <div unanswered="">0 UNANSWERED</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div project-status="" class="project-status"" style="flex-grow: 1; width: 0; ">Active</div>
+                    <div style="flex-grow: 1; width: 0; text-align: right;">
+                        <a add-button="" class="btn-add-talent"  href="/search.php?filterSag=SAG%2BNU,Non-Union&amp;projectID=120&amp;viewType=addToProject">
+                            <i class="icon-addtalent  clickable"></i>
+                        </a>
+                        <a class="btn-more" >
+                            <i tabindex="0" class="fa fa-bars  clickable">
+                                <div class="displayNone" style="position: absolute; top: 100%; right: 0; background: #FEFEFE; color: var(--text-color-primary);">
+                                    <div style="white-space: nowrap; background: gray; color: white; font-size: 0.7em;">Change Status to ...</div>
+                                    <div class="status-item">Active</div>
+                                    <div class="status-item">Billed</div>
+                                    <div class="status-item">Cancelled</div>
+                                </div>
+                            </i>
+                        </a>
+                    </div>
+                </div><div class="table-item card" style="display: flex; align-items: center;">
+                    <div shoot-date="" class="shoot-date" style="flex-grow: 1; width: 0;">05/17/2021</div>
+                    <div style="flex-grow: 2; width: 0;">
+                        <a project-name="" style="color: var(--theme-color-primary); font-size: 1.2em;" href="/search.php?filterSag=SAG%2BNU,SAGAFTRA&amp;projectID=124&amp;viewType=projectDetail">Amazon - Buff</a>
+                        <div rate-union="" class="rate-union">$/hrs SAGAFTRA</div>
+                    </div>
+                    <div payroll="" class="payroll" style="flex-grow: 1; width: 0;"></div>
+                    <div style="flex-grow: 3; width: 0;" class="hflex">
+                        <div style="flex-grow: 1;" class="status-available status hflex">
+                            <span><i class="icon-available"></i></span>
+                            <div class="vflex">
+                                <div confirmed="">0 AVAILABLE</div>
+                                <div denied="">0 UNAVAILABLE</div>
+                                <div unanswered="">0 UNANSWERED</div>
+                            </div>
+                        </div>
+                        <div style="flex-grow: 1;" class="status-booked status hflex">
+                            <span><i class="icon-booked"></i></span>
+                            <div class="vflex">
+                                <div confirmed="">0 BOOKED</div>
+                                <div denied="">0 DENIED</div>
+                                <div unanswered="">0 UNANSWERED</div>
+                            </div>
+                        </div>
+                        <div style="flex-grow: 1;" class="status-finalnotessent status hflex">
+                            <span><i class="icon-finalnotessent"></i></span>
+                            <div class="vflex">
+                                <div confirmed="">0 CONFIRMED</div>
+                                <div denied="">0 EMERGENCY</div>
+                                <div unanswered="">0 UNANSWERED</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div project-status="" class="project-status"" style="flex-grow: 1; width: 0; ">Active</div>
+                    <div style="flex-grow: 1; width: 0; text-align: right;">
+                        <a add-button="" class="btn-add-talent"  href="/search.php?filterSag=SAG%2BNU,SAGAFTRA&amp;projectID=124&amp;viewType=addToProject">
+                            <i class="icon-addtalent  clickable"></i>
+                        </a>
+                        <a class="btn-more" >
+                            <i tabindex="0" class="fa fa-bars  clickable">
+                                <div class="displayNone" style="position: absolute; top: 100%; right: 0; background: #FEFEFE; color: var(--text-color-primary);">
+                                    <div style="white-space: nowrap; background: gray; color: white; font-size: 0.7em;">Change Status to ...</div>
+                                    <div class="status-item">Active</div>
+                                    <div class="status-item">Billed</div>
+                                    <div class="status-item">Cancelled</div>
+                                </div>
+                            </i>
+                        </a>
+                    </div>
+                </div><div class="table-item card" style="display: flex; align-items: center;">
+                    <div shoot-date="" class="shoot-date" style="flex-grow: 1; width: 0;">05/17/2021</div>
+                    <div style="flex-grow: 2; width: 0;">
+                        <a project-name="" style="color: var(--theme-color-primary); font-size: 1.2em;" href="/search.php?filterSag=SAG%2BNU,&amp;projectID=128&amp;viewType=projectDetail">Test Billing</a>
+                        <div rate-union="" class="rate-union">$10/1hrs </div>
+                    </div>
+                    <div payroll="" class="payroll" style="flex-grow: 1; width: 0;">Entertainment Partners</div>
+                    <div style="flex-grow: 3; width: 0;" class="hflex">
+                        <div style="flex-grow: 1;" class="status-available status hflex">
+                            <span><i class="icon-available"></i></span>
+                            <div class="vflex">
+                                <div confirmed="">0 AVAILABLE</div>
+                                <div denied="">0 UNAVAILABLE</div>
+                                <div unanswered="">0 UNANSWERED</div>
+                            </div>
+                        </div>
+                        <div style="flex-grow: 1;" class="status-booked status hflex">
+                            <span><i class="icon-booked"></i></span>
+                            <div class="vflex">
+                                <div confirmed="">0 BOOKED</div>
+                                <div denied="">0 DENIED</div>
+                                <div unanswered="">0 UNANSWERED</div>
+                            </div>
+                        </div>
+                        <div style="flex-grow: 1;" class="status-finalnotessent status hflex active">
+                            <span><i class="icon-finalnotessent"></i></span>
+                            <div class="vflex">
+                                <div confirmed="">1 CONFIRMED</div>
+                                <div denied="">0 EMERGENCY</div>
+                                <div unanswered="">0 UNANSWERED</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div project-status="" class="project-status"" style="flex-grow: 1; width: 0; ">Billed</div>
+                    <div style="flex-grow: 1; width: 0; text-align: right;">
+                        <a add-button="" class="btn-add-talent"  href="/search.php?filterSag=SAG%2BNU,&amp;projectID=128&amp;viewType=addToProject">
+                            <i class="icon-addtalent  clickable"></i>
+                        </a>
+                        <a class="btn-more" >
+                            <i tabindex="0" class="fa fa-bars  clickable">
+                                <div class="displayNone" style="position: absolute; top: 100%; right: 0; background: #FEFEFE; color: var(--text-color-primary);">
+                                    <div style="white-space: nowrap; background: gray; color: white; font-size: 0.7em;">Change Status to ...</div>
+                                    <div class="status-item">Active</div>
+                                    <div class="status-item">Billed</div>
+                                    <div class="status-item">Cancelled</div>
+                                </div>
+                            </i>
+                        </a>
+                    </div>
+                </div><div class="table-item card" style="display: flex; align-items: center;">
+                    <div shoot-date="" class="shoot-date" style="flex-grow: 1; width: 0;">05/16/2021</div>
+                    <div style="flex-grow: 2; width: 0;">
+                        <a project-name="" style="color: var(--theme-color-primary); font-size: 1.2em;" href="/search.php?filterSag=SAG%2BNU,Non-Union&amp;projectID=126&amp;viewType=projectDetail">Thunderball SUN</a>
+                        <div rate-union="" class="rate-union">$250/10hrs Non-Union</div>
+                    </div>
+                    <div payroll="" class="payroll" style="flex-grow: 1; width: 0;"></div>
+                    <div style="flex-grow: 3; width: 0;" class="hflex">
+                        <div style="flex-grow: 1;" class="status-available status hflex">
+                            <span><i class="icon-available"></i></span>
+                            <div class="vflex">
+                                <div confirmed="">0 AVAILABLE</div>
+                                <div denied="">0 UNAVAILABLE</div>
+                                <div unanswered="">0 UNANSWERED</div>
+                            </div>
+                        </div>
+                        <div style="flex-grow: 1;" class="status-booked status hflex">
+                            <span><i class="icon-booked"></i></span>
+                            <div class="vflex">
+                                <div confirmed="">0 BOOKED</div>
+                                <div denied="">0 DENIED</div>
+                                <div unanswered="">0 UNANSWERED</div>
+                            </div>
+                        </div>
+                        <div style="flex-grow: 1;" class="status-finalnotessent status hflex">
+                            <span><i class="icon-finalnotessent"></i></span>
+                            <div class="vflex">
+                                <div confirmed="">0 CONFIRMED</div>
+                                <div denied="">0 EMERGENCY</div>
+                                <div unanswered="">0 UNANSWERED</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div project-status="" class="project-status"" style="flex-grow: 1; width: 0; ">Active</div>
+                    <div style="flex-grow: 1; width: 0; text-align: right;">
+                        <a add-button="" class="btn-add-talent"  href="/search.php?filterSag=SAG%2BNU,Non-Union&amp;projectID=126&amp;viewType=addToProject">
+                            <i class="icon-addtalent  clickable"></i>
+                        </a>
+                        <a class="btn-more" >
+                            <i tabindex="0" class="fa fa-bars  clickable">
+                                <div class="displayNone" style="position: absolute; top: 100%; right: 0; background: #FEFEFE; color: var(--text-color-primary);">
+                                    <div style="white-space: nowrap; background: gray; color: white; font-size: 0.7em;">Change Status to ...</div>
+                                    <div class="status-item">Active</div>
+                                    <div class="status-item">Billed</div>
+                                    <div class="status-item">Cancelled</div>
+                                </div>
+                            </i>
+                        </a>
+                    </div>
+                </div><div class="table-item card" style="display: flex; align-items: center;">
+                    <div shoot-date="" class="shoot-date" style="flex-grow: 1; width: 0;">05/15/2021</div>
+                    <div style="flex-grow: 2; width: 0;">
+                        <a project-name="" style="color: var(--theme-color-primary); font-size: 1.2em;" href="/search.php?filterSag=SAG%2BNU,Non-Union&amp;projectID=125&amp;viewType=projectDetail">Singularity SAT</a>
+                        <div rate-union="" class="rate-union">$250/12hrs Non-Union</div>
+                    </div>
+                    <div payroll="" class="payroll" style="flex-grow: 1; width: 0;"></div>
+                    <div style="flex-grow: 3; width: 0;" class="hflex">
+                        <div style="flex-grow: 1;" class="status-available status hflex">
+                            <span><i class="icon-available"></i></span>
+                            <div class="vflex">
+                                <div confirmed="">0 AVAILABLE</div>
+                                <div denied="">0 UNAVAILABLE</div>
+                                <div unanswered="">0 UNANSWERED</div>
+                            </div>
+                        </div>
+                        <div style="flex-grow: 1;" class="status-booked status hflex active">
+                            <span><i class="icon-booked"></i></span>
+                            <div class="vflex">
+                                <div confirmed="">5 BOOKED</div>
+                                <div denied="">0 DENIED</div>
+                                <div unanswered="">0 UNANSWERED</div>
+                            </div>
+                        </div>
+                        <div style="flex-grow: 1;" class="status-finalnotessent status hflex">
+                            <span><i class="icon-finalnotessent"></i></span>
+                            <div class="vflex">
+                                <div confirmed="">0 CONFIRMED</div>
+                                <div denied="">0 EMERGENCY</div>
+                                <div unanswered="">0 UNANSWERED</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div project-status="" class="project-status"" style="flex-grow: 1; width: 0; ">Active</div>
+                    <div style="flex-grow: 1; width: 0; text-align: right;">
+                        <a add-button="" class="btn-add-talent"  href="/search.php?filterSag=SAG%2BNU,Non-Union&amp;projectID=125&amp;viewType=addToProject">
+                            <i class="icon-addtalent  clickable"></i>
+                        </a>
+                        <a class="btn-more" >
+                            <i tabindex="0" class="fa fa-bars  clickable">
+                                <div class="displayNone" style="position: absolute; top: 100%; right: 0; background: #FEFEFE; color: var(--text-color-primary);">
+                                    <div style="white-space: nowrap; background: gray; color: white; font-size: 0.7em;">Change Status to ...</div>
+                                    <div class="status-item">Active</div>
+                                    <div class="status-item">Billed</div>
+                                    <div class="status-item">Cancelled</div>
+                                </div>
+                            </i>
+                        </a>
+                    </div>
+                </div><div class="table-item card" style="display: flex; align-items: center;">
+                    <div shoot-date="" class="shoot-date" style="flex-grow: 1; width: 0;">05/14/2021</div>
+                    <div style="flex-grow: 2; width: 0;">
+                        <a project-name="" style="color: var(--theme-color-primary); font-size: 1.2em;" href="/search.php?filterSag=SAG%2BNU,Non-Union&amp;projectID=121&amp;viewType=projectDetail">Singularity FRI</a>
+                        <div rate-union="" class="rate-union">$250/12hrs Non-Union</div>
+                    </div>
+                    <div payroll="" class="payroll" style="flex-grow: 1; width: 0;"></div>
+                    <div style="flex-grow: 3; width: 0;" class="hflex">
+                        <div style="flex-grow: 1;" class="status-available status hflex active">
+                            <span><i class="icon-available"></i></span>
+                            <div class="vflex">
+                                <div confirmed="">0 AVAILABLE</div>
+                                <div denied="">0 UNAVAILABLE</div>
+                                <div unanswered="">6 UNANSWERED</div>
+                            </div>
+                        </div>
+                        <div style="flex-grow: 1;" class="status-booked status hflex active">
+                            <span><i class="icon-booked"></i></span>
+                            <div class="vflex">
+                                <div confirmed="">4 BOOKED</div>
+                                <div denied="">0 DENIED</div>
+                                <div unanswered="">0 UNANSWERED</div>
+                            </div>
+                        </div>
+                        <div style="flex-grow: 1;" class="status-finalnotessent status hflex active">
+                            <span><i class="icon-finalnotessent"></i></span>
+                            <div class="vflex">
+                                <div confirmed="">1 CONFIRMED</div>
+                                <div denied="">1 EMERGENCY</div>
+                                <div unanswered="">0 UNANSWERED</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div project-status="" class="project-status"" style="flex-grow: 1; width: 0; ">Active</div>
+                    <div style="flex-grow: 1; width: 0; text-align: right;">
+                        <a add-button="" class="btn-add-talent"  href="/search.php?filterSag=SAG%2BNU,Non-Union&amp;projectID=121&amp;viewType=addToProject">
+                            <i class="icon-addtalent  clickable"></i>
+                        </a>
+                        <a class="btn-more" >
+                            <i tabindex="0" class="fa fa-bars  clickable">
+                                <div class="displayNone" style="position: absolute; top: 100%; right: 0; background: #FEFEFE; color: var(--text-color-primary);">
+                                    <div style="white-space: nowrap; background: gray; color: white; font-size: 0.7em;">Change Status to ...</div>
+                                    <div class="status-item">Active</div>
+                                    <div class="status-item">Billed</div>
+                                    <div class="status-item">Cancelled</div>
+                                </div>
+                            </i>
+                        </a>
+                    </div>
+                </div>
+                <div class="pagination"><span class="prev-page">&lt;</span><div class="page active" page="0">1</div><div class="page" page="1">2</div><div class="page" page="2">3</div><div class="page" page="3">4</div><div class="page" page="4">5</div><span class="next-page">&gt;</span></div>
+            </div>
+        </div>
+        <div class="tab-content" id="tasks">
+            <div class="vflex">
+                <div class="search-container">
+                    <div class="search-wrapper">
+                        <input type="text" placeholder="Search tasks..." class="search">
+                        <i class="icon icon-search"></i>
+                    </div>
+                </div>
+                <div class="task-container hflex" style="gap: 1em;margin-top: 0.5em;">
+                    <div class="pending vflex" style="gap: 0.5em;"><h6>PENDING</h6><div class="card hflex" style="gap: 1em;">
+            <input type="checkbox" task-id="1">
+            <div class="vflex" style="flex-grow: 1;">
+                <div style="color: #141B26;"></div>
+                <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=100&amp;viewType=projectDetail">Anna Project</a></div>
+            </div>
+            <div class="vflex" style="color: #2A4168;">
+                <div>03/30/2021</div>
+                <div>Tuesday</div>
+            </div>
+        </div><div class="card hflex" style="gap: 1em;">
+            <input type="checkbox" task-id="2">
+            <div class="vflex" style="flex-grow: 1;">
+                <div style="color: #141B26;"></div>
+                <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=92&amp;viewType=projectDetail">Love Electric</a></div>
+            </div>
+            <div class="vflex" style="color: #2A4168;">
+                <div>10/22/2020</div>
+                <div>Thursday</div>
+            </div>
+        </div><div class="card hflex" style="gap: 1em;">
+            <input type="checkbox" task-id="3">
+            <div class="vflex" style="flex-grow: 1;">
+                <div style="color: #141B26;">fsdgsdfg</div>
+                <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=20&amp;viewType=projectDetail">Mikael TV Ad</a></div>
+            </div>
+            <div class="vflex" style="color: #2A4168;">
+                <div>09/30/2020</div>
+                <div>Wednesday</div>
+            </div>
+        </div><div class="card hflex" style="gap: 1em;">
+            <input type="checkbox" task-id="4">
+            <div class="vflex" style="flex-grow: 1;">
+                <div style="color: #141B26;">Book 3 people that look like sports fans</div>
+                <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=60&amp;viewType=projectDetail">Pepsi</a></div>
+            </div>
+            <div class="vflex" style="color: #2A4168;">
+                <div>12/25/2020</div>
+                <div>Friday</div>
+            </div>
+        </div><div class="card hflex" style="gap: 1em;">
+            <input type="checkbox" task-id="5">
+            <div class="vflex" style="flex-grow: 1;">
+                <div style="color: #141B26;">cancel bob</div>
+                <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=20&amp;viewType=projectDetail">Mikael TV Ad</a></div>
+            </div>
+            <div class="vflex" style="color: #2A4168;">
+                <div>09/30/2020</div>
+                <div>Wednesday</div>
+            </div>
+        </div><div class="card hflex" style="gap: 1em;">
+            <input type="checkbox" task-id="6">
+            <div class="vflex" style="flex-grow: 1;">
+                <div style="color: #141B26;">Need 2 security guard types</div>
+                <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=60&amp;viewType=projectDetail">Pepsi</a></div>
+            </div>
+            <div class="vflex" style="color: #2A4168;">
+                <div>12/25/2020</div>
+                <div>Friday</div>
+            </div>
+        </div><div class="card hflex" style="gap: 1em;">
+            <input type="checkbox" task-id="7">
+            <div class="vflex" style="flex-grow: 1;">
+                <div style="color: #141B26;">Replace 5</div>
+                <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=77&amp;viewType=projectDetail">Indeed.com</a></div>
+            </div>
+            <div class="vflex" style="color: #2A4168;">
+                <div>02/13/2021</div>
+                <div>Saturday</div>
+            </div>
+        </div><div class="card hflex" style="gap: 1em;">
+            <input type="checkbox" task-id="8">
+            <div class="vflex" style="flex-grow: 1;">
+                <div style="color: #141B26;">Book John Cena Stand In 6'1</div>
+                <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=60&amp;viewType=projectDetail">Pepsi</a></div>
+            </div>
+            <div class="vflex" style="color: #2A4168;">
+                <div>12/25/2020</div>
+                <div>Friday</div>
+            </div>
+        </div><div class="card hflex" style="gap: 1em;">
+            <input type="checkbox" task-id="9">
+            <div class="vflex" style="flex-grow: 1;">
+                <div style="color: #141B26;">book 3 people</div>
+                <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=31&amp;viewType=projectDetail">New Snickers TV Ad </a></div>
+            </div>
+            <div class="vflex" style="color: #2A4168;">
+                <div>10/21/2020</div>
+                <div>Wednesday</div>
+            </div>
+        </div><div class="card hflex" style="gap: 1em;">
+            <input type="checkbox" task-id="10">
+            <div class="vflex" style="flex-grow: 1;">
+                <div style="color: #141B26;">book people</div>
+                <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=11&amp;viewType=projectDetail">Test Project</a></div>
+            </div>
+            <div class="vflex" style="color: #2A4168;">
+                <div>03/28/2021</div>
+                <div>Sunday</div>
+            </div>
+        </div><div class="card hflex" style="gap: 1em;">
+            <input type="checkbox" task-id="11">
+            <div class="vflex" style="flex-grow: 1;">
+                <div style="color: #141B26;">Send map after 10 are booked</div>
+                <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=20&amp;viewType=projectDetail">Mikael TV Ad</a></div>
+            </div>
+            <div class="vflex" style="color: #2A4168;">
+                <div>09/30/2020</div>
+                <div>Wednesday</div>
+            </div>
+        </div><div class="card hflex" style="gap: 1em;">
+            <input type="checkbox" task-id="12">
+            <div class="vflex" style="flex-grow: 1;">
+                <div style="color: #141B26;">Book 100 total to book. 18-45 years old. Football fans</div>
+                <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=60&amp;viewType=projectDetail">Pepsi</a></div>
+            </div>
+            <div class="vflex" style="color: #2A4168;">
+                <div>12/25/2020</div>
+                <div>Friday</div>
+            </div>
+        </div><div class="card hflex" style="gap: 1em;">
+            <input type="checkbox" task-id="13">
+            <div class="vflex" style="flex-grow: 1;">
+                <div style="color: #141B26;">Find stand in for Grace</div>
+                <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=98&amp;viewType=projectDetail">New Nike Shoes TV Spot </a></div>
+            </div>
+            <div class="vflex" style="color: #2A4168;">
+                <div>10/22/2020</div>
+                <div>Thursday</div>
+            </div>
+        </div><div class="card hflex" style="gap: 1em;">
+            <input type="checkbox" task-id="14">
+            <div class="vflex" style="flex-grow: 1;">
+                <div style="color: #141B26;">123</div>
+                <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=109&amp;viewType=projectDetail">BK</a></div>
+            </div>
+            <div class="vflex" style="color: #2A4168;">
+                <div>12/23/2020</div>
+                <div>Wednesday</div>
+            </div>
+        </div><div class="card hflex" style="gap: 1em;">
+            <input type="checkbox" task-id="15">
+            <div class="vflex" style="flex-grow: 1;">
+                <div style="color: #141B26;">Relax for 5 mins</div>
+                <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=6&amp;viewType=projectDetail">Cheetos </a></div>
+            </div>
+            <div class="vflex" style="color: #2A4168;">
+                <div>12/14/2020</div>
+                <div>Monday</div>
+            </div>
+        </div><div class="card hflex" style="gap: 1em;">
+            <input type="checkbox" task-id="16">
+            <div class="vflex" style="flex-grow: 1;">
+                <div style="color: #141B26;">book 4 adults + 1 minor see reference photo</div>
+                <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=29&amp;viewType=projectDetail">McDonalds</a></div>
+            </div>
+            <div class="vflex" style="color: #2A4168;">
+                <div>12/16/2020</div>
+                <div>Wednesday</div>
+            </div>
+        </div><div class="card hflex" style="gap: 1em;">
+            <input type="checkbox" task-id="17">
+            <div class="vflex" style="flex-grow: 1;">
+                <div style="color: #141B26;">book 5 people</div>
+                <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=31&amp;viewType=projectDetail">New Snickers TV Ad </a></div>
+            </div>
+            <div class="vflex" style="color: #2A4168;">
+                <div>10/21/2020</div>
+                <div>Wednesday</div>
+            </div>
+        </div><div class="card hflex" style="gap: 1em;">
+            <input type="checkbox" task-id="18">
+            <div class="vflex" style="flex-grow: 1;">
+                <div style="color: #141B26;">book 3 people</div>
+                <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=31&amp;viewType=projectDetail">New Snickers TV Ad </a></div>
+            </div>
+            <div class="vflex" style="color: #2A4168;">
+                <div>10/21/2020</div>
+                <div>Wednesday</div>
+            </div>
+        </div><div class="card hflex" style="gap: 1em;">
+            <input type="checkbox" task-id="19">
+            <div class="vflex" style="flex-grow: 1;">
+                <div style="color: #141B26;">Find photo double for Joe Exotic</div>
+                <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=92&amp;viewType=projectDetail">Love Electric</a></div>
+            </div>
+            <div class="vflex" style="color: #2A4168;">
+                <div>10/22/2020</div>
+                <div>Thursday</div>
+            </div>
+        </div><div class="card hflex" style="gap: 1em;">
+            <input type="checkbox" task-id="20">
+            <div class="vflex" style="flex-grow: 1;">
+                <div style="color: #141B26;">Book 20 people</div>
+                <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=46&amp;viewType=projectDetail">Coke</a></div>
+            </div>
+            <div class="vflex" style="color: #2A4168;">
+                <div>12/14/2020</div>
+                <div>Monday</div>
+            </div>
+        </div><div class="card hflex" style="gap: 1em;">
+            <input type="checkbox" task-id="21">
+            <div class="vflex" style="flex-grow: 1;">
+                <div style="color: #141B26;">Carrie Underwood Katy Perry Luke Bryan DJ Tiesto DJ Zed         Celine Dion</div>
+                <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=5&amp;viewType=projectDetail">Resorts World SI MON</a></div>
+            </div>
+            <div class="vflex" style="color: #2A4168;">
+                <div>03/22/2021</div>
+                <div>Monday</div>
+            </div>
+        </div><div class="card hflex" style="gap: 1em;">
+            <input type="checkbox" task-id="22">
+            <div class="vflex" style="flex-grow: 1;">
+                <div style="color: #141B26;">Book 20 people to specs</div>
+                <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=7&amp;viewType=projectDetail">Ford</a></div>
+            </div>
+            <div class="vflex" style="color: #2A4168;">
+                <div>12/14/2020</div>
+                <div>Monday</div>
+            </div>
+        </div><div class="card hflex" style="gap: 1em;">
+            <input type="checkbox" task-id="23">
+            <div class="vflex" style="flex-grow: 1;">
+                <div style="color: #141B26;">Test Task</div>
+                <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=57&amp;viewType=projectDetail">Amazon Prime NU</a></div>
+            </div>
+            <div class="vflex" style="color: #2A4168;">
+                <div>05/20/2021</div>
+                <div>Thursday</div>
+            </div>
+        </div><div class="card hflex" style="gap: 1em;">
+            <input type="checkbox" task-id="24">
+            <div class="vflex" style="flex-grow: 1;">
+                <div style="color: #141B26;">Task 2</div>
+                <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=87&amp;viewType=projectDetail">Xsolla SAG Educational Mon &amp; Tue</a></div>
+            </div>
+            <div class="vflex" style="color: #2A4168;">
+                <div>05/31/2021</div>
+                <div>Monday</div>
+            </div>
+        </div><div class="card hflex" style="gap: 1em;">
+            <input type="checkbox" task-id="25">
+            <div class="vflex" style="flex-grow: 1;">
+                <div style="color: #141B26;">Task 1</div>
+                <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=116&amp;viewType=projectDetail">Comcast Sunday</a></div>
+            </div>
+            <div class="vflex" style="color: #2A4168;">
+                <div>05/09/2021</div>
+                <div>Sunday</div>
+            </div>
+        </div><div class="card hflex" style="gap: 1em;">
+            <input type="checkbox" task-id="26">
+            <div class="vflex" style="flex-grow: 1;">
+                <div style="color: #141B26;"></div>
+                <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=57&amp;viewType=projectDetail">Amazon Prime NU</a></div>
+            </div>
+            <div class="vflex" style="color: #2A4168;">
+                <div>05/20/2021</div>
+                <div>Thursday</div>
+            </div>
+        </div><div class="card hflex" style="gap: 1em;">
+            <input type="checkbox" task-id="27">
+            <div class="vflex" style="flex-grow: 1;">
+                <div style="color: #141B26;">Book 2 standins</div>
+                <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=118&amp;viewType=projectDetail">Comcast Tuesday</a></div>
+            </div>
+            <div class="vflex" style="color: #2A4168;">
+                <div>05/11/2021</div>
+                <div>Tuesday</div>
+            </div>
+        </div><div class="card hflex" style="gap: 1em;">
+            <input type="checkbox" task-id="28">
+            <div class="vflex" style="flex-grow: 1;">
+                <div style="color: #141B26;">create invoice for project</div>
+                <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=118&amp;viewType=projectDetail">Comcast Tuesday</a></div>
+            </div>
+            <div class="vflex" style="color: #2A4168;">
+                <div>05/11/2021</div>
+                <div>Tuesday</div>
+            </div>
+        </div></div>
+                    <div class="done vflex" style="gap: 0.5em;"><h6>MARKED AS DONE</h6><div class="card hflex" style="gap: 1em;">
+            <input type="checkbox" task-id="29" checked="true">
+            <div class="vflex" style="flex-grow: 1;">
+                <div style="color: #141B26;">May 15th test</div>
+                <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=121&amp;viewType=projectDetail">Singularity FRI</a></div>
+            </div>
+            <div class="vflex" style="color: #2A4168;">
+                <div>05/14/2021</div>
+                <div>Friday</div>
+            </div>
+        </div></div>
+                </div>
+            </div>
+            
+        </div>
+    <!-- Loading bar -->
+    <div class="loader displayNone" onclick="event.stopPropagation()">
+        <div class="icon"></div>
+        <div class="loader-progress-label"></div>
+    </div>
+    <div class="add-new-dialog add-new-project-dialog displayNone">
+        <form class="container" action="/api/project/create.php" method="post">
+            <h1>Create new project</h1>
+            <div class="form">
+                <div class="form-row">
+                    <label>Project Name</label>
+                    <input type="text" name="Project">
+                </div>
+                <div class="form-row">
+                    <label>Casting Company</label>
+                    <select name="Casting Company"><option value="">- SELECT CASTING COMPANY -</option><option value="2"></option><option value="1">Acme Int</option><option value="3">DK Casting</option><option value="5">DK Casting</option><option value="4">Extra Extra Casting</option></select>
+                </div>
+                <div class="form-row">
+                    <label>Union Status</label>
+                    <select name="Union Status">
+                        <option value="">- SELECT UNION STATUS -</option>
+                        <option value="Non-Union">Non-Union</option>
+                        <option value="SAGAFTRA">SAGAFTRA</option>
+                        <option value="Print - No Union Affiliation">Print - No Union Affiliation</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <label>Shoot Date</label>
+                    <input type="date" name="Shoot Date">
+                </div>
+                <div class="form-row">
+                    <label>Base Rate</label>
+                    <input type="number" name="Base Rate">
+                </div>
+                <div class="form-row">
+                    <label>Hours</label>
+                    <input type="number" name="Hours">
+                </div>
+                <div class="form-row">
+                    <label>Fees</label>
+                    <input type="number" name="Fees">
+                </div>
+                <div class="form-row">
+                    <label>Description</label>
+                    <textarea name="Fees Description"></textarea>
+                </div>
+                <div class="form-row">
+                    <label>General Location</label>
+                    <input type="text" name="General Location">
+                </div>
+                <div class="form-row">
+                    <label>Payroll Company</label>
+                    <select name="Payroll Company"><option value="">- SELECT PAYROLL COMPANY -</option><option value="1"></option><option value="6">CAPS</option><option value="7">Entertainment Partners</option><option value="3">Extreme Reach</option><option value="2">Not Available</option><option value="5">Team</option><option value="4">Wrapbook</option></select>
+                </div>
+                <div class="form-row">
+                    <label>Production Company</label>
+                    <select name="Production Company"><option value="">- SELECT PRODUCTION COMPANY -</option><option value="9">ANONYMOUS</option><option value="10">Art Class</option><option value="11">BDFILM</option><option value="18">Biscuit</option><option value="1">Bullitt</option><option value="6">First Tube Media</option><option value="20">FRAMESTORE PICTURES</option><option value="12">FURLINED</option><option value="5">Hungryman</option><option value="3">John Doe Pictures</option><option value="21">LPGA</option><option value="24">m ss ng p eces</option><option value="26">Minimal Productions</option><option value="4">O Positive</option><option value="16">Park Pictures</option><option value="7">Prettybird</option><option value="19">Production 123</option><option value="13">Psyop</option><option value="23">Radical Media</option><option value="2">Rocket Film</option><option value="25">SANDWICH VIDEO</option><option value="15">Slim Pictures</option><option value="17">SoundStage</option><option value="14">Tiny Elephant</option><option value="8">Tool of North America</option><option value="22">Tourveaux LLC</option></select>
+                </div>
+            </div>
+            <button type="submit" class="button">Save</button>
+        </form>
+    </div>
+    <div class="add-new-dialog add-new-task-dialog displayNone">
+        <form class="container" action="/api/task/create.php" method="post">
+            <h1>Create new task</h1>
+            <div class="form">
+                <div class="form-row">
+                    <label>Task Name</label>
+                    <input type="text" name="Task">
+                </div>
+                <div class="form-row">
+                    <label>Project</label>
+                    <select name="Project"><option value="">- SELECT PROJECT -</option><option value="87">Xsolla SAG Educational Mon &amp; Tue</option><option value="57">Amazon Prime NU</option><option value="114">Test Project</option><option value="89">Cleopatra</option><option value="120">Fashion Shoot</option><option value="124">Amazon - Buff</option><option value="128">Test Billing</option><option value="126">Thunderball SUN</option><option value="125">Singularity SAT</option><option value="121">Singularity FRI</option><option value="122">Breathe Right THU</option><option value="115">LGBTQ 12th &amp; 13th</option><option value="119">Breathe Right WED</option><option value="118">Comcast Tuesday</option><option value="117">Comcast Monday</option><option value="123">Best Project Ever!!</option><option value="116">Comcast Sunday</option><option value="42">Tall Guy SI</option><option value="94">Picrow May 3rd</option><option value="84">Property Brothers SAT &amp; SUN</option><option value="8">Mack Weldon Stills</option><option value="75">Shark Week</option><option value="74">Irwindale Speedway SI</option><option value="105">Popeyes MON</option><option value="35">Popeyes FRI</option><option value="72">Night Teeth - Stand Ins</option><option value="70">Mikes Hard Lemonade</option><option value="107">Popeyes THU</option><option value="39">Popeyes WED</option><option value="51">Hubspot WED &amp; THU</option><option value="3">Popeyes TUE</option><option value="13">Subaru in Mammoth</option><option value="80">Amazon Prime</option><option value="93">Popeyes</option><option value="76">SAG Stand In</option><option value="83">Ignite</option><option value="95">Otezla Fri</option><option value="71">Ignite</option><option value="102">Otezla THU</option><option value="69">Homeless 4_14 &amp; 4_15</option><option value="106">Otezla WED</option><option value="64">Otezla TUE</option><option value="2">Anheuser-Busch MON</option><option value="28">Otezla Monday</option><option value="112">Looking Glass Films Stand In</option><option value="32">Anheuser-Busch SAT</option><option value="91">Tecate FRI &amp; MON</option><option value="49">Surfing Dallas APR 3-7</option><option value="14">BAGSTER FRIDAY</option><option value="9">Done</option><option value="67">Sit N Sleep Thu</option><option value="1">Reform School </option><option value="21">AVEN</option><option value="25">xfinity</option><option value="45">Project Sun</option><option value="100">Anna Project</option><option value="68">Nissan Monday</option><option value="11">Test Project</option><option value="110">SEPHORA THU</option><option value="38">SEPHORA WED</option><option value="47">Resorts World SI WED</option><option value="79">Resorts World SI Tue</option><option value="5">Resorts World SI MON</option><option value="43">Radical Media Sunday</option><option value="48">Resorts World SUN</option><option value="54">New Test Project</option><option value="10">PF100 | Pokemon</option><option value="24">FARM LEAGUE FRI Adventurer Surf</option><option value="27">Harry &amp; David FRI</option><option value="73">ICONOCL\ST</option><option value="82">Jardiance FRI</option><option value="86">Jardiance THU</option><option value="96">Hyundai Body Double</option><option value="62">FARM LEAGUE WED Rebirth</option><option value="111">Harry &amp; David COVID MON, Shoot WED</option><option value="44">FARM LEAGUE SOHLA TUE</option><option value="50">Little Caesars Monday</option><option value="66">Hyundai Sunday</option><option value="108">Little Caesars Sunday</option><option value="52">Skyy Saturday Covid FRI</option><option value="65">Little Caesars SAT </option><option value="97">Romanek Video </option><option value="4">Skyy Wed COVID and FRI Shoot</option><option value="15">Halo Top Friday (Recall)</option><option value="58">One21 Friday</option><option value="23">Skyy THU </option><option value="88">Halo Top</option><option value="101">One21 Bros THU </option><option value="56">Carfax Wed 3_10 &amp; Thu 3_11</option><option value="104">One21 Wed Loft</option><option value="22">One21 Tue Dance</option><option value="18">Alicia Keys SI March 7 &amp; 8</option><option value="36">ONE21 </option><option value="53">Hyundai Mindy + Friends SIs</option><option value="103">Stella THU</option><option value="17">Stella Wed</option><option value="61">Lathom FRI COVID, MON Shoot</option><option value="26">John's Project</option><option value="12">Instacart</option><option value="77">Indeed.com</option><option value="55">Fitting Model</option><option value="59">Ad Council Shoot - Dad</option><option value="33">Scotts COVID Wed 2_3 - Shoot Thu-Fri</option><option value="113">Pool Party</option><option value="81">Alicia Keys SI March 7 &amp; 8</option><option value="40">Test Project 2</option><option value="34">Salesforce</option><option value="30">banana</option><option value="19">Best Project Ever</option><option value="60">Pepsi</option><option value="109">BK</option><option value="29">McDonalds</option><option value="6">Cheetos </option><option value="7">Ford</option><option value="46">Coke</option><option value="16">Pepsi2</option><option value="92">Love Electric</option><option value="98">New Nike Shoes TV Spot </option><option value="31">New Snickers TV Ad </option><option value="20">Mikael TV Ad</option><option value="37">Lathom General Options</option><option value="41">Frisbee Mom</option><option value="63">[Collection]</option><option value="78">Test Project P</option><option value="85">FARM LEAGUE</option><option value="90">Alexandra Izzo Reshoot</option><option value="99">AT&amp;T Double</option><option value="127">Née</option></select>
+                </div>
+                <input type="hidden" name="Status" value="">
+            </div>
+            <button type="submit" class="button">Save</button>
+        </form>
+    </div>
+    <div class="add-new-dialog billing-dialog displayNone">
+        <form class="container" action="/api/billing/set-rate.php" method="post">
+            <h1>Set billing type</h1>
+            <div class="form">
+                <div class="form-row">
+                    <label>Billing Type</label>
+                    <div><input type="radio" name="type" id="billing_type_percent" value="percent" checked=""> <label for="billing_type_percent">Percent Rate(in %)</label></div>
+                    <div><input type="radio" name="type" id="billing_type_flat" value="flat"> <label for="billing_type_flat">Flat Rate(in $)</label></div>
+                </div>
+                <div class="form-row">
+                    <label>Rate Value</label>
+                    <input type="number" name="value">
+                </div>
+                <input type="hidden" name="projectID" value="">
+            </div>
+            <button type="submit" class="button">Save</button>
+        </form>
+    </div>
+
+</div></body></html>

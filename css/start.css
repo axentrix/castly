@@ -1946,6 +1946,13 @@ input:focus {
 .box-content-new {
   flex-wrap: wrap;
 }
+.color-overlay-portfolio {
+  position: fixed;
+  background: linear-gradient(0deg, #161e2e 10%, rgba(35, 86, 216, 0.7) 90%);
+  height: 100%;
+  top: 0;
+  width: 100%;
+}
 #benefits-map {
   min-height: 50vh;
 }
