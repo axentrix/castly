@@ -1,4 +1,6 @@
 <html><head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
     <link rel="stylesheet" href="https:///use.fontawesome.com/releases/v5.15.3/css/all.css">
     <link rel="stylesheet" href="assets/css/castly-icons.css">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -27,7 +29,7 @@ width: calc(100% - 1em); margin-left: -50px; padding-left: 50px; padding-right: 
     <div><i class="clickable icon-more"></i></div>
     <div><img src="https://dl.airtable.com/.attachmentThumbnails/618720c902d20b285f44258e86cd7540/bf1cf92e" style="width: 2em; height: 2em; border-radius: 2em; object-fit: cover; object-position: top; border: 0.2em solid #EEF2F930;"></div>
 </div>
-</div>        <div class="container mt-6 mb-6">
+</div>        <div class="dashboard-container mt-6 mb-6">
         <i class="icon-tomorrow mr-2" style="font-size: 4em; color: var(--theme-color-primary);"></i>
         <div style="display: flex; flex-direction: column; flex-grow: 1;">
             <div style="font-size: 1.5em; font-weight: bold;">Tomorrow</div>
@@ -43,34 +45,40 @@ width: calc(100% - 1em); margin-left: -50px; padding-left: 50px; padding-right: 
             <i class="icon-finalnotes"></i>&nbsp; ADD NEW TASK
         </a>
     </div>
-    <div style="display: flex; gap: 1em;" class="container">
+    <div style="display: flex; gap: 1em;" class="container dashboard-container">
         <div class="card card-dashboard">
-            BOOKED
+            <div class="card-header">   BOOKED</div>
             <div  class="accent">
                 <i class="icon-talents"></i><span class="badge"><i class="icon icon-check"></i></span>
-                <span booked="" class="badge-check-up statistics">1</span>
+               
             </div>
+            <div class="accent-number"> <span booked="" class="statistics">1</span><span class="badge badge-success"><i class="icon icon-check"></i></span></div>
         </div>
         <div class="card card-dashboard">
-            FINAL DETAILS SENT
+            <div class="card-header">  FINAL DETAILS SENT</div>
             <div class="accent">
-                <i class="icon-talents"></i><span class="badge"><i class="icon icon-finalnotes"></i></span>
-                <span final-details-sent="" class="statistics badge-detail-up">0</span>
+                <i class="icon-talents"></i><i class="icon icon-finalnotes2 standalone"></i>
+              
             </div>
+            <div class="accent-number"> <span final-details-sent="" class="statistics">8</span><span class="badge badge-warning"><i class="fas fas fa-exclamation"></i></span></div>
         </div>
         <div class="card card-dashboard">
-            CONFIRMED FINAL DETAILS
-            <div  class="accent">
+            <div class="card-header">  CONFIRMED FINAL DETAILS</div>
+            <div  class="accent"
+            >
                 <i class="icon-finalnotes"></i><span class="badge"><i class="icon-check"></i></span>
-                <span final-details-confirmed="" class="badge-check-up icon-check statistics">0</span>
+               
+
             </div>
+            <div class="accent-number"> <span final-details-confirmed="" class="statistics">8</span><span class="badge badge-success"><i class="fa fa-check"></i></span></div>
         </div>
         <div class="card card-dashboard">
-            EMERGENCIES
+           <div class="card-header"> EMERGENCIES</div>
             <div  class="accent">
-                <i class="icon-emergency"></i><span class="badge"><i class="fa fa-minus"></i></span>
-                <span emergency="">1</span>
+                <i class="icon-emergency"></i><span class="badge badge-error"><i class="fa fa-minus"></i></span>
+              
             </div>
+            <div class="accent-number"> <span emergency="" class="statistics">8</span><span class="badge badge-error"><i class="fas fa-exclamation"></i></span></div>
         </div>
     </div>
     <div class="container">
@@ -87,171 +95,22 @@ width: calc(100% - 1em); margin-left: -50px; padding-left: 50px; padding-right: 
                     </div>
                 </div>
                 <div class="table-header">
-                    <div style="flex-grow: 1; width: 0;">SHOOT DATE</div>
-                    <div style="flex-grow: 2; width: 0;">PROJECT NAME</div>
-                    <div style="flex-grow: 1; width: 0;">PAYROLL COMPANY</div>
-                    <div style="flex-grow: 3; width: 0; ">STATUS</div>
-                    <div style="flex-grow: 1; width: 0; ">PROJECT STATUS</div>
-                    <div style="flex-grow: 1; width: 0;"></div>
+                    <div >SHOOT DATE</div>
+                    <div>PROJECT NAME</div>
+                    <div>PAYROLL COMPANY</div>
+                    <div>STATUS</div>
+                    <div >PROJECT STATUS</div>
+                    <div ></div>
                 </div>
-                <div class="table-item card template" style="display: flex; align-items: center;">
-                    <div shoot-date="" class="shoot-date" style="flex-grow: 1; width: 0;">-</div>
-                    <div style="flex-grow: 2; width: 0;">
-                        <a project-name="" style="color: var(--theme-color-primary); font-size: 1.2em;">-</a>
-                        <div rate-union="" class="rate-union">-</div>
-                    </div>
-                    <div payroll="" class="payroll" style="flex-grow: 1; width: 0;">-</div>
-                    <div style="flex-grow: 3; width: 0;" class="hflex">
-                        <div style="flex-grow: 1;" class="status-available status hflex">
-                            <span><i class="icon-available"></i></span>
-                            <div class="vflex">
-                                <div confirmed="">0 CONFIRMED</div>
-                                <div denied="">0 DENIED</div>
-                                <div unanswered="">0 UNANSWERED</div>
-                            </div>
-                        </div>
-                        <div style="flex-grow: 1;" class="status-booked status hflex">
-                            <span><i class="icon-booked"></i></span>
-                            <div class="vflex">
-                                <div confirmed="">0 CONFIRMED</div>
-                                <div denied="">0 DENIED</div>
-                                <div unanswered="">0 UNANSWERED</div>
-                            </div>
-                        </div>
-                        <div style="flex-grow: 1;" class="status-finalnotessent status hflex">
-                            <span><i class="icon-finalnotessent"></i></span>
-                            <div class="vflex">
-                                <div confirmed="">0 CONFIRMED</div>
-                                <div denied="">0 DENIED</div>
-                                <div unanswered="">0 UNANSWERED</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div project-status="" class="project-status"" style="flex-grow: 1; width: 0; ">
-                        Active
-                    </div>
-                    <div style="flex-grow: 1; width: 0; text-align: right;">
-                        <a add-button="" class="btn-add-talent" >
-                            <i class="icon-addtalent  clickable"></i>
-                        </a>
-                        <a class="btn-more" >
-                            <i tabindex="0" class="fa fa-bars  clickable">
-                                <div class="displayNone" style="position: absolute; top: 100%; right: 0; background: #FEFEFE; color: var(--text-color-primary);">
-                                    <div style="white-space: nowrap; background: gray; color: white; font-size: 0.7em;">Change Status to ...</div>
-                                    <div class="status-item">Active</div>
-                                    <div class="status-item">Billed</div>
-                                    <div class="status-item">Cancelled</div>
-                                </div>
-                            </i>
-                        </a>
-                    </div>
-                </div><div class="table-item card" style="display: flex; align-items: center;">
-                    <div shoot-date="" class="shoot-date" style="flex-grow: 1; width: 0;">05/31/2021</div>
-                    <div style="flex-grow: 2; width: 0;">
-                        <a project-name="" style="color: var(--theme-color-primary); font-size: 1.2em;" href="/search.php?filterSag=SAG%2BNU,SAGAFTRA&amp;projectID=87&amp;viewType=projectDetail">Xsolla SAG Educational Mon &amp; Tue</a>
-                        <div rate-union="" class="rate-union">$140/8hrs SAGAFTRA</div>
-                    </div>
-                    <div payroll="" class="payroll" style="flex-grow: 1; width: 0;"></div>
-                    <div style="flex-grow: 3; width: 0;" class="hflex">
-                        <div style="flex-grow: 1;" class="status-available status hflex active">
-                            <span><i class="icon-available"></i></span>
-                            <div class="vflex">
-                                <div confirmed="">2 AVAILABLE</div>
-                                <div denied="">0 UNAVAILABLE</div>
-                                <div unanswered="">0 UNANSWERED</div>
-                            </div>
-                        </div>
-                        <div style="flex-grow: 1;" class="status-booked status hflex">
-                            <span><i class="icon-booked"></i></span>
-                            <div class="vflex">
-                                <div confirmed="">0 BOOKED</div>
-                                <div denied="">0 DENIED</div>
-                                <div unanswered="">0 UNANSWERED</div>
-                            </div>
-                        </div>
-                        <div style="flex-grow: 1;" class="status-finalnotessent status hflex">
-                            <span><i class="icon-finalnotessent"></i></span>
-                            <div class="vflex">
-                                <div confirmed="">0 CONFIRMED</div>
-                                <div denied="">0 EMERGENCY</div>
-                                <div unanswered="">0 UNANSWERED</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div project-status="" class="project-status"" style="flex-grow: 1; width: 0; ">Active</div>
-                    <div style="flex-grow: 1; width: 0; text-align: right;">
-                        <a add-button="" class="btn-add-talent"  href="/search.php?filterSag=SAG%2BNU,SAGAFTRA&amp;projectID=87&amp;viewType=addToProject">
-                            <i class="icon-addtalent  clickable"></i>
-                        </a>
-                        <a class="btn-more" >
-                            <i tabindex="0" class="fa fa-bars  clickable">
-                                <div class="displayNone" style="position: absolute; top: 100%; right: 0; background: #FEFEFE; color: var(--text-color-primary);">
-                                    <div style="white-space: nowrap; background: gray; color: white; font-size: 0.7em;">Change Status to ...</div>
-                                    <div class="status-item">Active</div>
-                                    <div class="status-item">Billed</div>
-                                    <div class="status-item">Cancelled</div>
-                                </div>
-                            </i>
-                        </a>
-                    </div>
-                </div><div class="table-item card" style="display: flex; align-items: center;">
-                    <div shoot-date="" class="shoot-date" style="flex-grow: 1; width: 0;">05/20/2021</div>
-                    <div style="flex-grow: 2; width: 0;">
-                        <a project-name="" style="color: var(--theme-color-primary); font-size: 1.2em;" href="/search.php?filterSag=SAG%2BNU,Non-Union&amp;projectID=57&amp;viewType=projectDetail">Amazon Prime NU</a>
-                        <div rate-union="" class="rate-union">$250/10hrs Non-Union</div>
-                    </div>
-                    <div payroll="" class="payroll" style="flex-grow: 1; width: 0;"></div>
-                    <div style="flex-grow: 3; width: 0;" class="hflex">
-                        <div style="flex-grow: 1;" class="status-available status hflex active">
-                            <span><i class="icon-available"></i></span>
-                            <div class="vflex">
-                                <div confirmed="">17 AVAILABLE</div>
-                                <div denied="">1 UNAVAILABLE</div>
-                                <div unanswered="">1 UNANSWERED</div>
-                            </div>
-                        </div>
-                        <div style="flex-grow: 1;" class="status-booked status hflex active">
-                            <span><i class="icon-booked"></i></span>
-                            <div class="vflex">
-                                <div confirmed="">27 BOOKED</div>
-                                <div denied="">0 DENIED</div>
-                                <div unanswered="">0 UNANSWERED</div>
-                            </div>
-                        </div>
-                        <div style="flex-grow: 1;" class="status-finalnotessent status hflex">
-                            <span><i class="icon-finalnotessent"></i></span>
-                            <div class="vflex">
-                                <div confirmed="">0 CONFIRMED</div>
-                                <div denied="">0 EMERGENCY</div>
-                                <div unanswered="">0 UNANSWERED</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div project-status="" class="project-status"" style="flex-grow: 1; width: 0; ">Active</div>
-                    <div style="flex-grow: 1; width: 0; text-align: right;">
-                        <a add-button="" class="btn-add-talent"  href="/search.php?filterSag=SAG%2BNU,Non-Union&amp;projectID=57&amp;viewType=addToProject">
-                            <i class="icon-addtalent  clickable"></i>
-                        </a>
-                        <a class="btn-more" >
-                            <i tabindex="0" class="fa fa-bars  clickable">
-                                <div class="displayNone" style="position: absolute; top: 100%; right: 0; background: #FEFEFE; color: var(--text-color-primary);">
-                                    <div style="white-space: nowrap; background: gray; color: white; font-size: 0.7em;">Change Status to ...</div>
-                                    <div class="status-item">Active</div>
-                                    <div class="status-item">Billed</div>
-                                    <div class="status-item">Cancelled</div>
-                                </div>
-                            </i>
-                        </a>
-                    </div>
-                </div><div class="table-item card" style="display: flex; align-items: center;">
-                    <div shoot-date="" class="shoot-date" style="flex-grow: 1; width: 0;">05/19/2021</div>
-                    <div style="flex-grow: 2; width: 0;">
+                <div class="table-item card" style="display: flex; align-items: center;">
+                    <div shoot-date="" class="shoot-date" >05/19/2021</div>
+                    <div class="project-name">
                         <a project-name="" style="color: var(--theme-color-primary); font-size: 1.2em;" href="/search.php?filterSag=SAG%2BNU,SAGAFTRA&amp;projectID=114&amp;viewType=projectDetail">Test Project</a>
                         <div rate-union="" class="rate-union">$400/1hrs SAGAFTRA</div>
                     </div>
-                    <div payroll="" class="payroll" style="flex-grow: 1; width: 0;">CAPS</div>
-                    <div style="flex-grow: 3; width: 0;" class="hflex">
-                        <div style="flex-grow: 1;" class="status-available status hflex active">
+                    <div payroll="" class="payroll" >CAPS</div>
+                    <div  class="hflex statuses">
+                        <div class="status-available status hflex active">
                             <span><i class="icon-available"></i></span>
                             <div class="vflex">
                                 <div confirmed="">0 AVAILABLE</div>
@@ -259,7 +118,7 @@ width: calc(100% - 1em); margin-left: -50px; padding-left: 50px; padding-right: 
                                 <div unanswered="">1 UNANSWERED</div>
                             </div>
                         </div>
-                        <div style="flex-grow: 1;" class="status-booked status hflex">
+                        <div class="status-booked status hflex">
                             <span><i class="icon-booked"></i></span>
                             <div class="vflex">
                                 <div confirmed="">0 BOOKED</div>
@@ -267,7 +126,7 @@ width: calc(100% - 1em); margin-left: -50px; padding-left: 50px; padding-right: 
                                 <div unanswered="">0 UNANSWERED</div>
                             </div>
                         </div>
-                        <div style="flex-grow: 1;" class="status-finalnotessent status hflex active">
+                        <div class="status-finalnotessent status hflex active">
                             <span><i class="icon-finalnotessent"></i></span>
                             <div class="vflex">
                                 <div confirmed="">0 CONFIRMED</div>
@@ -276,352 +135,9 @@ width: calc(100% - 1em); margin-left: -50px; padding-left: 50px; padding-right: 
                             </div>
                         </div>
                     </div>
-                    <div project-status="" class="project-status"" style="flex-grow: 1; width: 0; ">Billed</div>
-                    <div style="flex-grow: 1; width: 0; text-align: right;">
+                    <div project-status="" class="project-status" >Billed</div>
+                    <div class="buttons">
                         <a add-button="" class="btn-add-talent"  href="/search.php?filterSag=SAG%2BNU,SAGAFTRA&amp;projectID=114&amp;viewType=addToProject">
-                            <i class="icon-addtalent  clickable"></i>
-                        </a>
-                        <a class="btn-more" >
-                            <i tabindex="0" class="fa fa-bars  clickable">
-                                <div class="displayNone" style="position: absolute; top: 100%; right: 0; background: #FEFEFE; color: var(--text-color-primary);">
-                                    <div style="white-space: nowrap; background: gray; color: white; font-size: 0.7em;">Change Status to ...</div>
-                                    <div class="status-item">Active</div>
-                                    <div class="status-item">Billed</div>
-                                    <div class="status-item">Cancelled</div>
-                                </div>
-                            </i>
-                        </a>
-                    </div>
-                </div><div class="table-item card" style="display: flex; align-items: center;">
-                    <div shoot-date="" class="shoot-date" style="flex-grow: 1; width: 0;">05/17/2021</div>
-                    <div style="flex-grow: 2; width: 0;">
-                        <a project-name="" style="color: var(--theme-color-primary); font-size: 1.2em;" href="/search.php?filterSag=SAG%2BNU,SAGAFTRA&amp;projectID=89&amp;viewType=projectDetail">Cleopatra</a>
-                        <div rate-union="" class="rate-union">$388/8hrs SAGAFTRA</div>
-                    </div>
-                    <div payroll="" class="payroll" style="flex-grow: 1; width: 0;"></div>
-                    <div style="flex-grow: 3; width: 0;" class="hflex">
-                        <div style="flex-grow: 1;" class="status-available status hflex">
-                            <span><i class="icon-available"></i></span>
-                            <div class="vflex">
-                                <div confirmed="">0 AVAILABLE</div>
-                                <div denied="">0 UNAVAILABLE</div>
-                                <div unanswered="">0 UNANSWERED</div>
-                            </div>
-                        </div>
-                        <div style="flex-grow: 1;" class="status-booked status hflex">
-                            <span><i class="icon-booked"></i></span>
-                            <div class="vflex">
-                                <div confirmed="">0 BOOKED</div>
-                                <div denied="">0 DENIED</div>
-                                <div unanswered="">0 UNANSWERED</div>
-                            </div>
-                        </div>
-                        <div style="flex-grow: 1;" class="status-finalnotessent status hflex">
-                            <span><i class="icon-finalnotessent"></i></span>
-                            <div class="vflex">
-                                <div confirmed="">0 CONFIRMED</div>
-                                <div denied="">0 EMERGENCY</div>
-                                <div unanswered="">0 UNANSWERED</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div project-status="" class="project-status"" style="flex-grow: 1; width: 0; ">Active</div>
-                    <div style="flex-grow: 1; width: 0; text-align: right;">
-                        <a add-button="" class="btn-add-talent"  href="/search.php?filterSag=SAG%2BNU,SAGAFTRA&amp;projectID=89&amp;viewType=addToProject">
-                            <i class="icon-addtalent  clickable"></i>
-                        </a>
-                        <a class="btn-more" >
-                            <i tabindex="0" class="fa fa-bars  clickable">
-                                <div class="displayNone" style="position: absolute; top: 100%; right: 0; background: #FEFEFE; color: var(--text-color-primary);">
-                                    <div style="white-space: nowrap; background: gray; color: white; font-size: 0.7em;">Change Status to ...</div>
-                                    <div class="status-item">Active</div>
-                                    <div class="status-item">Billed</div>
-                                    <div class="status-item">Cancelled</div>
-                                </div>
-                            </i>
-                        </a>
-                    </div>
-                </div><div class="table-item card" style="display: flex; align-items: center;">
-                    <div shoot-date="" class="shoot-date" style="flex-grow: 1; width: 0;">05/17/2021</div>
-                    <div style="flex-grow: 2; width: 0;">
-                        <a project-name="" style="color: var(--theme-color-primary); font-size: 1.2em;" href="/search.php?filterSag=SAG%2BNU,Non-Union&amp;projectID=120&amp;viewType=projectDetail">Fashion Shoot</a>
-                        <div rate-union="" class="rate-union">$200/8hrs Non-Union</div>
-                    </div>
-                    <div payroll="" class="payroll" style="flex-grow: 1; width: 0;"></div>
-                    <div style="flex-grow: 3; width: 0;" class="hflex">
-                        <div style="flex-grow: 1;" class="status-available status hflex">
-                            <span><i class="icon-available"></i></span>
-                            <div class="vflex">
-                                <div confirmed="">0 AVAILABLE</div>
-                                <div denied="">0 UNAVAILABLE</div>
-                                <div unanswered="">0 UNANSWERED</div>
-                            </div>
-                        </div>
-                        <div style="flex-grow: 1;" class="status-booked status hflex">
-                            <span><i class="icon-booked"></i></span>
-                            <div class="vflex">
-                                <div confirmed="">0 BOOKED</div>
-                                <div denied="">0 DENIED</div>
-                                <div unanswered="">0 UNANSWERED</div>
-                            </div>
-                        </div>
-                        <div style="flex-grow: 1;" class="status-finalnotessent status hflex">
-                            <span><i class="icon-finalnotessent"></i></span>
-                            <div class="vflex">
-                                <div confirmed="">0 CONFIRMED</div>
-                                <div denied="">0 EMERGENCY</div>
-                                <div unanswered="">0 UNANSWERED</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div project-status="" class="project-status"" style="flex-grow: 1; width: 0; ">Active</div>
-                    <div style="flex-grow: 1; width: 0; text-align: right;">
-                        <a add-button="" class="btn-add-talent"  href="/search.php?filterSag=SAG%2BNU,Non-Union&amp;projectID=120&amp;viewType=addToProject">
-                            <i class="icon-addtalent  clickable"></i>
-                        </a>
-                        <a class="btn-more" >
-                            <i tabindex="0" class="fa fa-bars  clickable">
-                                <div class="displayNone" style="position: absolute; top: 100%; right: 0; background: #FEFEFE; color: var(--text-color-primary);">
-                                    <div style="white-space: nowrap; background: gray; color: white; font-size: 0.7em;">Change Status to ...</div>
-                                    <div class="status-item">Active</div>
-                                    <div class="status-item">Billed</div>
-                                    <div class="status-item">Cancelled</div>
-                                </div>
-                            </i>
-                        </a>
-                    </div>
-                </div><div class="table-item card" style="display: flex; align-items: center;">
-                    <div shoot-date="" class="shoot-date" style="flex-grow: 1; width: 0;">05/17/2021</div>
-                    <div style="flex-grow: 2; width: 0;">
-                        <a project-name="" style="color: var(--theme-color-primary); font-size: 1.2em;" href="/search.php?filterSag=SAG%2BNU,SAGAFTRA&amp;projectID=124&amp;viewType=projectDetail">Amazon - Buff</a>
-                        <div rate-union="" class="rate-union">$/hrs SAGAFTRA</div>
-                    </div>
-                    <div payroll="" class="payroll" style="flex-grow: 1; width: 0;"></div>
-                    <div style="flex-grow: 3; width: 0;" class="hflex">
-                        <div style="flex-grow: 1;" class="status-available status hflex">
-                            <span><i class="icon-available"></i></span>
-                            <div class="vflex">
-                                <div confirmed="">0 AVAILABLE</div>
-                                <div denied="">0 UNAVAILABLE</div>
-                                <div unanswered="">0 UNANSWERED</div>
-                            </div>
-                        </div>
-                        <div style="flex-grow: 1;" class="status-booked status hflex">
-                            <span><i class="icon-booked"></i></span>
-                            <div class="vflex">
-                                <div confirmed="">0 BOOKED</div>
-                                <div denied="">0 DENIED</div>
-                                <div unanswered="">0 UNANSWERED</div>
-                            </div>
-                        </div>
-                        <div style="flex-grow: 1;" class="status-finalnotessent status hflex">
-                            <span><i class="icon-finalnotessent"></i></span>
-                            <div class="vflex">
-                                <div confirmed="">0 CONFIRMED</div>
-                                <div denied="">0 EMERGENCY</div>
-                                <div unanswered="">0 UNANSWERED</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div project-status="" class="project-status"" style="flex-grow: 1; width: 0; ">Active</div>
-                    <div style="flex-grow: 1; width: 0; text-align: right;">
-                        <a add-button="" class="btn-add-talent"  href="/search.php?filterSag=SAG%2BNU,SAGAFTRA&amp;projectID=124&amp;viewType=addToProject">
-                            <i class="icon-addtalent  clickable"></i>
-                        </a>
-                        <a class="btn-more" >
-                            <i tabindex="0" class="fa fa-bars  clickable">
-                                <div class="displayNone" style="position: absolute; top: 100%; right: 0; background: #FEFEFE; color: var(--text-color-primary);">
-                                    <div style="white-space: nowrap; background: gray; color: white; font-size: 0.7em;">Change Status to ...</div>
-                                    <div class="status-item">Active</div>
-                                    <div class="status-item">Billed</div>
-                                    <div class="status-item">Cancelled</div>
-                                </div>
-                            </i>
-                        </a>
-                    </div>
-                </div><div class="table-item card" style="display: flex; align-items: center;">
-                    <div shoot-date="" class="shoot-date" style="flex-grow: 1; width: 0;">05/17/2021</div>
-                    <div style="flex-grow: 2; width: 0;">
-                        <a project-name="" style="color: var(--theme-color-primary); font-size: 1.2em;" href="/search.php?filterSag=SAG%2BNU,&amp;projectID=128&amp;viewType=projectDetail">Test Billing</a>
-                        <div rate-union="" class="rate-union">$10/1hrs </div>
-                    </div>
-                    <div payroll="" class="payroll" style="flex-grow: 1; width: 0;">Entertainment Partners</div>
-                    <div style="flex-grow: 3; width: 0;" class="hflex">
-                        <div style="flex-grow: 1;" class="status-available status hflex">
-                            <span><i class="icon-available"></i></span>
-                            <div class="vflex">
-                                <div confirmed="">0 AVAILABLE</div>
-                                <div denied="">0 UNAVAILABLE</div>
-                                <div unanswered="">0 UNANSWERED</div>
-                            </div>
-                        </div>
-                        <div style="flex-grow: 1;" class="status-booked status hflex">
-                            <span><i class="icon-booked"></i></span>
-                            <div class="vflex">
-                                <div confirmed="">0 BOOKED</div>
-                                <div denied="">0 DENIED</div>
-                                <div unanswered="">0 UNANSWERED</div>
-                            </div>
-                        </div>
-                        <div style="flex-grow: 1;" class="status-finalnotessent status hflex active">
-                            <span><i class="icon-finalnotessent"></i></span>
-                            <div class="vflex">
-                                <div confirmed="">1 CONFIRMED</div>
-                                <div denied="">0 EMERGENCY</div>
-                                <div unanswered="">0 UNANSWERED</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div project-status="" class="project-status"" style="flex-grow: 1; width: 0; ">Billed</div>
-                    <div style="flex-grow: 1; width: 0; text-align: right;">
-                        <a add-button="" class="btn-add-talent"  href="/search.php?filterSag=SAG%2BNU,&amp;projectID=128&amp;viewType=addToProject">
-                            <i class="icon-addtalent  clickable"></i>
-                        </a>
-                        <a class="btn-more" >
-                            <i tabindex="0" class="fa fa-bars  clickable">
-                                <div class="displayNone" style="position: absolute; top: 100%; right: 0; background: #FEFEFE; color: var(--text-color-primary);">
-                                    <div style="white-space: nowrap; background: gray; color: white; font-size: 0.7em;">Change Status to ...</div>
-                                    <div class="status-item">Active</div>
-                                    <div class="status-item">Billed</div>
-                                    <div class="status-item">Cancelled</div>
-                                </div>
-                            </i>
-                        </a>
-                    </div>
-                </div><div class="table-item card" style="display: flex; align-items: center;">
-                    <div shoot-date="" class="shoot-date" style="flex-grow: 1; width: 0;">05/16/2021</div>
-                    <div style="flex-grow: 2; width: 0;">
-                        <a project-name="" style="color: var(--theme-color-primary); font-size: 1.2em;" href="/search.php?filterSag=SAG%2BNU,Non-Union&amp;projectID=126&amp;viewType=projectDetail">Thunderball SUN</a>
-                        <div rate-union="" class="rate-union">$250/10hrs Non-Union</div>
-                    </div>
-                    <div payroll="" class="payroll" style="flex-grow: 1; width: 0;"></div>
-                    <div style="flex-grow: 3; width: 0;" class="hflex">
-                        <div style="flex-grow: 1;" class="status-available status hflex">
-                            <span><i class="icon-available"></i></span>
-                            <div class="vflex">
-                                <div confirmed="">0 AVAILABLE</div>
-                                <div denied="">0 UNAVAILABLE</div>
-                                <div unanswered="">0 UNANSWERED</div>
-                            </div>
-                        </div>
-                        <div style="flex-grow: 1;" class="status-booked status hflex">
-                            <span><i class="icon-booked"></i></span>
-                            <div class="vflex">
-                                <div confirmed="">0 BOOKED</div>
-                                <div denied="">0 DENIED</div>
-                                <div unanswered="">0 UNANSWERED</div>
-                            </div>
-                        </div>
-                        <div style="flex-grow: 1;" class="status-finalnotessent status hflex">
-                            <span><i class="icon-finalnotessent"></i></span>
-                            <div class="vflex">
-                                <div confirmed="">0 CONFIRMED</div>
-                                <div denied="">0 EMERGENCY</div>
-                                <div unanswered="">0 UNANSWERED</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div project-status="" class="project-status"" style="flex-grow: 1; width: 0; ">Active</div>
-                    <div style="flex-grow: 1; width: 0; text-align: right;">
-                        <a add-button="" class="btn-add-talent"  href="/search.php?filterSag=SAG%2BNU,Non-Union&amp;projectID=126&amp;viewType=addToProject">
-                            <i class="icon-addtalent  clickable"></i>
-                        </a>
-                        <a class="btn-more" >
-                            <i tabindex="0" class="fa fa-bars  clickable">
-                                <div class="displayNone" style="position: absolute; top: 100%; right: 0; background: #FEFEFE; color: var(--text-color-primary);">
-                                    <div style="white-space: nowrap; background: gray; color: white; font-size: 0.7em;">Change Status to ...</div>
-                                    <div class="status-item">Active</div>
-                                    <div class="status-item">Billed</div>
-                                    <div class="status-item">Cancelled</div>
-                                </div>
-                            </i>
-                        </a>
-                    </div>
-                </div><div class="table-item card" style="display: flex; align-items: center;">
-                    <div shoot-date="" class="shoot-date" style="flex-grow: 1; width: 0;">05/15/2021</div>
-                    <div style="flex-grow: 2; width: 0;">
-                        <a project-name="" style="color: var(--theme-color-primary); font-size: 1.2em;" href="/search.php?filterSag=SAG%2BNU,Non-Union&amp;projectID=125&amp;viewType=projectDetail">Singularity SAT</a>
-                        <div rate-union="" class="rate-union">$250/12hrs Non-Union</div>
-                    </div>
-                    <div payroll="" class="payroll" style="flex-grow: 1; width: 0;"></div>
-                    <div style="flex-grow: 3; width: 0;" class="hflex">
-                        <div style="flex-grow: 1;" class="status-available status hflex">
-                            <span><i class="icon-available"></i></span>
-                            <div class="vflex">
-                                <div confirmed="">0 AVAILABLE</div>
-                                <div denied="">0 UNAVAILABLE</div>
-                                <div unanswered="">0 UNANSWERED</div>
-                            </div>
-                        </div>
-                        <div style="flex-grow: 1;" class="status-booked status hflex active">
-                            <span><i class="icon-booked"></i></span>
-                            <div class="vflex">
-                                <div confirmed="">5 BOOKED</div>
-                                <div denied="">0 DENIED</div>
-                                <div unanswered="">0 UNANSWERED</div>
-                            </div>
-                        </div>
-                        <div style="flex-grow: 1;" class="status-finalnotessent status hflex">
-                            <span><i class="icon-finalnotessent"></i></span>
-                            <div class="vflex">
-                                <div confirmed="">0 CONFIRMED</div>
-                                <div denied="">0 EMERGENCY</div>
-                                <div unanswered="">0 UNANSWERED</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div project-status="" class="project-status"" style="flex-grow: 1; width: 0; ">Active</div>
-                    <div style="flex-grow: 1; width: 0; text-align: right;">
-                        <a add-button="" class="btn-add-talent"  href="/search.php?filterSag=SAG%2BNU,Non-Union&amp;projectID=125&amp;viewType=addToProject">
-                            <i class="icon-addtalent  clickable"></i>
-                        </a>
-                        <a class="btn-more" >
-                            <i tabindex="0" class="fa fa-bars  clickable">
-                                <div class="displayNone" style="position: absolute; top: 100%; right: 0; background: #FEFEFE; color: var(--text-color-primary);">
-                                    <div style="white-space: nowrap; background: gray; color: white; font-size: 0.7em;">Change Status to ...</div>
-                                    <div class="status-item">Active</div>
-                                    <div class="status-item">Billed</div>
-                                    <div class="status-item">Cancelled</div>
-                                </div>
-                            </i>
-                        </a>
-                    </div>
-                </div><div class="table-item card" style="display: flex; align-items: center;">
-                    <div shoot-date="" class="shoot-date" style="flex-grow: 1; width: 0;">05/14/2021</div>
-                    <div style="flex-grow: 2; width: 0;">
-                        <a project-name="" style="color: var(--theme-color-primary); font-size: 1.2em;" href="/search.php?filterSag=SAG%2BNU,Non-Union&amp;projectID=121&amp;viewType=projectDetail">Singularity FRI</a>
-                        <div rate-union="" class="rate-union">$250/12hrs Non-Union</div>
-                    </div>
-                    <div payroll="" class="payroll" style="flex-grow: 1; width: 0;"></div>
-                    <div style="flex-grow: 3; width: 0;" class="hflex">
-                        <div style="flex-grow: 1;" class="status-available status hflex active">
-                            <span><i class="icon-available"></i></span>
-                            <div class="vflex">
-                                <div confirmed="">0 AVAILABLE</div>
-                                <div denied="">0 UNAVAILABLE</div>
-                                <div unanswered="">6 UNANSWERED</div>
-                            </div>
-                        </div>
-                        <div style="flex-grow: 1;" class="status-booked status hflex active">
-                            <span><i class="icon-booked"></i></span>
-                            <div class="vflex">
-                                <div confirmed="">4 BOOKED</div>
-                                <div denied="">0 DENIED</div>
-                                <div unanswered="">0 UNANSWERED</div>
-                            </div>
-                        </div>
-                        <div style="flex-grow: 1;" class="status-finalnotessent status hflex active">
-                            <span><i class="icon-finalnotessent"></i></span>
-                            <div class="vflex">
-                                <div confirmed="">1 CONFIRMED</div>
-                                <div denied="">1 EMERGENCY</div>
-                                <div unanswered="">0 UNANSWERED</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div project-status="" class="project-status"" style="flex-grow: 1; width: 0; ">Active</div>
-                    <div style="flex-grow: 1; width: 0; text-align: right;">
-                        <a add-button="" class="btn-add-talent"  href="/search.php?filterSag=SAG%2BNU,Non-Union&amp;projectID=121&amp;viewType=addToProject">
                             <i class="icon-addtalent  clickable"></i>
                         </a>
                         <a class="btn-more" >
@@ -648,9 +164,13 @@ width: calc(100% - 1em); margin-left: -50px; padding-left: 50px; padding-right: 
                     </div>
                 </div>
                 <div class="task-container hflex" style="gap: 1em;margin-top: 0.5em;">
-                    <div class="pending vflex" style="gap: 0.5em;"><h6>PENDING</h6><div class="card hflex" style="gap: 1em;">
-            <input type="checkbox" task-id="1">
-            <div class="vflex" style="flex-grow: 1;">
+                    <div id="pending"  class="pending vflex" style="gap: 0.5em;"><h6>PENDING</h6><div class="card hflex" style="gap: 1em;">
+                        <div class="checkbox">
+                            <label>
+                              <input type="checkbox"/><i class="helper"></i>
+                            </label></div>
+
+            <div class="vflex">
                 <div style="color: #141B26;"></div>
                 <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=100&amp;viewType=projectDetail">Anna Project</a></div>
             </div>
@@ -929,7 +449,7 @@ width: calc(100% - 1em); margin-left: -50px; padding-left: 50px; padding-right: 
                 <div>Tuesday</div>
             </div>
         </div></div>
-                    <div class="done vflex" style="gap: 0.5em;"><h6>MARKED AS DONE</h6><div class="card hflex" style="gap: 1em;">
+                    <div id="done" class="done vflex" style="gap: 0.5em;"><h6>MARKED AS DONE</h6><div class="card hflex" style="gap: 1em;">
             <input type="checkbox" task-id="29" checked="true">
             <div class="vflex" style="flex-grow: 1;">
                 <div style="color: #141B26;">May 15th test</div>
@@ -951,59 +471,124 @@ width: calc(100% - 1em); margin-left: -50px; padding-left: 50px; padding-right: 
     </div>
     <div class="add-new-dialog add-new-project-dialog displayNone">
         <form class="container" action="/api/project/create.php" method="post">
-            <h1>Create new project</h1>
-            <div class="form">
-                <div class="form-row">
-                    <label>Project Name</label>
-                    <input type="text" name="Project">
-                </div>
-                <div class="form-row">
-                    <label>Casting Company</label>
-                    <select name="Casting Company"><option value="">- SELECT CASTING COMPANY -</option><option value="2"></option><option value="1">Acme Int</option><option value="3">DK Casting</option><option value="5">DK Casting</option><option value="4">Extra Extra Casting</option></select>
-                </div>
-                <div class="form-row">
-                    <label>Union Status</label>
-                    <select name="Union Status">
-                        <option value="">- SELECT UNION STATUS -</option>
-                        <option value="Non-Union">Non-Union</option>
-                        <option value="SAGAFTRA">SAGAFTRA</option>
-                        <option value="Print - No Union Affiliation">Print - No Union Affiliation</option>
-                    </select>
-                </div>
-                <div class="form-row">
-                    <label>Shoot Date</label>
+            <div class="row"><h1>Create new project</h1></div>
+            <div class="row"> <div class="form-row col">
+                <label class="castly-text">Project Name</label>
+                <input type="text" name="Project">
+            </div></div>
+            <div class="row">
+
+                <div class="form-row col">
+                    <label class="castly-text">Shoot Date</label>
                     <input type="date" name="Shoot Date">
                 </div>
-                <div class="form-row">
-                    <label>Base Rate</label>
-                    <input type="number" name="Base Rate">
-                </div>
-                <div class="form-row">
-                    <label>Hours</label>
-                    <input type="number" name="Hours">
-                </div>
-                <div class="form-row">
-                    <label>Fees</label>
-                    <input type="number" name="Fees">
-                </div>
-                <div class="form-row">
-                    <label>Description</label>
-                    <textarea name="Fees Description"></textarea>
-                </div>
-                <div class="form-row">
-                    <label>General Location</label>
+                <div class="form-row col">
+                    <label class="castly-text">General Location</label>
                     <input type="text" name="General Location">
                 </div>
-                <div class="form-row">
-                    <label>Payroll Company</label>
+            </div>
+            
+            <div class="row form-row-bottom">
+               <div class="form-row w-100 col"><h6>Companies</h6></div>
+                <div class="form-row col">
+                    <label class="castly-text">Casting Company</label>
+                    <select name="Casting Company"><option value="">- SELECT CASTING COMPANY -</option><option value="2"></option><option value="1">Acme Int</option><option value="3">DK Casting</option><option value="5">DK Casting</option><option value="4">Extra Extra Casting</option></select>
+                </div>
+                <div class="form-row col">
+                    <label class="castly-text">Payroll Company</label>
                     <select name="Payroll Company"><option value="">- SELECT PAYROLL COMPANY -</option><option value="1"></option><option value="6">CAPS</option><option value="7">Entertainment Partners</option><option value="3">Extreme Reach</option><option value="2">Not Available</option><option value="5">Team</option><option value="4">Wrapbook</option></select>
                 </div>
-                <div class="form-row">
-                    <label>Production Company</label>
+                <div class="form-row col">
+                    <label class="castly-text">Production Company</label>
                     <select name="Production Company"><option value="">- SELECT PRODUCTION COMPANY -</option><option value="9">ANONYMOUS</option><option value="10">Art Class</option><option value="11">BDFILM</option><option value="18">Biscuit</option><option value="1">Bullitt</option><option value="6">First Tube Media</option><option value="20">FRAMESTORE PICTURES</option><option value="12">FURLINED</option><option value="5">Hungryman</option><option value="3">John Doe Pictures</option><option value="21">LPGA</option><option value="24">m ss ng p eces</option><option value="26">Minimal Productions</option><option value="4">O Positive</option><option value="16">Park Pictures</option><option value="7">Prettybird</option><option value="19">Production 123</option><option value="13">Psyop</option><option value="23">Radical Media</option><option value="2">Rocket Film</option><option value="25">SANDWICH VIDEO</option><option value="15">Slim Pictures</option><option value="17">SoundStage</option><option value="14">Tiny Elephant</option><option value="8">Tool of North America</option><option value="22">Tourveaux LLC</option></select>
                 </div>
+
+
+
             </div>
-            <button type="submit" class="button">Save</button>
+
+            <div class="row form-row-bottom">
+                <div class="form-row w-100 col"><h6>Union Status</h6></div>
+                <div class="form-row w-100">
+                   
+
+                    <div class="grid col">
+                        <label >
+                          <input name="plan" class="radio" type="radio" checked>
+                          
+                          <span class="plan-details">
+                            <span class="plan-type">Non-Union</span>
+                         
+                          </span>
+                        </label>
+                        <label>
+                          <input name="plan" class="radio" type="radio">
+                         <span class="plan-details">
+                            <span class="plan-type">SAGAFTRA</span>
+                           
+                          </span>
+                        </label>
+                        <label>
+                            <input name="plan" class="radio" type="radio">
+                           <span class="plan-details">
+                              <span class="plan-type">Print - No Union Affiliation</span>
+                             
+                            </span>
+                          </label>
+                </div> </div>  </div>
+                <div class="row form-row-bottom">
+              
+                <div class="form-row col">
+                    <label class="castly-text">Base Rate</label>
+                    <input type="number" name="Base Rate" class="base-rate">
+                    <i class="icon icon-dollar"></i>
+                </div>
+                <div class="form-row col mt-5 inbetween"><span class="blue">/</span></div>
+                <div class="form-row col">
+                    <label class="castly-text">Hours</label>
+                    <input type="number" name="Hours">
+                </div>
+              
+                
+                
+               
+            </div>
+
+<div class="row form-row-bottom">
+
+    <div class="form-row col">
+        <label class="castly-text">Fees</label>
+        <input type="number" name="Fees" class="base-rate">
+        <i class="icon fa fa-percent ml-2"></i>
+    </div>
+
+    <div class="form-row col">
+        <label class="castly-text">Fee Desciption</label>
+        <input type="text" name="Fees Description">
+    </div>
+  
+
+</div>
+
+
+
+
+            <div class="row form-row-bottom">
+            <div class="form-row col w-100">
+                
+
+
+                <label class="castly-text">
+                    <textarea placeholder=" "  ></textarea>
+                    <span>Additional Notes</span>
+                  </label>
+             
+            </div>
+        </div>
+
+
+        <div class="form-row col w-100">
+            <button type="submit" class="btn btn-primary mt-4 mb-4">Save</button></div>
         </form>
     </div>
     <div class="add-new-dialog add-new-task-dialog displayNone">
@@ -1011,8 +596,14 @@ width: calc(100% - 1em); margin-left: -50px; padding-left: 50px; padding-right: 
             <h1>Create new task</h1>
             <div class="form">
                 <div class="form-row">
-                    <label>Task Name</label>
-                    <input type="text" name="Task">
+                
+
+
+
+                    <label class="castly-text">
+                        <input type="text" placeholder=" " name="task-name"/>
+                        <span>Task Description</span>
+                      </label>
                 </div>
                 <div class="form-row">
                     <label>Project</label>
@@ -1020,7 +611,8 @@ width: calc(100% - 1em); margin-left: -50px; padding-left: 50px; padding-right: 
                 </div>
                 <input type="hidden" name="Status" value="">
             </div>
-            <button type="submit" class="button">Save</button>
+            <div class="form-row col w-100">
+            <button type="submit" class="btn btn-primary">Save</button></div>
         </form>
     </div>
     <div class="add-new-dialog billing-dialog displayNone">
@@ -1038,8 +630,44 @@ width: calc(100% - 1em); margin-left: -50px; padding-left: 50px; padding-right: 
                 </div>
                 <input type="hidden" name="projectID" value="">
             </div>
-            <button type="submit" class="button">Save</button>
+            <div class="form-row col w-100">
+            <button type="submit" class="btn btn-primary mt-4 mb-4">Save</button></div>
         </form>
     </div>
 
-</div></body></html>
+</div>
+
+<script>
+
+
+(function($){
+    $.fn.moveTo = function(selector){
+        return this.each(function(){
+            var cl = $(this).clone();
+            $(cl).appendTo(selector);
+            $(this).remove();
+        });
+    };
+
+
+    $("#pending").find(".checkbox input").change(function() {
+    if(this.checked) {
+        console.log("i am checked");
+        $(this).parent().parent().parent().moveTo('#done');
+    }
+});
+$("#done").find(".checkbox input").change(function() {
+    if(this.unchecked) {
+        console.log("i am checked");
+        $(this).parent().parent().parent().moveTo('#pending');
+    }
+});
+
+
+})(jQuery);
+
+
+</script>
+
+
+</body></html>
