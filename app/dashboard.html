@@ -11,6 +11,7 @@
     <title>Virgo Talent - Casting Dashboard</title>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="assets/js/1.8.5_countUp.min.js"></script>
     <script src="assets/js/moment.min.js"></script>
     <script src="assets/js/config.js"></script>
     <script src="assets/js/utils.js"></script>
@@ -18,13 +19,16 @@
     <script src="assets/js/casting.js"></script>
 </head>
 <body>
-    <div class="header" style="background: #121f36; padding: 1em; display: flex; align-items: center; color: white; gap: 1em; 
-width: calc(100% - 1em); margin-left: -50px; padding-left: 50px; padding-right: calc(50px + 1em); position: sticky; top: 0; z-index: 10;">
+    <div class="header" >
 <a href="/"><img class="logo" src="assets/img/logo.svg" style="margin-right: 2em; width:180px;"></a>
-<div style="display: flex; gap: 2em; flex-grow: 1;">
-    <a href="/casting.php"><div class="clickable hflex align-center gap1"><i class="icon-dashboard"></i> DASHBOARD</div></a>
-    <a href="/client.php"><div class="clickable hflex align-center gap1"><i class="icon-directory"></i> CLIENT DIRECTORY</div></a>
-</div>
+<nav class="nav">
+    <div class="nav-mobile"><a id="nav-toggle" href="#!"><span></span></a></div>
+    <ul class="menu nav-dropdown">
+   <li> <a href="/casting.php"><i class="icon-dashboard"></i> DASHBOARD</a></li>
+   <li> <a href="/client.php"><i class="icon-directory"></i> CLIENT DIRECTORY</a> <li></li>
+
+</ul>
+</nav>
 <div style="display: flex; gap: 1.2em; align-items: center;">
     <div><i class="clickable icon-more"></i></div>
     <div><img src="https://dl.airtable.com/.attachmentThumbnails/618720c902d20b285f44258e86cd7540/bf1cf92e" style="width: 2em; height: 2em; border-radius: 2em; object-fit: cover; object-position: top; border: 0.2em solid #EEF2F930;"></div>
@@ -152,6 +156,106 @@ width: calc(100% - 1em); margin-left: -50px; padding-left: 50px; padding-right: 
                         </a>
                     </div>
                 </div>
+                <div class="table-item card" style="display: flex; align-items: center;">
+                    <div shoot-date="" class="shoot-date" >05/19/2021</div>
+                    <div class="project-name">
+                        <a project-name="" style="color: var(--theme-color-primary); font-size: 1.2em;" href="/search.php?filterSag=SAG%2BNU,SAGAFTRA&amp;projectID=114&amp;viewType=projectDetail">Test Project</a>
+                        <div rate-union="" class="rate-union">$400/1hrs SAGAFTRA</div>
+                    </div>
+                    <div payroll="" class="payroll" >CAPS</div>
+                    <div  class="hflex statuses">
+                        <div class="status-available status hflex active">
+                            <span><i class="icon-available"></i></span>
+                            <div class="vflex">
+                                <div confirmed="">0 AVAILABLE</div>
+                                <div denied="">0 UNAVAILABLE</div>
+                                <div unanswered="">1 UNANSWERED</div>
+                            </div>
+                        </div>
+                        <div class="status-booked status hflex">
+                            <span><i class="icon-booked"></i></span>
+                            <div class="vflex">
+                                <div confirmed="">0 BOOKED</div>
+                                <div denied="">0 DENIED</div>
+                                <div unanswered="">0 UNANSWERED</div>
+                            </div>
+                        </div>
+                        <div class="status-finalnotessent status hflex active">
+                            <span><i class="icon-finalnotessent"></i></span>
+                            <div class="vflex">
+                                <div confirmed="">0 CONFIRMED</div>
+                                <div denied="">1 EMERGENCY</div>
+                                <div unanswered="">0 UNANSWERED</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div project-status="" class="project-status" >Billed</div>
+                    <div class="buttons">
+                        <a add-button="" class="btn-add-talent"  href="/search.php?filterSag=SAG%2BNU,SAGAFTRA&amp;projectID=114&amp;viewType=addToProject">
+                            <i class="icon-addtalent  clickable"></i>
+                        </a>
+                        <a class="btn-more" >
+                            <i tabindex="0" class="fa fa-bars  clickable">
+                                <div class="displayNone" style="position: absolute; top: 100%; right: 0; background: #FEFEFE; color: var(--text-color-primary);">
+                                    <div style="white-space: nowrap; background: gray; color: white; font-size: 0.7em;">Change Status to ...</div>
+                                    <div class="status-item">Active</div>
+                                    <div class="status-item">Billed</div>
+                                    <div class="status-item">Cancelled</div>
+                                </div>
+                            </i>
+                        </a>
+                    </div>
+                </div>
+                <div class="table-item card" style="display: flex; align-items: center;">
+                    <div shoot-date="" class="shoot-date" >05/19/2021</div>
+                    <div class="project-name">
+                        <a project-name="" style="color: var(--theme-color-primary); font-size: 1.2em;" href="/search.php?filterSag=SAG%2BNU,SAGAFTRA&amp;projectID=114&amp;viewType=projectDetail">Test Project</a>
+                        <div rate-union="" class="rate-union">$400/1hrs SAGAFTRA</div>
+                    </div>
+                    <div payroll="" class="payroll" >CAPS</div>
+                    <div  class="hflex statuses">
+                        <div class="status-available status hflex active">
+                            <span><i class="icon-available"></i></span>
+                            <div class="vflex">
+                                <div confirmed="">0 AVAILABLE</div>
+                                <div denied="">0 UNAVAILABLE</div>
+                                <div unanswered="">1 UNANSWERED</div>
+                            </div>
+                        </div>
+                        <div class="status-booked status hflex">
+                            <span><i class="icon-booked"></i></span>
+                            <div class="vflex">
+                                <div confirmed="">0 BOOKED</div>
+                                <div denied="">0 DENIED</div>
+                                <div unanswered="">0 UNANSWERED</div>
+                            </div>
+                        </div>
+                        <div class="status-finalnotessent status hflex active">
+                            <span><i class="icon-finalnotessent"></i></span>
+                            <div class="vflex">
+                                <div confirmed="">0 CONFIRMED</div>
+                                <div denied="">1 EMERGENCY</div>
+                                <div unanswered="">0 UNANSWERED</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div project-status="" class="project-status" >Billed</div>
+                    <div class="buttons">
+                        <a add-button="" class="btn-add-talent"  href="/search.php?filterSag=SAG%2BNU,SAGAFTRA&amp;projectID=114&amp;viewType=addToProject">
+                            <i class="icon-addtalent  clickable"></i>
+                        </a>
+                        <a class="btn-more" >
+                            <i tabindex="0" class="fa fa-bars  clickable">
+                                <div class="displayNone" style="position: absolute; top: 100%; right: 0; background: #FEFEFE; color: var(--text-color-primary);">
+                                    <div style="white-space: nowrap; background: gray; color: white; font-size: 0.7em;">Change Status to ...</div>
+                                    <div class="status-item">Active</div>
+                                    <div class="status-item">Billed</div>
+                                    <div class="status-item">Cancelled</div>
+                                </div>
+                            </i>
+                        </a>
+                    </div>
+                </div>
                 <div class="pagination"><span class="prev-page">&lt;</span><div class="page active" page="0">1</div><div class="page" page="1">2</div><div class="page" page="2">3</div><div class="page" page="3">4</div><div class="page" page="4">5</div><span class="next-page">&gt;</span></div>
             </div>
         </div>
@@ -164,14 +268,17 @@ width: calc(100% - 1em); margin-left: -50px; padding-left: 50px; padding-right: 
                     </div>
                 </div>
                 <div class="task-container hflex" style="gap: 1em;margin-top: 0.5em;">
-                    <div id="pending"  class="pending vflex" style="gap: 0.5em;"><h6>PENDING</h6><div class="card hflex" style="gap: 1em;">
+                    <div id="pending"  class="pending vflex" style="gap: 0.5em;"><h6>PENDING</h6>
+                        
+                        
+                        <div class="card hflex" style="gap: 1em;">
                         <div class="checkbox">
                             <label>
-                              <input type="checkbox"/><i class="helper"></i>
+                              <input type="checkbox" task-id="1"/><i class="helper"></i>
                             </label></div>
 
             <div class="vflex">
-                <div style="color: #141B26;"></div>
+                <div style="color: #141B26;">To book 100 talents for ABC23-23</div>
                 <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=100&amp;viewType=projectDetail">Anna Project</a></div>
             </div>
             <div class="vflex" style="color: #2A4168;">
@@ -179,7 +286,12 @@ width: calc(100% - 1em); margin-left: -50px; padding-left: 50px; padding-right: 
                 <div>Tuesday</div>
             </div>
         </div><div class="card hflex" style="gap: 1em;">
-            <input type="checkbox" task-id="2">
+
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" task-id="2"><i class="helper"></i>
+                </label></div>
+           
             <div class="vflex" style="flex-grow: 1;">
                 <div style="color: #141B26;"></div>
                 <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=92&amp;viewType=projectDetail">Love Electric</a></div>
@@ -189,7 +301,10 @@ width: calc(100% - 1em); margin-left: -50px; padding-left: 50px; padding-right: 
                 <div>Thursday</div>
             </div>
         </div><div class="card hflex" style="gap: 1em;">
-            <input type="checkbox" task-id="3">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" task-id="3"><i class="helper"></i>
+                </label></div>
             <div class="vflex" style="flex-grow: 1;">
                 <div style="color: #141B26;">fsdgsdfg</div>
                 <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=20&amp;viewType=projectDetail">Mikael TV Ad</a></div>
@@ -199,7 +314,10 @@ width: calc(100% - 1em); margin-left: -50px; padding-left: 50px; padding-right: 
                 <div>Wednesday</div>
             </div>
         </div><div class="card hflex" style="gap: 1em;">
-            <input type="checkbox" task-id="4">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" task-id="4"><i class="helper"></i>
+                </label></div>
             <div class="vflex" style="flex-grow: 1;">
                 <div style="color: #141B26;">Book 3 people that look like sports fans</div>
                 <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=60&amp;viewType=projectDetail">Pepsi</a></div>
@@ -209,7 +327,10 @@ width: calc(100% - 1em); margin-left: -50px; padding-left: 50px; padding-right: 
                 <div>Friday</div>
             </div>
         </div><div class="card hflex" style="gap: 1em;">
-            <input type="checkbox" task-id="5">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" task-id="5"><i class="helper"></i>
+                </label></div>
             <div class="vflex" style="flex-grow: 1;">
                 <div style="color: #141B26;">cancel bob</div>
                 <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=20&amp;viewType=projectDetail">Mikael TV Ad</a></div>
@@ -219,7 +340,10 @@ width: calc(100% - 1em); margin-left: -50px; padding-left: 50px; padding-right: 
                 <div>Wednesday</div>
             </div>
         </div><div class="card hflex" style="gap: 1em;">
-            <input type="checkbox" task-id="6">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" task-id="6"><i class="helper"></i>
+                </label></div>
             <div class="vflex" style="flex-grow: 1;">
                 <div style="color: #141B26;">Need 2 security guard types</div>
                 <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=60&amp;viewType=projectDetail">Pepsi</a></div>
@@ -229,7 +353,10 @@ width: calc(100% - 1em); margin-left: -50px; padding-left: 50px; padding-right: 
                 <div>Friday</div>
             </div>
         </div><div class="card hflex" style="gap: 1em;">
-            <input type="checkbox" task-id="7">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" task-id="7"><i class="helper"></i>
+                </label></div>
             <div class="vflex" style="flex-grow: 1;">
                 <div style="color: #141B26;">Replace 5</div>
                 <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=77&amp;viewType=projectDetail">Indeed.com</a></div>
@@ -239,7 +366,10 @@ width: calc(100% - 1em); margin-left: -50px; padding-left: 50px; padding-right: 
                 <div>Saturday</div>
             </div>
         </div><div class="card hflex" style="gap: 1em;">
-            <input type="checkbox" task-id="8">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" task-id="8"><i class="helper"></i>
+                </label></div>
             <div class="vflex" style="flex-grow: 1;">
                 <div style="color: #141B26;">Book John Cena Stand In 6'1</div>
                 <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=60&amp;viewType=projectDetail">Pepsi</a></div>
@@ -249,7 +379,10 @@ width: calc(100% - 1em); margin-left: -50px; padding-left: 50px; padding-right: 
                 <div>Friday</div>
             </div>
         </div><div class="card hflex" style="gap: 1em;">
-            <input type="checkbox" task-id="9">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" task-id="9"><i class="helper"></i>
+                </label></div>
             <div class="vflex" style="flex-grow: 1;">
                 <div style="color: #141B26;">book 3 people</div>
                 <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=31&amp;viewType=projectDetail">New Snickers TV Ad </a></div>
@@ -259,7 +392,10 @@ width: calc(100% - 1em); margin-left: -50px; padding-left: 50px; padding-right: 
                 <div>Wednesday</div>
             </div>
         </div><div class="card hflex" style="gap: 1em;">
-            <input type="checkbox" task-id="10">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" task-id="10"><i class="helper"></i>
+                </label></div>
             <div class="vflex" style="flex-grow: 1;">
                 <div style="color: #141B26;">book people</div>
                 <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=11&amp;viewType=projectDetail">Test Project</a></div>
@@ -269,7 +405,10 @@ width: calc(100% - 1em); margin-left: -50px; padding-left: 50px; padding-right: 
                 <div>Sunday</div>
             </div>
         </div><div class="card hflex" style="gap: 1em;">
-            <input type="checkbox" task-id="11">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" task-id="11"><i class="helper"></i>
+                </label></div>
             <div class="vflex" style="flex-grow: 1;">
                 <div style="color: #141B26;">Send map after 10 are booked</div>
                 <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=20&amp;viewType=projectDetail">Mikael TV Ad</a></div>
@@ -279,7 +418,10 @@ width: calc(100% - 1em); margin-left: -50px; padding-left: 50px; padding-right: 
                 <div>Wednesday</div>
             </div>
         </div><div class="card hflex" style="gap: 1em;">
-            <input type="checkbox" task-id="12">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" task-id="12"><i class="helper"></i>
+                </label></div>
             <div class="vflex" style="flex-grow: 1;">
                 <div style="color: #141B26;">Book 100 total to book. 18-45 years old. Football fans</div>
                 <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=60&amp;viewType=projectDetail">Pepsi</a></div>
@@ -289,7 +431,10 @@ width: calc(100% - 1em); margin-left: -50px; padding-left: 50px; padding-right: 
                 <div>Friday</div>
             </div>
         </div><div class="card hflex" style="gap: 1em;">
-            <input type="checkbox" task-id="13">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" task-id="13"><i class="helper"></i>
+                </label></div>
             <div class="vflex" style="flex-grow: 1;">
                 <div style="color: #141B26;">Find stand in for Grace</div>
                 <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=98&amp;viewType=projectDetail">New Nike Shoes TV Spot </a></div>
@@ -299,7 +444,10 @@ width: calc(100% - 1em); margin-left: -50px; padding-left: 50px; padding-right: 
                 <div>Thursday</div>
             </div>
         </div><div class="card hflex" style="gap: 1em;">
-            <input type="checkbox" task-id="14">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" task-id="14"><i class="helper"></i>
+                </label></div>
             <div class="vflex" style="flex-grow: 1;">
                 <div style="color: #141B26;">123</div>
                 <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=109&amp;viewType=projectDetail">BK</a></div>
@@ -309,7 +457,10 @@ width: calc(100% - 1em); margin-left: -50px; padding-left: 50px; padding-right: 
                 <div>Wednesday</div>
             </div>
         </div><div class="card hflex" style="gap: 1em;">
-            <input type="checkbox" task-id="15">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" task-id="15"><i class="helper"></i>
+                </label></div>
             <div class="vflex" style="flex-grow: 1;">
                 <div style="color: #141B26;">Relax for 5 mins</div>
                 <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=6&amp;viewType=projectDetail">Cheetos </a></div>
@@ -319,7 +470,10 @@ width: calc(100% - 1em); margin-left: -50px; padding-left: 50px; padding-right: 
                 <div>Monday</div>
             </div>
         </div><div class="card hflex" style="gap: 1em;">
-            <input type="checkbox" task-id="16">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" task-id="16"><i class="helper"></i>
+                </label></div>
             <div class="vflex" style="flex-grow: 1;">
                 <div style="color: #141B26;">book 4 adults + 1 minor see reference photo</div>
                 <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=29&amp;viewType=projectDetail">McDonalds</a></div>
@@ -329,7 +483,10 @@ width: calc(100% - 1em); margin-left: -50px; padding-left: 50px; padding-right: 
                 <div>Wednesday</div>
             </div>
         </div><div class="card hflex" style="gap: 1em;">
-            <input type="checkbox" task-id="17">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" task-id="17"><i class="helper"></i>
+                </label></div>
             <div class="vflex" style="flex-grow: 1;">
                 <div style="color: #141B26;">book 5 people</div>
                 <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=31&amp;viewType=projectDetail">New Snickers TV Ad </a></div>
@@ -339,7 +496,10 @@ width: calc(100% - 1em); margin-left: -50px; padding-left: 50px; padding-right: 
                 <div>Wednesday</div>
             </div>
         </div><div class="card hflex" style="gap: 1em;">
-            <input type="checkbox" task-id="18">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" task-id="18"><i class="helper"></i>
+                </label></div>
             <div class="vflex" style="flex-grow: 1;">
                 <div style="color: #141B26;">book 3 people</div>
                 <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=31&amp;viewType=projectDetail">New Snickers TV Ad </a></div>
@@ -349,7 +509,10 @@ width: calc(100% - 1em); margin-left: -50px; padding-left: 50px; padding-right: 
                 <div>Wednesday</div>
             </div>
         </div><div class="card hflex" style="gap: 1em;">
-            <input type="checkbox" task-id="19">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" task-id="20"><i class="helper"></i>
+                </label></div>
             <div class="vflex" style="flex-grow: 1;">
                 <div style="color: #141B26;">Find photo double for Joe Exotic</div>
                 <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=92&amp;viewType=projectDetail">Love Electric</a></div>
@@ -359,7 +522,10 @@ width: calc(100% - 1em); margin-left: -50px; padding-left: 50px; padding-right: 
                 <div>Thursday</div>
             </div>
         </div><div class="card hflex" style="gap: 1em;">
-            <input type="checkbox" task-id="20">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" task-id="20"><i class="helper"></i>
+                </label></div>
             <div class="vflex" style="flex-grow: 1;">
                 <div style="color: #141B26;">Book 20 people</div>
                 <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=46&amp;viewType=projectDetail">Coke</a></div>
@@ -369,7 +535,10 @@ width: calc(100% - 1em); margin-left: -50px; padding-left: 50px; padding-right: 
                 <div>Monday</div>
             </div>
         </div><div class="card hflex" style="gap: 1em;">
-            <input type="checkbox" task-id="21">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" task-id="21"><i class="helper"></i>
+                </label></div>
             <div class="vflex" style="flex-grow: 1;">
                 <div style="color: #141B26;">Carrie Underwood Katy Perry Luke Bryan DJ Tiesto DJ Zed         Celine Dion</div>
                 <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=5&amp;viewType=projectDetail">Resorts World SI MON</a></div>
@@ -379,7 +548,10 @@ width: calc(100% - 1em); margin-left: -50px; padding-left: 50px; padding-right: 
                 <div>Monday</div>
             </div>
         </div><div class="card hflex" style="gap: 1em;">
-            <input type="checkbox" task-id="22">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" task-id="22"><i class="helper"></i>
+                </label></div>
             <div class="vflex" style="flex-grow: 1;">
                 <div style="color: #141B26;">Book 20 people to specs</div>
                 <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=7&amp;viewType=projectDetail">Ford</a></div>
@@ -389,7 +561,10 @@ width: calc(100% - 1em); margin-left: -50px; padding-left: 50px; padding-right: 
                 <div>Monday</div>
             </div>
         </div><div class="card hflex" style="gap: 1em;">
-            <input type="checkbox" task-id="23">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" task-id="23"><i class="helper"></i>
+                </label></div>
             <div class="vflex" style="flex-grow: 1;">
                 <div style="color: #141B26;">Test Task</div>
                 <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=57&amp;viewType=projectDetail">Amazon Prime NU</a></div>
@@ -399,7 +574,10 @@ width: calc(100% - 1em); margin-left: -50px; padding-left: 50px; padding-right: 
                 <div>Thursday</div>
             </div>
         </div><div class="card hflex" style="gap: 1em;">
-            <input type="checkbox" task-id="24">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" task-id="24"><i class="helper"></i>
+                </label></div>
             <div class="vflex" style="flex-grow: 1;">
                 <div style="color: #141B26;">Task 2</div>
                 <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=87&amp;viewType=projectDetail">Xsolla SAG Educational Mon &amp; Tue</a></div>
@@ -409,7 +587,10 @@ width: calc(100% - 1em); margin-left: -50px; padding-left: 50px; padding-right: 
                 <div>Monday</div>
             </div>
         </div><div class="card hflex" style="gap: 1em;">
-            <input type="checkbox" task-id="25">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" task-id="25"><i class="helper"></i>
+                </label></div>
             <div class="vflex" style="flex-grow: 1;">
                 <div style="color: #141B26;">Task 1</div>
                 <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=116&amp;viewType=projectDetail">Comcast Sunday</a></div>
@@ -419,7 +600,10 @@ width: calc(100% - 1em); margin-left: -50px; padding-left: 50px; padding-right: 
                 <div>Sunday</div>
             </div>
         </div><div class="card hflex" style="gap: 1em;">
-            <input type="checkbox" task-id="26">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" task-id="26"><i class="helper"></i>
+                </label></div>
             <div class="vflex" style="flex-grow: 1;">
                 <div style="color: #141B26;"></div>
                 <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=57&amp;viewType=projectDetail">Amazon Prime NU</a></div>
@@ -429,7 +613,10 @@ width: calc(100% - 1em); margin-left: -50px; padding-left: 50px; padding-right: 
                 <div>Thursday</div>
             </div>
         </div><div class="card hflex" style="gap: 1em;">
-            <input type="checkbox" task-id="27">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" task-id="27"><i class="helper"></i>
+                </label></div>
             <div class="vflex" style="flex-grow: 1;">
                 <div style="color: #141B26;">Book 2 standins</div>
                 <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=118&amp;viewType=projectDetail">Comcast Tuesday</a></div>
@@ -439,7 +626,10 @@ width: calc(100% - 1em); margin-left: -50px; padding-left: 50px; padding-right: 
                 <div>Tuesday</div>
             </div>
         </div><div class="card hflex" style="gap: 1em;">
-            <input type="checkbox" task-id="28">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" task-id="28"><i class="helper"></i>
+                </label></div>
             <div class="vflex" style="flex-grow: 1;">
                 <div style="color: #141B26;">create invoice for project</div>
                 <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=118&amp;viewType=projectDetail">Comcast Tuesday</a></div>
@@ -449,8 +639,13 @@ width: calc(100% - 1em); margin-left: -50px; padding-left: 50px; padding-right: 
                 <div>Tuesday</div>
             </div>
         </div></div>
-                    <div id="done" class="done vflex" style="gap: 0.5em;"><h6>MARKED AS DONE</h6><div class="card hflex" style="gap: 1em;">
-            <input type="checkbox" task-id="29" checked="true">
+                    <div id="done" class="done vflex" style="gap: 0.5em;"><h6>MARKED AS DONE</h6>
+                        
+                        <div class="card hflex" style="gap: 1em;">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" task-id="29" checked="checked"><i class="helper"></i>
+                                </label></div>
             <div class="vflex" style="flex-grow: 1;">
                 <div style="color: #141B26;">May 15th test</div>
                 <div style="color: #97AAC9;">Project: <a style="color: var(--theme-color-primary);" href="/search.php?projectID=121&amp;viewType=projectDetail">Singularity FRI</a></div>
@@ -594,8 +789,8 @@ width: calc(100% - 1em); margin-left: -50px; padding-left: 50px; padding-right: 
     <div class="add-new-dialog add-new-task-dialog displayNone">
         <form class="container" action="/api/task/create.php" method="post">
             <h1>Create new task</h1>
-            <div class="form">
-                <div class="form-row">
+            <div class="form"><div class="row">
+                <div class="form-row col">
                 
 
 
@@ -604,11 +799,11 @@ width: calc(100% - 1em); margin-left: -50px; padding-left: 50px; padding-right: 
                         <input type="text" placeholder=" " name="task-name"/>
                         <span>Task Description</span>
                       </label>
-                </div>
-                <div class="form-row">
+                </div></div><div class="row">
+                <div class="form-row col">
                     <label>Project</label>
                     <select name="Project"><option value="">- SELECT PROJECT -</option><option value="87">Xsolla SAG Educational Mon &amp; Tue</option><option value="57">Amazon Prime NU</option><option value="114">Test Project</option><option value="89">Cleopatra</option><option value="120">Fashion Shoot</option><option value="124">Amazon - Buff</option><option value="128">Test Billing</option><option value="126">Thunderball SUN</option><option value="125">Singularity SAT</option><option value="121">Singularity FRI</option><option value="122">Breathe Right THU</option><option value="115">LGBTQ 12th &amp; 13th</option><option value="119">Breathe Right WED</option><option value="118">Comcast Tuesday</option><option value="117">Comcast Monday</option><option value="123">Best Project Ever!!</option><option value="116">Comcast Sunday</option><option value="42">Tall Guy SI</option><option value="94">Picrow May 3rd</option><option value="84">Property Brothers SAT &amp; SUN</option><option value="8">Mack Weldon Stills</option><option value="75">Shark Week</option><option value="74">Irwindale Speedway SI</option><option value="105">Popeyes MON</option><option value="35">Popeyes FRI</option><option value="72">Night Teeth - Stand Ins</option><option value="70">Mikes Hard Lemonade</option><option value="107">Popeyes THU</option><option value="39">Popeyes WED</option><option value="51">Hubspot WED &amp; THU</option><option value="3">Popeyes TUE</option><option value="13">Subaru in Mammoth</option><option value="80">Amazon Prime</option><option value="93">Popeyes</option><option value="76">SAG Stand In</option><option value="83">Ignite</option><option value="95">Otezla Fri</option><option value="71">Ignite</option><option value="102">Otezla THU</option><option value="69">Homeless 4_14 &amp; 4_15</option><option value="106">Otezla WED</option><option value="64">Otezla TUE</option><option value="2">Anheuser-Busch MON</option><option value="28">Otezla Monday</option><option value="112">Looking Glass Films Stand In</option><option value="32">Anheuser-Busch SAT</option><option value="91">Tecate FRI &amp; MON</option><option value="49">Surfing Dallas APR 3-7</option><option value="14">BAGSTER FRIDAY</option><option value="9">Done</option><option value="67">Sit N Sleep Thu</option><option value="1">Reform School </option><option value="21">AVEN</option><option value="25">xfinity</option><option value="45">Project Sun</option><option value="100">Anna Project</option><option value="68">Nissan Monday</option><option value="11">Test Project</option><option value="110">SEPHORA THU</option><option value="38">SEPHORA WED</option><option value="47">Resorts World SI WED</option><option value="79">Resorts World SI Tue</option><option value="5">Resorts World SI MON</option><option value="43">Radical Media Sunday</option><option value="48">Resorts World SUN</option><option value="54">New Test Project</option><option value="10">PF100 | Pokemon</option><option value="24">FARM LEAGUE FRI Adventurer Surf</option><option value="27">Harry &amp; David FRI</option><option value="73">ICONOCL\ST</option><option value="82">Jardiance FRI</option><option value="86">Jardiance THU</option><option value="96">Hyundai Body Double</option><option value="62">FARM LEAGUE WED Rebirth</option><option value="111">Harry &amp; David COVID MON, Shoot WED</option><option value="44">FARM LEAGUE SOHLA TUE</option><option value="50">Little Caesars Monday</option><option value="66">Hyundai Sunday</option><option value="108">Little Caesars Sunday</option><option value="52">Skyy Saturday Covid FRI</option><option value="65">Little Caesars SAT </option><option value="97">Romanek Video </option><option value="4">Skyy Wed COVID and FRI Shoot</option><option value="15">Halo Top Friday (Recall)</option><option value="58">One21 Friday</option><option value="23">Skyy THU </option><option value="88">Halo Top</option><option value="101">One21 Bros THU </option><option value="56">Carfax Wed 3_10 &amp; Thu 3_11</option><option value="104">One21 Wed Loft</option><option value="22">One21 Tue Dance</option><option value="18">Alicia Keys SI March 7 &amp; 8</option><option value="36">ONE21 </option><option value="53">Hyundai Mindy + Friends SIs</option><option value="103">Stella THU</option><option value="17">Stella Wed</option><option value="61">Lathom FRI COVID, MON Shoot</option><option value="26">John's Project</option><option value="12">Instacart</option><option value="77">Indeed.com</option><option value="55">Fitting Model</option><option value="59">Ad Council Shoot - Dad</option><option value="33">Scotts COVID Wed 2_3 - Shoot Thu-Fri</option><option value="113">Pool Party</option><option value="81">Alicia Keys SI March 7 &amp; 8</option><option value="40">Test Project 2</option><option value="34">Salesforce</option><option value="30">banana</option><option value="19">Best Project Ever</option><option value="60">Pepsi</option><option value="109">BK</option><option value="29">McDonalds</option><option value="6">Cheetos </option><option value="7">Ford</option><option value="46">Coke</option><option value="16">Pepsi2</option><option value="92">Love Electric</option><option value="98">New Nike Shoes TV Spot </option><option value="31">New Snickers TV Ad </option><option value="20">Mikael TV Ad</option><option value="37">Lathom General Options</option><option value="41">Frisbee Mom</option><option value="63">[Collection]</option><option value="78">Test Project P</option><option value="85">FARM LEAGUE</option><option value="90">Alexandra Izzo Reshoot</option><option value="99">AT&amp;T Double</option><option value="127">Née</option></select>
-                </div>
+                </div></div>
                 <input type="hidden" name="Status" value="">
             </div>
             <div class="form-row col w-100">
@@ -618,16 +813,16 @@ width: calc(100% - 1em); margin-left: -50px; padding-left: 50px; padding-right: 
     <div class="add-new-dialog billing-dialog displayNone">
         <form class="container" action="/api/billing/set-rate.php" method="post">
             <h1>Set billing type</h1>
-            <div class="form">
-                <div class="form-row">
+            <div class="form"><div class="row">
                     <label>Billing Type</label>
                     <div><input type="radio" name="type" id="billing_type_percent" value="percent" checked=""> <label for="billing_type_percent">Percent Rate(in %)</label></div>
                     <div><input type="radio" name="type" id="billing_type_flat" value="flat"> <label for="billing_type_flat">Flat Rate(in $)</label></div>
                 </div>
-                <div class="form-row">
+                <div class="form-row col">
                     <label>Rate Value</label>
                     <input type="number" name="value">
-                </div>
+                </div></div>
+                <div class="form-row col">
                 <input type="hidden" name="projectID" value="">
             </div>
             <div class="form-row col w-100">
@@ -640,33 +835,77 @@ width: calc(100% - 1em); margin-left: -50px; padding-left: 50px; padding-right: 
 <script>
 
 
-(function($){
+$(document).ready(function() {
     $.fn.moveTo = function(selector){
         return this.each(function(){
-            var cl = $(this).clone();
-            $(cl).appendTo(selector);
-            $(this).remove();
+            var self = $(this);
+            var cl = self.fadeIn().clone(true).appendTo(selector);
+            
+
+          //  $(cl).appendTo(selector);
+          self.remove();
         });
     };
 
 
-    $("#pending").find(".checkbox input").change(function() {
+    $(".checkbox input").change(function() {
+
     if(this.checked) {
-        console.log("i am checked");
-        $(this).parent().parent().parent().moveTo('#done');
+        console.log("i am checked"+  $("#done").children().length);
+        $(this).attr("checked", "checked");
+
+
+        $(this).parent().parent().next().addClass("taskdone");
+     $(this).parent().parent().parent().moveTo('#done');
+        
+       
     }
+
+else{ console.log("i am unchecked"+  $("#done").children().length);
+    $(this).removeAttr("checked");
+    $(this).parent().parent().next().removeClass("taskdone");
+    $(this).parent().parent().parent().moveTo('#pending');
+
+
+}
+
+
+
 });
-$("#done").find(".checkbox input").change(function() {
-    if(this.unchecked) {
-        console.log("i am checked");
-        $(this).parent().parent().parent().moveTo('#pending');
-    }
+$(function() { // DOM ready
+    // If a link has a dropdown, add sub menu toggle.
+    $('nav ul li a:not(:only-child)').click(function(e) {
+     // $(this).siblings('.nav-dropdown').toggle();
+      // Close one dropdown when selecting another
+     // $('.nav-dropdown').not($(this).siblings()).hide();
+      e.stopPropagation();
+    });
+    // Clicking away from dropdown will remove the dropdown class
+    $('html').click(function() {
+     // $('.nav-dropdown').hide();
+    });
+    // Toggle open and close nav styles on click
+    $('#nav-toggle').click(function() {
+    //  $('nav ul').slideToggle();
+      $('nav ul').toggleClass('active');
+    });
+    // Hamburger to X toggle
+    $('#nav-toggle').on('click', function() {
+      this.classList.toggle('active');
+    });
+  });
+  var statistics = $(".statistics");
+
+// For each Statistic we find, animate it
+statistics.each(function (index) {
+    // Find the value we want to animate (what lives inside the p tags)
+    var value = $(statistics[index]).html();
+    // Start animating
+    var statisticAnimation = new CountUp(statistics[index], 0, value, 0, 5);
+    statisticAnimation.start();
 });
 
-
-})(jQuery);
-
-
+});
 </script>
 
 

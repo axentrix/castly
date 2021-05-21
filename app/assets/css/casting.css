@@ -211,7 +211,7 @@ font-size:28px;
     display:block;
     margin-left: 0px;
     height: 100vh;
-    z-index: 110;
+    z-index: 98769;
     width: 30%;
     max-width:640px;
     top: 60px;
@@ -265,7 +265,7 @@ width:100%;
 flex:1 0 100%;
 }
 
-.add-new-dialog .container .row .col{
+.add-new-dialog .container .row .col, .add-new-dialog .container .col{
 position:relative;
     display:inline-flex;
     flex:1;
@@ -599,20 +599,20 @@ margin-top:25%;
  .dashboard-container{
 
    
-    width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
+  
     margin-right: auto;
     margin-left: auto;
     display: flex;
    justify-content: center; 
     flex-direction: row; 
     flex-wrap: wrap;
-    align-items: unset; 
+    align-items:center; 
 
 }
 
-
+.statistics{
+    font-weight:600;
+}
 
 .task-container .card{
     justify-content:space-between;
@@ -799,8 +799,10 @@ order:4;
 }
 
 .card-dashboard {margin-bottom:1em;
-      flex:1 1 39.222222%;
+      flex:1 1 38.222222%;
+      font-weight:600;
 }
+
 
 
 .table-header{
@@ -812,6 +814,23 @@ order:4;
 }
 
   }
+#done .card, #pending .card{
 
-  
- 
+    transition:all 0.3s;
+}
+  #done .card{
+      background:#F1F4F9;
+  }
+ .taskdone div:first-child{
+
+   text-decoration:line-through;
+ }
+
+ #done .card .checkbox .helper::before, .checkbox .helper::after {
+
+background:#00BB89;
+ }
+
+ #done .checkbox input:checked ~ .helper {
+    color: #00BB89;
+}
