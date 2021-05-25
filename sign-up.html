@@ -165,28 +165,55 @@
             <div class="col-md-6">
                 <div>
 
-                    <div class="card-body mt-10">
+                    <div class="card-body mt-10 signup">
                     
-                        <h2>Contact Us</h2>
-                    <form>
+                        <h2>Sign Up</h2>
+                    <form name="form" id="signupform" action="signupform.php" method="POST">
 
-                      
+                        <div class="box">
+                            <div class="js--image-preview"></div>
+                            <div class="upload-options">
+                              <label>
+                                <input type="file" class="image-upload" id="talent-photo" name="talent-image" accept="image/*" required=""/>
+                              </label>
+                            </div>
+                          </div>
+
+
                           <div class="form-outline mt-3">
-                            <input type="text" id="first-name" class="form-control" />
+                            <input type="text" id="username" name="username" class="form-control"  required=""/>
+                            <label class="form-label" for="username">Username</label>
+                          </div>
+                          <div class="form-outline mt-3">
+                            <input type="password" name="password" id="password" class="form-control" required=""/>
+                            <label class="form-label"  for="password">Password</label>
+                          </div>
+                          <div class="form-outline mt-3">
+                            <input type="password" name="password1" id="password1" class="form-control" required=""/>
+                            <label class="form-label" for="password1">Repeat Password</label>
+                          </div>
+<div class="row">
+                      <div class="col-md-6">
+                          <div class="form-outline mt-3">
+                            <input type="text" id="first-name" name="first-name" class="form-control" required=""/>
                             <label class="form-label" for="first-name">First Name</label>
-                          </div>
+                          </div></div>
+                          <div class="col-md-6">
                           <div class="form-outline mt-3">
-                            <input type="text" id="last-name" class="form-control" />
+                            <input type="text" id="last-name" name="last-name"  class="form-control" required=""/>
                             <label class="form-label" for="last-name">Last Name</label>
-                          </div>
+                          </div></div></div>
 
                           <div class="form-outline mt-3">
-                            <input type="text" id="email" class="form-control" />
+                            <input type="text" id="email"  name="email" class="form-control" required=""/>
                             <label class="form-label" for="email">Email</label>
                           </div>
                           <div class="form-outline mb-4 mt-3">
-                            <textarea class="form-control" id="message" rows="4"></textarea>
-                            <label class="form-label" for="message ">Message</label>
+                            <select name="gender" id="gender" style="outline: none;border: 1px solid darkgray;padding: 12px 20px;width: 100%;margin: 8px 0;" required="">
+                                <option value="">Select Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
                           </div>
                         <div>
                         <button class="btn btn-primary justify-content-center text-center d-block w-100 mt-3">Send<span class="d-inline"><img src="images/mainarrow.svg"></span></button>
@@ -552,12 +579,191 @@ $("#navBar a").on('click', function () {
 
 
 
+function initImageUpload(box) {
+  let uploadField = box.querySelector('.image-upload');
+
+  uploadField.addEventListener('change', getFile);
+
+  function getFile(e){
+    let file = e.currentTarget.files[0];
+    checkType(file);
+  }
+  
+  function previewImage(file){
+    let thumb = box.querySelector('.js--image-preview'),
+        reader = new FileReader();
+
+    reader.onload = function() {
+      thumb.style.backgroundImage = 'url(' + reader.result + ')';
+    }
+    reader.readAsDataURL(file);
+    thumb.className += ' js--no-default';
+  }
+
+  function checkType(file){
+    let imageType = /image.*/;
+    if (!file.type.match(imageType)) {
+      throw 'Datei ist kein Bild';
+    } else if (!file){
+      throw 'Kein Bild gewählt';
+    } else {
+      previewImage(file);
+    }
+  }
+  
+}
+
+// initialize box-scope
+var boxes = document.querySelectorAll('.box');
+
+for (let i = 0; i < boxes.length; i++) {
+  let box = boxes[i];
+  initDropEffect(box);
+  initImageUpload(box);
+}
+
+
+
+/// drop-effect
+function initDropEffect(box){
+  let area, drop, areaWidth, areaHeight, maxDistance, dropWidth, dropHeight, x, y;
+  
+  // get clickable area for drop effect
+  area = box.querySelector('.js--image-preview');
+  area.addEventListener('click', fireRipple);
+  
+  function fireRipple(e){
+    area = e.currentTarget
+    // create drop
+    if(!drop){
+      drop = document.createElement('span');
+      drop.className = 'drop';
+      this.appendChild(drop);
+    }
+    // reset animate class
+    drop.className = 'drop';
+    
+    // calculate dimensions of area (longest side)
+    areaWidth = getComputedStyle(this, null).getPropertyValue("width");
+    areaHeight = getComputedStyle(this, null).getPropertyValue("height");
+    maxDistance = Math.max(parseInt(areaWidth, 10), parseInt(areaHeight, 10));
+
+    // set drop dimensions to fill area
+    drop.style.width = maxDistance + 'px';
+    drop.style.height = maxDistance + 'px';
+    
+    // calculate dimensions of drop
+    dropWidth = getComputedStyle(this, null).getPropertyValue("width");
+    dropHeight = getComputedStyle(this, null).getPropertyValue("height");
+    
+    // calculate relative coordinates of click
+    // logic: click coordinates relative to page - parent's position relative to page - half of self height/width to make it controllable from the center
+    x = e.pageX - this.offsetLeft - (parseInt(dropWidth, 10)/2);
+    y = e.pageY - this.offsetTop - (parseInt(dropHeight, 10)/2) - 30;
+    
+    // position drop and animate
+    drop.style.top = y + 'px';
+    drop.style.left = x + 'px';
+    drop.className += ' animate';
+    e.stopPropagation();
+    
+  }
+}
 
 
    
 
    
+document.querySelector("#signupform").addEventListener("submit", function(e){
+//create variable for contact form url
+var formURL = 'melonForm.php';
+//prevent default submission
+event.preventDefault();
+//define form fields
+var melonForm = {
+    'firstName'              : document.querySelector('input[name=first-name]').value,
+    'lastName'             : document.querySelector('input[name=last-name]').value,
+    'email'       : document.querySelector('input[name=email]').value,
+    'username'       : document.querySelector('input[name=username]').value,
+    'password'       : document.querySelector('input[name=password]').value,
+    'talent-photo'       : document.querySelector('input[name=talent-photo]').value,
+    'gender'       : document.querySelector('select[name=gender]').value,
+}
 
+//define request variable
+var formRequest = new Request(formURL, {
+    method: 'POST', 
+    body: melonForm, 
+    headers: new Headers()
+});
+
+//fetch
+fetch(formRequest)
+.then(function(formResponse) {
+    return formResponse.json();
+  })
+.then(function(data) {
+    //handle server responses
+    if ( ! data.success) {
+    //handle error messages
+        //handle error message for firstName
+        console.log(data);
+        if (data.errors.firstName) {
+            document.getElementById("first-name").classList.add("has-error");
+            document.getElementById("first-name").appendChild('<div class="help-block">' + data.errors.first-name + '</div>');
+        }
+        //handle errors for lastName
+        if (data.errors.lastName) {
+            document.getElementById("last-name").classList.add("has-error");
+            document.getElementById("last-name").appendChild('<div class="help-block">' + data.errors.last-name + '</div>');
+        }
+
+         //handle errors for lastName
+         if (data.errors.lastName) {
+            document.getElementById("username").classList.add("has-error");
+            document.getElementById("username").appendChild('<div class="help-block">' + data.errors.username + '</div>');
+        }
+
+        if (data.errors.lastName) {
+            document.getElementById("talent-photo").classList.add("has-error");
+            document.getElementById("talent-photo").appendChild('<div class="help-block">' + data.errors.talent-photo + '</div>');
+        }
+        //handle errors for companyName
+        if (data.errors.companyName) {
+            document.getElementById("email").classList.add("has-error");
+            document.getElementById("email").appendChild('<div class="help-block">' + data.errors.email + '</div>');
+        }
+        //handle errors for companyAddress
+        if (data.errors.companyAddress) {
+            document.getElementById("password").classList.add("has-error");
+            document.getElementById("password").appendChild('<div class="help-block">' + data.errors.password + '</div>');
+        }
+        //handle errors for city
+        if (data.errors.gender) {
+            document.getElementById("gender").classList.add("has-error");
+            document.getElementById("gender").appendChild('<div class="help-block">' + data.errors.gender + '</div>');
+        }
+       
+        // handle errors for phpmailer ---------------
+        if (data.message) {
+            swal({
+                title: "Error!",
+                text: data.message,
+                icon: "error",
+                });
+        }   
+    else {
+    //handle success messages
+        swal({
+            title: "Success!",
+            text: data.message,
+            icon: "success",
+            });
+    document.getElementById("signupform").reset();    
+    }
+}
+});
+})
 
 
 
