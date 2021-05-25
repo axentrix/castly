@@ -1,6 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96">
-  <g id="Group_22693" data-name="Group 22693" transform="translate(-1425 -1621)">
-    <rect id="Rectangle_4581" data-name="Rectangle 4581" width="96" height="96" transform="translate(1425 1621)" fill="#1aa9bf"/>
-    <path id="Icon_ionic-ios-arrow-round-forward" data-name="Icon ionic-ios-arrow-round-forward" d="M38.514,11.865a2.181,2.181,0,0,0-.017,3.071L48.643,25.1H10.028a2.169,2.169,0,0,0,0,4.339h38.6L38.48,39.6a2.2,2.2,0,0,0,.017,3.071,2.161,2.161,0,0,0,3.054-.017L55.3,28.8h0a2.436,2.436,0,0,0,.451-.684,2.071,2.071,0,0,0,.167-.834,2.175,2.175,0,0,0-.617-1.519L41.551,11.915A2.126,2.126,0,0,0,38.514,11.865Z" transform="translate(1440.081 1641.727)" fill="#fff"/>
-  </g>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 25.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 96 96" style="enable-background:new 0 0 96 96;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#1AA9BF;}
+	.st1{fill:#FFFFFF;}
+</style>
+<path class="st0" d="M0,0v96h96V0H0z M70.8,48.8c-0.1,0.3-0.3,0.5-0.5,0.7L56.6,63.4c-0.8,0.8-2.2,0.9-3.1,0c-0.8-0.8-0.8-2.2,0-3.1
+	l10.1-10.2H25.1c-1.2,0-2.2-1-2.2-2.2s1-2.2,2.2-2.2h38.6L53.6,35.7c-0.8-0.9-0.8-2.2,0-3.1c0,0,0,0,0,0c0.9-0.8,2.2-0.8,3,0.1
+	l13.8,13.8c0.4,0.4,0.6,1,0.6,1.5C71,48.3,70.9,48.6,70.8,48.8z"/>
+<path id="Icon_ionic-ios-arrow-round-forward" class="st1" d="M53.6,32.6c-0.8,0.8-0.9,2.2,0,3.1l10.1,10.2H25.1
+	c-1.2,0-2.2,1-2.2,2.2s1,2.2,2.2,2.2h38.6L53.6,60.3c-0.8,0.9-0.8,2.2,0,3.1c0.8,0.8,2.2,0.8,3.1,0l13.7-13.9l0,0
+	c0.2-0.2,0.3-0.4,0.5-0.7c0.1-0.3,0.2-0.5,0.2-0.8c0-0.6-0.2-1.1-0.6-1.5L56.6,32.6C55.8,31.8,54.5,31.8,53.6,32.6
+	C53.6,32.6,53.6,32.6,53.6,32.6z"/>
 </svg>
