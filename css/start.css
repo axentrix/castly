@@ -3281,6 +3281,9 @@ form label.error:after {
     stroke-dashoffset: 0;
   }
 }
+.white-text {
+  color: #ffffff;
+}
 #v-letter {
   display: block;
 }
