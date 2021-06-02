@@ -1,0 +1,1108 @@
+
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="assets/css/castly-icons.css">
+        <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+        <link rel="stylesheet" href="assets/css/jquery-ui.css">
+        <link rel="stylesheet" href="assets/css/common.css">
+        <link rel="stylesheet" href="assets/css/loader.css">
+        <link rel="stylesheet" href="assets/css/profile.css">
+        <link rel="stylesheet" href="assets/css/profile-mobile.css">
+        <link rel="icon" href="https://castly.app/assets/img/icon.ico">
+        <title>Virgo Talent - User Dashboard</title>
+        <script src="assets/js/jquery.min.js.download"></script>
+        <script src="assets/js/jquery-ui.js.download"></script>
+        <script src="assets/js/saved_resource"></script>
+        <script src="assets/js/moment.min.js.download"></script>
+        <script src="assets/js/config.js.download"></script>
+        <script src="assets/js/utils.js.download"></script>
+        <script src="assets/js/loader.js.download"></script>
+        <script src="assets/js/profile.js.download"></script>
+    <script charset="utf-8" src="assets/trusted-types-checker-9b6e874f149cc545c2c2335f8707fd1f.js.download"></script></head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <h1><img class="logo" src="assets/img/logo.svg"></h1>
+                <gap></gap>
+                <span class="hi-label">Hi, John</span>
+                <div style="position: relative; cursor: pointer;" class="img-container profile-picture" src="https://dl.airtable.com/.attachments/2ed708b3cb070dc2d00da76319fdeb42/45ac67a5/a1576899827.jpg">
+                    <img class="profile mr-2" src="assets/img/18876107401575841081.jpeg">
+                    <a href="https://castly.app/logout.php" class="logout displayNone">Logout</a>
+                </div>
+                <img class="show-navigation mobile-shown" src="assets/img/more.svg">
+            </div>
+            <tabs class="navigation-menu mobile-hidden">
+                <div class="spacer mobile-shown">
+                    <div class="close-navigation">×</div>
+                </div>
+                <tab target="tab-dashboard" active="true"><i><img src="assets/img/dashboard.svg"></i> Dashboard</tab>
+                <tab target="tab-appearance" active="false"><i><img src="assets/img/appearance.svg"><img class="incomplete-badge" src="assets/img/warning_sm.svg"></i> Appearance</tab>
+                <tab target="tab-photos" active="false"><i><img src="assets/img/photo.svg"><img class="incomplete-badge" src="assets/img/warning_sm.svg" style="display: none;"></i> Photos</tab>
+                <tab target="tab-contact" active="false"><i><img src="assets/img/contact.svg"><img class="incomplete-badge" src="assets/img/warning_sm.svg"></i> Contact</tab>
+                <tab target="tab-billing" active="false"><i><img src="assets/img/billing.svg"></i> Billing</tab>
+                <tab target="tab-vehicles" active="false"><i><img src="assets/img/vehicle.svg"></i> Vehicles</tab>
+                <tab target="tab-availability" active="false"><i><img src="assets/img/availability.svg"></i> Availability</tab>
+                <div class="spacer mobile-shown"></div>
+            </tabs>
+            <tab-contents>
+                <tab-content id="tab-dashboard" class="">
+                    <div class="welcome-label">Welcome to Your Dashboard</div>
+                   
+                    <div class="card vflex dashboard-card first-time" >
+                        <div class="header">What to do Next</div>
+                        <div class="two-columns">
+                        <ul class="first-time-list">
+<li><img src="assets/img/icon-success.svg" class="first-time-img"/> Create your profile</li>
+
+<li><img src="assets/img/icon-success.svg" class="first-time-img "/>Add your appearance</li>
+    <li><img src="assets/img/icon-warning.svg" class="first-time-img "/>Add your billing info</li>
+        <li><img src="assets/img/icon-success.svg" class="first-time-img "/>Add your contact details</li>
+            <li><img src="assets/img/icon-success.svg" class="first-time-img "/>Add photos of yourself</li>
+                <li><img src="assets/img/icon-error.svg" class="first-time-img "/>Get a verified photo</li>
+             
+                        </ul>
+
+
+                          
+        
+
+                        </div>
+                        <button class="btn btn-primary justify-content-center text-center d-block w-100 mt-4 mb-2">GET A VERIFIED PHOTO</button>
+                        <!-- <div class="actor">Respond now</div> -->
+                    </div>
+
+                    <div class="card first-time vflex dashboard-card" >
+                        <div class="header">MY WEEKLY AVAILABILITY</div>
+                        <div class="hflex fw" style="font-size: 0.5em; text-align: center;">
+                            <span style="flex-grow: 1; width: 0;"></span>
+                            <span class="availability-dow" style="flex-grow: 1; width: 0;">WED</span>
+                            <span class="availability-dow" style="flex-grow: 1; width: 0;">THU</span>
+                            <span class="availability-dow" style="flex-grow: 1; width: 0;">FRI</span>
+                            <span class="availability-dow" style="flex-grow: 1; width: 0;">SAT</span>
+                            <span class="availability-dow" style="flex-grow: 1; width: 0;">SUN</span>
+                            <span class="availability-dow" style="flex-grow: 1; width: 0;">MON</span>
+                            <span class="availability-dow" style="flex-grow: 1; width: 0;">TUE</span>
+                            <span style="flex-grow: 1; width: 0;"></span>
+                        </div>
+                        <div class="hflex fw">
+                            <span style="flex-grow: 1; width: 0;"></span>
+                            <span class="availability-indicator square" style="flex-grow: 1; width: 0;"></span>
+                            <span class="availability-indicator square" style="flex-grow: 1; width: 0;"></span>
+                            <span class="availability-indicator square" style="flex-grow: 1; width: 0;"></span>
+                            <span class="availability-indicator square" style="flex-grow: 1; width: 0;"></span>
+                            <span class="availability-indicator square" style="flex-grow: 1; width: 0;"></span>
+                            <span class="availability-indicator square" style="flex-grow: 1; width: 0;"></span>
+                            <span class="availability-indicator square" style="flex-grow: 1; width: 0;"></span>
+                            <span style="flex-grow:1; width: 0;"></span>
+                        </div>
+                        <div class="actor edit-availability">Keep your calendar up to date to increase your visibility to casting.</div>
+                    </div>
+                    <div class="card first-time vflex dashboard-card" style="align-items: center;">
+                        <div class="header">MY PROFILE</div>
+
+
+                        <div class="d-flex justify-content-center d-column text-center">
+
+                        <svg class="circular-chart" xmlns="http://www.w3.org/2000/svg" width="161.331" height="87.518" viewBox="0 0 161.331 87.518">
+               
+                            <defs> 
+                                <linearGradient id="linear" x1="0%" y1="0%" x2="100%" y2="0%">
+                                  <stop offset="0%"   stop-color="#C52428"/>
+                                  <stop offset="100%" stop-color="#97AAC9"/>
+                                </linearGradient>
+                                <mask id="strokemask" maskUnits="userSpaceOnUse">
+                                    <path class="strokehalf" d="M6.6,81.1c0-40.9,33.2-74.1,74.1-74.1s74.1,33.2,74.1,74.1" /></mask>
+                              </defs>
+                              <g style="mask:url(#strokemask); fill:url(#linear)";>
+                              <path class="halfcircle"   d="M176.9,268.549a6.841,6.841,0,0,1-6.83-6.815,67,67,0,1,0-134.007-.024,6.83,6.83,0,0,1-13.661,0,80.665,80.665,0,1,1,161.331-.027,6.846,6.846,0,0,1-6.819,6.866Z" transform="translate(-22.401 -181.031)" />
+                            </g>
+                        
+                            </svg>
+
+                            <div class="chartinfo d-flex justify-content-center align-items-center" style="margin-top:-50px;">
+                                <div style="position: relative;">
+                                    <i class="icon-check profile-complete-indicator" style="background: rgb(0, 187, 137); border-radius: 1em; color: white; width: 1.5em; height: 1.5em; display: none; text-align: center; padding-top: 0.2em; box-sizing: border-box; position: absolute; right: -0.7em; bottom: -0.7em;"></i>
+                                    <img class="incomplete-badge profile-incomplete-indicator" src="assets/img/warning.svg" style="width: 2em; height: 2em;">
+                                    <img src="assets/img/talent.svg">
+                                </div>
+                                <span class="profile-completeness" style="font-size: 2em; font-weight: bold;position: relative;margin-left: 0.2em;">92%</span>
+                            
+                            </div>
+
+                             
+                       </div>
+
+
+                        <div class="hflex" style="line-height: 1em;align-items: center;gap: 2.5em;">
+                           
+                        </div>
+                        <div class="fix-now-indicator" style="color: red;font-size: 0.8em;font-weight: bold;margin-top: 2em;">Your profile is not visible for casting directors</div>
+                        <div class="actor fix-now text-right mb-2">Profile:Complete<br>Primary Photo:<span class="error-text"> Unverified</span></div>
+                    </div>
+                    <div class="row empty-label displayNone">
+                        No projects found.
+                    </div>
+                    <div class="project-item card vflex future" style="overflow: hidden;">
+                      <img src="assets/img/demo1.svg"/>
+                      
+                    </div>
+                    <div class="project-item card vflex future" style="overflow: hidden;">
+                        <img src="assets/img/demo2.svg"/>
+                      
+                    </div>
+                    <div class="project-item card vflex future" style="overflow: hidden;">
+                        <img src="assets/img/demo3.svg"/>
+                      
+                    </div>
+                </tab-content>
+                <tab-content id="tab-appearance" class="displayNone">
+                    <h1 class="main-title">Appearance</h1>
+                    <div class="warning">This section has missing information. Please, fill in the fields below to make your profile visible. <span class="close-warning">×</span></div>
+                    <tabs>
+                        <tab class="sub-tab active" target="appearance_general" active="true">                        
+                            <i style="vertical-align: middle;" class="icon-general"></i> General
+                        </tab>
+                        <tab class="sub-tab" target="appearance_measurement" active="false">
+                            <i style="vertical-align: middle;" class="icon-height"></i> Measurement
+                        </tab>
+                        <tab class="sub-tab" target="appearance_physical" active="false">
+                            <i style="vertical-align: middle;" class="icon-physical"></i> Physical
+                        </tab>
+                    </tabs>
+                    <tab-contents>
+                        <tab-content class="content-wrapper displayNone" id="appearance_general">
+                            <div class="summary">
+                                <div class="img-container profile-picture" src="https://dl.airtable.com/.attachments/2ed708b3cb070dc2d00da76319fdeb42/45ac67a5/a1576899827.jpg">
+                                    <img class="profile" src="assets/a1576899827.jpg">
+                                </div>
+                                <h3>John Peters III</h3>
+                                <div class="grid">
+                                    <label>UNION STATUS</label>
+                                    <label>GENDER</label>
+                                    <div>Non-Union</div>
+                                    <div>Male</div>
+                                    <label>HEIGHT</label>
+                                    <label>AGE RANGE</label>
+                                    <div>5 ft 8 in</div>
+                                    <div>15-18</div>
+                                </div>
+                                <div class="badge profile-activation-badge inactive"></div>
+                            </div>
+                            <div class="form">
+                                <h3>GENERAL</h3>
+                                <div class="grid">
+                                    <div class="row">
+                                        <div class="table-header">First Name</div>
+                                        <div class="table-value editable" key="First Name" save="true"><val>John</val><editor><input type="text"></editor></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="table-header">Last Name</div>
+                                        <div class="table-value editable" key="Last Name" save="true"><val>Peters III</val><editor><input type="text"></editor></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="table-header">Birth Date</div>
+                                        <div class="table-value editable" key="Birth Date" save="true"><val></val><editor><input type="date"></editor></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="table-header">Union Status</div>
+                                        <div class="table-value editable" key="Union Status" save="true"><val>Non-Union</val><editor>
+                                            <select>
+                                                <option value="">Select</option>
+                                                <option value="Non-Union">Non Union</option>
+                                                <option value="SAGAFTRA">SAG-AFTRA</option>
+                                                <option value="SAG+NU">SAG + NU</option>
+                                            </select>
+                                        </editor></div>
+                                    </div>
+                                    <div class="row sag-row" style="display: none;">
+                                        <div class="table-header">SAG # <sup style="color: red;">*</sup></div>
+                                        <div class="table-value editable" key="SAG #" save="true"><val></val><editor><input type="text"></editor></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="table-header">Age Range</div>
+                                        <div class="table-value editable" key="Portrayable Age Range" save="true"><val>15-18</val><editor>
+                                            <select>
+                                                <option value="">Select</option>
+                                                <option value="0-1">0-1</option>
+                                                <option value="1-2">1-2</option>
+                                                <option value="3-5">3-5</option>
+                                                <option value="6-8">6-8</option>
+                                                <option value="8-10">8-10</option>
+                                                <option value="10-14">10-14</option>
+                                                <option value="15-18">15-18</option>
+                                                <option value="19-22">19-22</option>
+                                                <option value="23-25">23-25</option>
+                                                <option value="25-29">25-29</option>
+                                                <option value="30-34">30-34</option>
+                                                <option value="35-39">35-39</option>
+                                                <option value="40-44">40-44</option>
+                                                <option value="45-49">45-49</option>
+                                                <option value="50-54">50-54</option>
+                                                <option value="55-59">55-59</option>
+                                                <option value="60-64">60-64</option>
+                                                <option value="65-69">65-69</option>
+                                                <option value="70-74">70-74</option>
+                                                <option value="75-79">75-79</option>
+                                                <option value="80-84">80-84</option>
+                                                <option value="85-89">85-89</option>
+                                                <option value="90+">90+</option>
+                                            </select>
+                                        </editor></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="table-header">Gender</div>
+                                        <div class="table-value editable" key="Gender" save="true"><val>Male</val><editor><select>
+                                            <option value="">--Select--</option>
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
+                                        </select></editor></div>
+                                    </div>
+                                </div>
+                                <div class="button-container">
+                                    <button form="appearance_general" class="button edit-btn">Edit</button>
+                                    <button form="appearance_general" class="button save-btn">Save</button>
+                                    <button form="appearance_general" class="button cancel-btn">Cancel</button>
+                                </div>
+                            </div>
+                        </tab-content>
+                        <tab-content class="content-wrapper displayNone" id="appearance_measurement"><div class="summary">
+                                <div class="img-container profile-picture" src="https://dl.airtable.com/.attachments/2ed708b3cb070dc2d00da76319fdeb42/45ac67a5/a1576899827.jpg">
+                                    <img class="profile" src="assets/a1576899827.jpg">
+                                </div>
+                                <h3>John Peters III</h3>
+                                <div class="grid">
+                                    <label>UNION STATUS</label>
+                                    <label>GENDER</label>
+                                    <div>Non-Union</div>
+                                    <div>Male</div>
+                                    <label>HEIGHT</label>
+                                    <label>AGE RANGE</label>
+                                    <div>5 ft 8 in</div>
+                                    <div>15-18</div>
+                                </div>
+                                <div class="badge profile-activation-badge inactive"></div>
+                            </div>
+                            <div class="form">
+                                <h3>MEASUREMENT</h3>
+                                <div class="grid">
+                                    <div class="row female male">
+                                        <div class="table-header">Shoe</div>
+                                        <div class="table-value editable" key="Shoe" save="true"><i class="icon-shoe"></i> <val>9</val><editor><select step="0.5" min="1" max="14"><option value="">--Select--</option><option value="1">1</option><option value="1.5">1.5</option><option value="2">2</option><option value="2.5">2.5</option><option value="3">3</option><option value="3.5">3.5</option><option value="4">4</option><option value="4.5">4.5</option><option value="5">5</option><option value="5.5">5.5</option><option value="6">6</option><option value="6.5">6.5</option><option value="7">7</option><option value="7.5">7.5</option><option value="8">8</option><option value="8.5">8.5</option><option value="9">9</option><option value="9.5">9.5</option><option value="10">10</option><option value="10.5">10.5</option><option value="11">11</option><option value="11.5">11.5</option><option value="12">12</option><option value="12.5">12.5</option><option value="13">13</option><option value="13.5">13.5</option><option value="14">14</option></select></editor></div>
+                                    </div>
+                                    
+                                    <div class="row male">
+                                        <div class="table-header">Shirt</div>
+                                        <div class="table-value editable" key="Shirt" save="true"><i class="icon-tshirt"></i> <val>Medium</val><editor><select>
+                                            <option value="">--Select--</option>
+                                            <option value="XSmall">XSmall</option>
+                                            <option value="Small">Small</option>
+                                            <option value="Medium">Medium</option>
+                                            <option value="Large">Large</option>
+                                            <option value="XLarge">XLarge</option>
+                                            <option value="XXLarge">XXLarge</option>
+                                            <option value="XXXLarge">XXXLarge</option>
+                                        </select></editor></div>
+                                    </div>
+                                    
+                                    <div class="row male">
+                                        <div class="table-header">Neck</div>
+                                        <div class="table-value editable" key="Neck" save="true"><i class="icon-neck"></i>  <val>15</val><editor><select min="13" max="21" step="0.5"><option value="">--Select--</option><option value="13">13</option><option value="13.5">13.5</option><option value="14">14</option><option value="14.5">14.5</option><option value="15">15</option><option value="15.5">15.5</option><option value="16">16</option><option value="16.5">16.5</option><option value="17">17</option><option value="17.5">17.5</option><option value="18">18</option><option value="18.5">18.5</option><option value="19">19</option><option value="19.5">19.5</option><option value="20">20</option><option value="20.5">20.5</option><option value="21">21</option></select></editor></div>
+                                    </div>
+                                    
+                                    <div class="row male">
+                                        <div class="table-header">Sleeve</div>
+                                        <div class="table-value editable" key="Sleeve" save="true"><i class="icon-sleeve"></i> <val>32</val><editor><select min="26" max="40" step="1"><option value="">--Select--</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option><option value="32">32</option><option value="33">33</option><option value="34">34</option><option value="35">35</option><option value="36">36</option><option value="37">37</option><option value="38">38</option><option value="39">39</option><option value="40">40</option></select></editor></div>
+                                    </div>
+                                    
+                                    <div class="row male">
+                                        <div class="table-header">Inseam</div>
+                                        <div class="table-value editable" key="Inseam" save="true"><i class="icon-inseam"></i> <val>28</val><editor><select min="20" max="40" step="1"><option value="">--Select--</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option><option value="32">32</option><option value="33">33</option><option value="34">34</option><option value="35">35</option><option value="36">36</option><option value="37">37</option><option value="38">38</option><option value="39">39</option><option value="40">40</option></select></editor></div>
+                                    </div>
+                                    
+                                    <div class="row female male">
+                                        <div class="table-header">Waist</div>
+                                        <div class="table-value editable" key="Waist" save="true"><i class="icon-waist"></i> <val>28</val><editor><select min="20" max="54" step="1"><option value="">--Select--</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option><option value="32">32</option><option value="33">33</option><option value="34">34</option><option value="35">35</option><option value="36">36</option><option value="37">37</option><option value="38">38</option><option value="39">39</option><option value="40">40</option><option value="41">41</option><option value="42">42</option><option value="43">43</option><option value="44">44</option><option value="45">45</option><option value="46">46</option><option value="47">47</option><option value="48">48</option><option value="49">49</option><option value="50">50</option><option value="51">51</option><option value="52">52</option><option value="53">53</option><option value="54">54</option></select></editor></div>
+                                    </div>
+
+                                    <div class="row male">
+                                        <div class="table-header">Chest/Suit</div>
+                                        <div class="table-value editable" chest-selector="" key="Suit Type" save="true"><i class="icon-suit"></i> <val>Short</val><editor><select chest="" min="32" max="70" step="1"><option value="">--Select--</option><option value="32">32</option><option value="33">33</option><option value="34">34</option><option value="35">35</option><option value="36">36</option><option value="37">37</option><option value="38">38</option><option value="39">39</option><option value="40">40</option><option value="41">41</option><option value="42">42</option><option value="43">43</option><option value="44">44</option><option value="45">45</option><option value="46">46</option><option value="47">47</option><option value="48">48</option><option value="49">49</option><option value="50">50</option><option value="51">51</option><option value="52">52</option><option value="53">53</option><option value="54">54</option><option value="55">55</option><option value="56">56</option><option value="57">57</option><option value="58">58</option><option value="59">59</option><option value="60">60</option><option value="61">61</option><option value="62">62</option><option value="63">63</option><option value="64">64</option><option value="65">65</option><option value="66">66</option><option value="67">67</option><option value="68">68</option><option value="69">69</option><option value="70">70</option></select>&nbsp;/&nbsp;<select suit="">
+                                            <option value="">--Select--</option>
+                                            <option value="Small">Small</option>
+                                            <option value="Regular">Regular</option>
+                                            <option value="Large">Large</option>
+                                            <option value="XLarge">XLarge</option>
+                                            <option value="XXLarge">XXLarge</option>
+                                            <option value="XXXLarge">XXXLarge</option>
+                                        </select></editor></div>
+                                    </div>
+                                    
+                                    <div class="row female displayNone">
+                                        <div class="table-header">Hips</div>
+                                        <div class="table-value editable" key="Hips" save="true"><i class="icon-hips"></i> <val></val><editor><select min="20" max="59" step="1"><option value="">--Select--</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option><option value="32">32</option><option value="33">33</option><option value="34">34</option><option value="35">35</option><option value="36">36</option><option value="37">37</option><option value="38">38</option><option value="39">39</option><option value="40">40</option><option value="41">41</option><option value="42">42</option><option value="43">43</option><option value="44">44</option><option value="45">45</option><option value="46">46</option><option value="47">47</option><option value="48">48</option><option value="49">49</option><option value="50">50</option><option value="51">51</option><option value="52">52</option><option value="53">53</option><option value="54">54</option><option value="55">55</option><option value="56">56</option><option value="57">57</option><option value="58">58</option><option value="59">59</option></select></editor></div>
+                                    </div>
+                                    
+                                    <div class="row female displayNone">
+                                        <div class="table-header">Bust/Cup</div>
+                                        <div class="table-value editable" bust-selector="" key="Bust" save="true"><i class="icon-bust"></i> <val></val><editor>
+                                            <select bust="" min="20" max="60" step="1"><option value="">--Select--</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option><option value="32">32</option><option value="33">33</option><option value="34">34</option><option value="35">35</option><option value="36">36</option><option value="37">37</option><option value="38">38</option><option value="39">39</option><option value="40">40</option><option value="41">41</option><option value="42">42</option><option value="43">43</option><option value="44">44</option><option value="45">45</option><option value="46">46</option><option value="47">47</option><option value="48">48</option><option value="49">49</option><option value="50">50</option><option value="51">51</option><option value="52">52</option><option value="53">53</option><option value="54">54</option><option value="55">55</option><option value="56">56</option><option value="57">57</option><option value="58">58</option><option value="59">59</option><option value="60">60</option></select>&nbsp;/&nbsp;
+                                            <select cup="">
+                                                <option value="">--Select--</option>
+                                                <option value="AA">AA</option>
+                                                <option value="A">A</option>
+                                                <option value="B">B</option>
+                                                <option value="C">C</option>
+                                                <option value="D">D</option>
+                                                <option value="DD/E">DD/E</option>
+                                                <option value="DDD/F">DDD/F</option>
+                                                <option value="DDDD/G">DDDD/G</option>
+                                                <option value="DDDD/G+">DDDD/G+</option>
+                                            </select>                            
+                                        </editor></div>
+                                    </div>
+                                    
+                                    <div class="row female displayNone">
+                                        <div class="table-header">Dress</div>
+                                        <div class="table-value editable" key="Dress" save="true"><i class="icon-dress"></i> <val></val><editor><select min="0" max="25" step="1"><option value="">--Select--</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option></select></editor></div>
+                                    </div>
+                                </div>
+                                <div class="button-container">
+                                    <button form="appearance_measurement" class="button edit-btn">Edit</button>
+                                    <button form="appearance_measurement" class="button save-btn">Save</button>
+                                    <button form="appearance_measurement" class="button cancel-btn">Cancel</button>
+                                </div>
+                            </div>
+                        </tab-content>
+                        <tab-content class="content-wrapper displayNone" id="appearance_physical"><div class="summary">
+                                <div class="img-container profile-picture" src="https://dl.airtable.com/.attachments/2ed708b3cb070dc2d00da76319fdeb42/45ac67a5/a1576899827.jpg">
+                                    <img class="profile" src="assets/a1576899827.jpg">
+                                </div>
+                                <h3>John Peters III</h3>
+                                <div class="grid">
+                                    <label>UNION STATUS</label>
+                                    <label>GENDER</label>
+                                    <div>Non-Union</div>
+                                    <div>Male</div>
+                                    <label>HEIGHT</label>
+                                    <label>AGE RANGE</label>
+                                    <div>5 ft 8 in</div>
+                                    <div>15-18</div>
+                                </div>
+                                <div class="badge profile-activation-badge inactive"></div>
+                            </div>
+                            <div class="form">
+                                <h3>PHYSICAL</h3>
+                                <div class="grid">
+                                    <div class="row">
+                                        <div class="table-header">Ethnicity</div>
+                                        <div class="table-value editable" key="Portrayable Ethnicity" save="true"><val>Caucasian</val><editor>
+                                            <select>
+                                                <option value="">--Select--</option>
+                                                <option value="Unspecified">Unspecified</option>
+                                                <option value="Asian">Asian</option>
+                                                <option value="Black">Black</option>
+                                                <option value="Caucasian">Caucasian</option>
+                                                <option value="East-Indian">East-Indian</option>
+                                                <option value="Latino/Hispanic">Latino/Hispanic</option>
+                                                <option value="Middle Eastern">Middle Eastern</option>
+                                                <option value="Multi-Ethnic" selected="selected">Multi-Ethnic</option>
+                                                <option value="Native American">Native American</option>
+                                                <option value="Pacific Islands">Pacific Islands</option>
+                                            </select>
+                                        </editor></div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="table-header">Heritage</div>
+                                        <div class="table-value editable" key="Portrayable Heritage" save="true"><val>Unspecified</val><editor>
+                                            <select>
+                                                <option value="">--Select--</option>
+                                                <option value="Unspecified">Unspecified</option>
+                                                <option value="Afghan">Afghan</option>
+                                                <option value="African">African</option>
+                                                <option value="Albanian">Albanian</option>
+                                                <option value="Algerian">Algerian</option>
+                                                <option value="Antiguan">Antiguan</option>
+                                                <option value="Arabian">Arabian</option>
+                                                <option value="Argentine">Argentine</option>
+                                                <option value="Armenian">Armenian</option>
+                                                <option value="Aruban">Aruban</option>
+                                                <option value="Australian">Australian</option>
+                                                <option value="Austrian">Austrian</option>
+                                                <option value="Bahamanian">Bahamanian</option>
+                                                <option value="Bahrainian">Bahrainian</option>
+                                                <option value="Bangladeshi">Bangladeshi</option>
+                                                <option value="Barbadian">Barbadian</option>
+                                                <option value="Belgian">Belgian</option>
+                                                <option value="Belizean">Belizean</option>
+                                                <option value="Bermudian">Bermudian</option>
+                                                <option value="Bolivian">Bolivian</option>
+                                                <option value="Bosnian">Bosnian</option>
+                                                <option value="Botswanian">Botswanian</option>
+                                                <option value="Brazilian">Brazilian</option>
+                                                <option value="British">British</option>
+                                                <option value="Bulgarian">Bulgarian</option>
+                                                <option value="Burmese">Burmese</option>
+                                                <option value="Cambodian">Cambodian</option>
+                                                <option value="Canadian">Canadian</option>
+                                                <option value="Caymanian">Caymanian</option>
+                                                <option value="Chilean">Chilean</option>
+                                                <option value="Chinese">Chinese</option>
+                                                <option value="Colombian">Colombian</option>
+                                                <option value="Costa Rican">Costa Rican</option>
+                                                <option value="Croatian">Croatian</option>
+                                                <option value="Cuban">Cuban</option>
+                                                <option value="Czechoslovakain">Czechoslovakain</option>
+                                                <option value="Danish">Danish</option>
+                                                <option value="Dominican">Dominican</option>
+                                                <option value="Dutch">Dutch</option>
+                                                <option value="East Indian">East Indian</option>
+                                                <option value="Ecuadorian">Ecuadorian</option>
+                                                <option value="Egyptian">Egyptian</option>
+                                                <option value="El Salvadorian">El Salvadorian</option>
+                                                <option value="English">English</option>
+                                                <option value="Estonian">Estonian</option>
+                                                <option value="Ethiopian">Ethiopian</option>
+                                                <option value="Fijian">Fijian</option>
+                                                <option value="Filipino" selected="selected">Filipino</option>
+                                                <option value="Finnish">Finnish</option>
+                                                <option value="French">French</option>
+                                                <option value="Georgian">Georgian</option>
+                                                <option value="German">German</option>
+                                                <option value="Ghanaian">Ghanaian</option>
+                                                <option value="Greek">Greek</option>
+                                                <option value="Guatemalan">Guatemalan</option>
+                                                <option value="Guyanese">Guyanese</option>
+                                                <option value="Haitian">Haitian</option>
+                                                <option value="Hungarian">Hungarian</option>
+                                                <option value="Icelander">Icelander</option>
+                                                <option value="Indonesian">Indonesian</option>
+                                                <option value="Iranian">Iranian</option>
+                                                <option value="Iraqi">Iraqi</option>
+                                                <option value="Irish">Irish</option>
+                                                <option value="Israeli">Israeli</option>
+                                                <option value="Italian">Italian</option>
+                                                <option value="Jamaican">Jamaican</option>
+                                                <option value="Japanese">Japanese</option>
+                                                <option value="Jordanian">Jordanian</option>
+                                                <option value="Kenyan">Kenyan</option>
+                                                <option value="Korean">Korean</option>
+                                                <option value="Kuwaiti">Kuwaiti</option>
+                                                <option value="Laotian">Laotian</option>
+                                                <option value="Lebanese">Lebanese</option>
+                                                <option value="Liberian">Liberian</option>
+                                                <option value="Libyan">Libyan</option>
+                                                <option value="Lithuanian">Lithuanian</option>
+                                                <option value="Macedonian">Macedonian</option>
+                                                <option value="Malaysian">Malaysian</option>
+                                                <option value="Mediterranean">Mediterranean</option>
+                                                <option value="Mexican">Mexican</option>
+                                                <option value="Mongolian">Mongolian</option>
+                                                <option value="Moroccan">Moroccan</option>
+                                                <option value="American">Native American</option>
+                                                <option value="New Zealander">New Zealander</option>
+                                                <option value="Nicaraguan">Nicaraguan</option>
+                                                <option value="Nigerian">Nigerian</option>
+                                                <option value="Norwegian">Norwegian</option>
+                                                <option value="Pakistani">Pakistani</option>
+                                                <option value="Panamanian">Panamanian</option>
+                                                <option value="Peruvian">Peruvian</option>
+                                                <option value="Polish">Polish</option>
+                                                <option value="Portuguese">Portuguese</option>
+                                                <option value="Puerto Rican">Puerto Rican</option>
+                                                <option value="Rumanian">Rumanian</option>
+                                                <option value="Russian">Russian</option>
+                                                <option value="Rwandan">Rwandan</option>
+                                                <option value="Serbian">Serbian</option>
+                                                <option value="Singaporean">Singaporean</option>
+                                                <option value="Slovakian">Slovakian</option>
+                                                <option value="Somali">Somali</option>
+                                                <option value="Spanish">Spanish</option>
+                                                <option value="Swedish">Swedish</option>
+                                                <option value="Swiss">Swiss</option>
+                                                <option value="Syrian">Syrian</option>
+                                                <option value="Talwanese">Talwanese</option>
+                                                <option value="Thai">Thai</option>
+                                                <option value="Turkish">Turkish</option>
+                                                <option value="Ugandan">Ugandan</option>
+                                                <option value="Ukrainian ">Ukrainian </option>
+                                                <option value="Venezuelan">Venezuelan</option>
+                                                <option value="Vietnamese">Vietnamese</option>
+                                                <option value="Virgin Islander">Virgin Islander</option>
+                                                <option value="Yugoslavian">Yugoslavian</option>
+                                            </select>
+                                        </editor></div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="table-header">Height</div>
+                                        <div class="table-value editable" height-selector="" key="Height (ft/in)" save="true"><val>5 ft 8 in</val><editor>
+                                            <select feet="" min="0" max="8" step="1"><option value="">--Select--</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option></select>&nbsp;ft&nbsp;
+                                            <select inch="" min="0" max="11" step="1"><option value="">--Select--</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option></select>&nbsp;in&nbsp;
+                                        </editor></div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="table-header">Weight</div>
+                                        <div class="table-value editable" key="Weight" save="true"><val>120</val><editor><select min="60" max="400" step="1"><option value="">--Select--</option><option value="60">60</option><option value="61">61</option><option value="62">62</option><option value="63">63</option><option value="64">64</option><option value="65">65</option><option value="66">66</option><option value="67">67</option><option value="68">68</option><option value="69">69</option><option value="70">70</option><option value="71">71</option><option value="72">72</option><option value="73">73</option><option value="74">74</option><option value="75">75</option><option value="76">76</option><option value="77">77</option><option value="78">78</option><option value="79">79</option><option value="80">80</option><option value="81">81</option><option value="82">82</option><option value="83">83</option><option value="84">84</option><option value="85">85</option><option value="86">86</option><option value="87">87</option><option value="88">88</option><option value="89">89</option><option value="90">90</option><option value="91">91</option><option value="92">92</option><option value="93">93</option><option value="94">94</option><option value="95">95</option><option value="96">96</option><option value="97">97</option><option value="98">98</option><option value="99">99</option><option value="100">100</option><option value="101">101</option><option value="102">102</option><option value="103">103</option><option value="104">104</option><option value="105">105</option><option value="106">106</option><option value="107">107</option><option value="108">108</option><option value="109">109</option><option value="110">110</option><option value="111">111</option><option value="112">112</option><option value="113">113</option><option value="114">114</option><option value="115">115</option><option value="116">116</option><option value="117">117</option><option value="118">118</option><option value="119">119</option><option value="120">120</option><option value="121">121</option><option value="122">122</option><option value="123">123</option><option value="124">124</option><option value="125">125</option><option value="126">126</option><option value="127">127</option><option value="128">128</option><option value="129">129</option><option value="130">130</option><option value="131">131</option><option value="132">132</option><option value="133">133</option><option value="134">134</option><option value="135">135</option><option value="136">136</option><option value="137">137</option><option value="138">138</option><option value="139">139</option><option value="140">140</option><option value="141">141</option><option value="142">142</option><option value="143">143</option><option value="144">144</option><option value="145">145</option><option value="146">146</option><option value="147">147</option><option value="148">148</option><option value="149">149</option><option value="150">150</option><option value="151">151</option><option value="152">152</option><option value="153">153</option><option value="154">154</option><option value="155">155</option><option value="156">156</option><option value="157">157</option><option value="158">158</option><option value="159">159</option><option value="160">160</option><option value="161">161</option><option value="162">162</option><option value="163">163</option><option value="164">164</option><option value="165">165</option><option value="166">166</option><option value="167">167</option><option value="168">168</option><option value="169">169</option><option value="170">170</option><option value="171">171</option><option value="172">172</option><option value="173">173</option><option value="174">174</option><option value="175">175</option><option value="176">176</option><option value="177">177</option><option value="178">178</option><option value="179">179</option><option value="180">180</option><option value="181">181</option><option value="182">182</option><option value="183">183</option><option value="184">184</option><option value="185">185</option><option value="186">186</option><option value="187">187</option><option value="188">188</option><option value="189">189</option><option value="190">190</option><option value="191">191</option><option value="192">192</option><option value="193">193</option><option value="194">194</option><option value="195">195</option><option value="196">196</option><option value="197">197</option><option value="198">198</option><option value="199">199</option><option value="200">200</option><option value="201">201</option><option value="202">202</option><option value="203">203</option><option value="204">204</option><option value="205">205</option><option value="206">206</option><option value="207">207</option><option value="208">208</option><option value="209">209</option><option value="210">210</option><option value="211">211</option><option value="212">212</option><option value="213">213</option><option value="214">214</option><option value="215">215</option><option value="216">216</option><option value="217">217</option><option value="218">218</option><option value="219">219</option><option value="220">220</option><option value="221">221</option><option value="222">222</option><option value="223">223</option><option value="224">224</option><option value="225">225</option><option value="226">226</option><option value="227">227</option><option value="228">228</option><option value="229">229</option><option value="230">230</option><option value="231">231</option><option value="232">232</option><option value="233">233</option><option value="234">234</option><option value="235">235</option><option value="236">236</option><option value="237">237</option><option value="238">238</option><option value="239">239</option><option value="240">240</option><option value="241">241</option><option value="242">242</option><option value="243">243</option><option value="244">244</option><option value="245">245</option><option value="246">246</option><option value="247">247</option><option value="248">248</option><option value="249">249</option><option value="250">250</option><option value="251">251</option><option value="252">252</option><option value="253">253</option><option value="254">254</option><option value="255">255</option><option value="256">256</option><option value="257">257</option><option value="258">258</option><option value="259">259</option><option value="260">260</option><option value="261">261</option><option value="262">262</option><option value="263">263</option><option value="264">264</option><option value="265">265</option><option value="266">266</option><option value="267">267</option><option value="268">268</option><option value="269">269</option><option value="270">270</option><option value="271">271</option><option value="272">272</option><option value="273">273</option><option value="274">274</option><option value="275">275</option><option value="276">276</option><option value="277">277</option><option value="278">278</option><option value="279">279</option><option value="280">280</option><option value="281">281</option><option value="282">282</option><option value="283">283</option><option value="284">284</option><option value="285">285</option><option value="286">286</option><option value="287">287</option><option value="288">288</option><option value="289">289</option><option value="290">290</option><option value="291">291</option><option value="292">292</option><option value="293">293</option><option value="294">294</option><option value="295">295</option><option value="296">296</option><option value="297">297</option><option value="298">298</option><option value="299">299</option><option value="300">300</option><option value="301">301</option><option value="302">302</option><option value="303">303</option><option value="304">304</option><option value="305">305</option><option value="306">306</option><option value="307">307</option><option value="308">308</option><option value="309">309</option><option value="310">310</option><option value="311">311</option><option value="312">312</option><option value="313">313</option><option value="314">314</option><option value="315">315</option><option value="316">316</option><option value="317">317</option><option value="318">318</option><option value="319">319</option><option value="320">320</option><option value="321">321</option><option value="322">322</option><option value="323">323</option><option value="324">324</option><option value="325">325</option><option value="326">326</option><option value="327">327</option><option value="328">328</option><option value="329">329</option><option value="330">330</option><option value="331">331</option><option value="332">332</option><option value="333">333</option><option value="334">334</option><option value="335">335</option><option value="336">336</option><option value="337">337</option><option value="338">338</option><option value="339">339</option><option value="340">340</option><option value="341">341</option><option value="342">342</option><option value="343">343</option><option value="344">344</option><option value="345">345</option><option value="346">346</option><option value="347">347</option><option value="348">348</option><option value="349">349</option><option value="350">350</option><option value="351">351</option><option value="352">352</option><option value="353">353</option><option value="354">354</option><option value="355">355</option><option value="356">356</option><option value="357">357</option><option value="358">358</option><option value="359">359</option><option value="360">360</option><option value="361">361</option><option value="362">362</option><option value="363">363</option><option value="364">364</option><option value="365">365</option><option value="366">366</option><option value="367">367</option><option value="368">368</option><option value="369">369</option><option value="370">370</option><option value="371">371</option><option value="372">372</option><option value="373">373</option><option value="374">374</option><option value="375">375</option><option value="376">376</option><option value="377">377</option><option value="378">378</option><option value="379">379</option><option value="380">380</option><option value="381">381</option><option value="382">382</option><option value="383">383</option><option value="384">384</option><option value="385">385</option><option value="386">386</option><option value="387">387</option><option value="388">388</option><option value="389">389</option><option value="390">390</option><option value="391">391</option><option value="392">392</option><option value="393">393</option><option value="394">394</option><option value="395">395</option><option value="396">396</option><option value="397">397</option><option value="398">398</option><option value="399">399</option><option value="400">400</option></select></editor></div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="table-header">Eye Color</div>
+                                        <div class="table-value editable" key="Eye Color" save="true"><val>Brown</val><editor>
+                                            <select>
+                                                <option value="">--Select--</option>
+                                                <option value="Black">Black</option>
+                                                <option value="Blue">Blue</option>
+                                                <option value="Brown" selected="selected">Brown</option>
+                                                <option value="Green">Green</option>
+                                                <option value="Hazel">Hazel</option>
+                                                <option value="Other">Other</option>
+                                            </select>
+                                        </editor></div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="table-header">Hair Color</div>
+                                        <div class="table-value editable" key="Hair Color" save="true"><val>Brown</val><editor>
+                                            <select>
+                                                <option value="">--Select--</option>
+                                                <option value="Auburn">Auburn</option>
+                                                <option value="Black">Black</option>
+                                                <option value="Bald">Bald</option>
+                                                <option value="Blonde">Blonde</option>
+                                                <option value="Brown" selected="selected">Brown</option>
+                                                <option value="Salt and Pepper">Salt and Pepper</option>
+                                                <option value="White">White</option>
+                                                <option value="Grey">Grey</option>
+                                                <option value="Red">Red</option>
+                                                <option value="Dark Blonde">Dark Blonde</option>
+                                                <option value="Light Brown">Light Brown</option>
+                                                <option value="Other">Other</option>
+                                            </select>
+                                        </editor></div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="table-header">Hair Length</div>
+                                        <div class="table-value editable" key="Hair Length" save="true"><val>Curly</val><editor>
+                                            <select value="">
+                                                <option value="">Select</option>
+                                                <option value="Bald/Shaved">Bald/Shaved</option>
+                                                <option value="Balding">Balding</option>
+                                                <option value="Crew Cut">Crew Cut</option>
+                                                <option value="Short Contemporary">Short Contemporary</option>
+                                                <option value="Chin Length">Chin Length</option>
+                                                <option value="Shoulder Length">Shoulder Length</option>
+                                                <option value="Below Shoulder" selected="selected">Below Shoulder</option>
+                                                <option value="Dreadlocks">Dreadlocks</option>
+                                                <option value="Braids/Twist">Braids/Twist</option>
+                                                <option value="Curly">Curly</option>
+                                            </select>
+                                        </editor></div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="table-header">Tattoos/Piercings</div>
+                                        <div class="table-value editable" key="Tattoos / Piercings" save="true"><val>none</val><editor><input type="text"></editor></div>
+                                    </div>
+                                </div>
+                                <div class="button-container">
+                                    <button form="appearance_physical" class="button edit-btn">Edit</button>
+                                    <button form="appearance_physical" class="button save-btn">Save</button>
+                                    <button form="appearance_physical" class="button cancel-btn">Cancel</button>
+                                </div>
+                            </div>
+                        </tab-content>
+                    </tab-contents>
+                </tab-content>
+                <tab-content id="tab-photos" class="displayNone">
+                    <h1 class="main-title mobile-shown">Photos</h1>
+                    <div class="content-wrapper"> 
+                        <div style="width: 100%;height: 100%;position: absolute;overflow: hidden;">
+                            <img src="assets/a1576899827.jpg" style="width: calc(100% + 60px);height: calc(100% + 60px);object-fit: cover;filter: blur(15px);margin: -30px;">
+                        </div>
+                        <div class="image-wrapper">
+                            <div class="aspector"></div>
+                            <div class="img-container profile-picture" src="https://dl.airtable.com/.attachments/2ed708b3cb070dc2d00da76319fdeb42/45ac67a5/a1576899827.jpg" style="position: absolute; top: 0; left: 0; bottom: 0; right: 0;">
+                                <img style="width: 100%;height: 100%;object-fit: cover;object-position: top;border-radius: 50%;box-sizing: border-box;border: 0.5em solid #D5DFEF;" src="assets/a1576899827.jpg">
+                                <div class="add-photo-area" type="profile">
+                                </div>
+                                <div class="edit-button displayNone">✎</div>
+                            </div>
+                            <div class="info-container">
+                                <div style="color: white;">John Peters III</div>
+                                <div style="display: flex;gap: 0.5em;align-items: center;color: white;" class="photos-counter">
+                                    <div class="stamp-verified" style="">Profile Verified</div>
+                                    <div class="stamp-unverified" style="display: none;">Profile Unverified</div>
+                                    <icon style="-webkit-mask-image: url(&#39;/assets/img/portal/photos/image_file.svg&#39;);mask-image: url(&#39;/assets/img/portal/photos/image_file.svg&#39;);"></icon>
+                                    <span key="images">1</span>
+                                    <icon style="-webkit-mask-image: url(&#39;/assets/img/portal/photos/video_file.svg&#39;);mask-image: url(&#39;/assets/img/portal/photos/video_file.svg&#39;);"></icon>
+                                    <span key="videos">0</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="warning" style="margin: 0.5em; display: none;">This section has missing portfolio picture. Please, add portfolio picture to make your profile visible. <span class="close-warning">×</span></div>
+                    <tabs>
+                        <tab class="sub-tab active" target="photos_photos" active="true">PHOTOS</tab>
+                        <tab class="sub-tab" target="photos_videos" active="false">VIDEOS</tab>
+                    </tabs>
+                    <tab-contents>
+                        <tab-content id="photos_photos" class="photo-container content-wrapper displayNone"><div class="summary">
+                                <div class="img-container profile-picture" src="https://dl.airtable.com/.attachments/2ed708b3cb070dc2d00da76319fdeb42/45ac67a5/a1576899827.jpg">
+                                    <img class="profile" src="assets/a1576899827.jpg">
+                                </div>
+                                <h3>John Peters III</h3>
+                                <div class="grid">
+                                    <label>UNION STATUS</label>
+                                    <label>GENDER</label>
+                                    <div>Non-Union</div>
+                                    <div>Male</div>
+                                    <label>HEIGHT</label>
+                                    <label>AGE RANGE</label>
+                                    <div>5 ft 8 in</div>
+                                    <div>15-18</div>
+                                </div>
+                                <div class="badge profile-activation-badge inactive"></div>
+                            </div>
+                            <div class="galleries">
+                                <div class="gallery" gallery-url="https://dl.airtable.com/.attachments/434f451fc9b2f679677377917bded30e/05e91b9d/18876107401575841081.jpeg">
+            <img src="assets/18876107401575841081.jpeg">
+            <div class="overlay">
+                <div class="remove-photo" onclick="removeGallery(&#39;https://dl.airtable.com/.attachments/434f451fc9b2f679677377917bded30e/05e91b9d/18876107401575841081.jpeg&#39;)">REMOVE</div>
+            </div>
+        </div><div class="add-photo-area gallery" type="gallery">
+                                    <span class="drop-label"><icon style="-webkit-mask-image: url(&#39;/assets/img/portal/photos/upload.svg&#39;);mask-image: url(&#39;/assets/img/portal/photos/upload.svg&#39;);"></icon></span>
+                                    <span class="uploading-label">Uploading ...</span>
+                                </div>
+                            </div>
+                        </tab-content>
+                        <tab-content id="photos_videos" class="photo-container content-wrapper displayNone"><div class="summary">
+                                <div class="img-container profile-picture" src="https://dl.airtable.com/.attachments/2ed708b3cb070dc2d00da76319fdeb42/45ac67a5/a1576899827.jpg">
+                                    <img class="profile" src="assets/a1576899827.jpg">
+                                </div>
+                                <h3>John Peters III</h3>
+                                <div class="grid">
+                                    <label>UNION STATUS</label>
+                                    <label>GENDER</label>
+                                    <div>Non-Union</div>
+                                    <div>Male</div>
+                                    <label>HEIGHT</label>
+                                    <label>AGE RANGE</label>
+                                    <div>5 ft 8 in</div>
+                                    <div>15-18</div>
+                                </div>
+                                <div class="badge profile-activation-badge inactive"></div>
+                            </div>
+                            <h1>Coming soon ...</h1>
+                        </tab-content>
+                    </tab-contents>
+                </tab-content>
+                <tab-content id="tab-contact" class="displayNone">
+                    <h1 class="main-title">Contact</h1>
+                    <div class="warning">This section has missing information. Please, fill in the fields below to make your profile visible. <span class="close-warning">×</span></div>
+                    <div class="card hflex" style="padding: 2em; gap: 4em;"><div class="summary">
+                                <div class="img-container profile-picture" src="https://dl.airtable.com/.attachments/2ed708b3cb070dc2d00da76319fdeb42/45ac67a5/a1576899827.jpg">
+                                    <img class="profile" src="assets/a1576899827.jpg">
+                                </div>
+                                <h3>John Peters III</h3>
+                                <div class="grid">
+                                    <label>UNION STATUS</label>
+                                    <label>GENDER</label>
+                                    <div>Non-Union</div>
+                                    <div>Male</div>
+                                    <label>HEIGHT</label>
+                                    <label>AGE RANGE</label>
+                                    <div>5 ft 8 in</div>
+                                    <div>15-18</div>
+                                </div>
+                                <div class="badge profile-activation-badge inactive"></div>
+                            </div>
+                        <div class="form">
+                            <div class="grid">
+                                <div class="row">
+                                    <div class="table-header">Mailing Street Address</div>
+                                    <div class="table-value editable" key="Street Address" save="true"><val>728 Brent Ave. APT:</val><editor><input type="text"></editor></div>
+                                </div>
+                                <div class="row">
+                                    <div class="table-header">City</div>
+                                    <div class="table-value editable" key="City" save="true"><val></val><editor><input type="text"></editor></div>
+                                </div>
+                                <div class="row">
+                                    <div class="table-header">State</div>
+                                    <div class="table-value editable" key="State" save="true"><val>South Pasadena</val><editor>                            
+                                        <select value="">
+                                            <option value=""></option>
+                                            <option value="AL">AL</option>
+                                            <option value="AK">AK</option>
+                                            <option value="AZ">AZ</option>
+                                            <option value="AR">AR</option>
+                                            <option value="CA">CA</option>
+                                            <option value="CO">CO</option>
+                                            <option value="CT">CT</option>
+                                            <option value="DE">DE</option>
+                                            <option value="FL">FL</option>
+                                            <option value="GA">GA</option>
+                                            <option value="HI">HI</option>
+                                            <option value="ID">ID</option>
+                                            <option value="IL">IL</option>
+                                            <option value="IN">IN</option>
+                                            <option value="IA">IA</option>
+                                            <option value="KS">KS</option>
+                                            <option value="KY">KY</option>
+                                            <option value="LA">LA</option>
+                                            <option value="ME">ME</option>
+                                            <option value="MD">MD</option>
+                                            <option value="MA">MA</option>
+                                            <option value="MI">MI</option>
+                                            <option value="MN">MN</option>
+                                            <option value="MS">MS</option>
+                                            <option value="MO">MO</option>
+                                            <option value="MT">MT</option>
+                                            <option value="NE">NE</option>
+                                            <option value="NV">NV</option>
+                                            <option value="NH">NH</option>
+                                            <option value="NJ">NJ</option>
+                                            <option value="NM">NM</option>
+                                            <option value="NY">NY</option>
+                                            <option value="NC">NC</option>
+                                            <option value="ND">ND</option>
+                                            <option value="OH">OH</option>
+                                            <option value="OK">OK</option>
+                                            <option value="OR">OR</option>
+                                            <option value="PA">PA</option>
+                                            <option value="RI">RI</option>
+                                            <option value="SC">SC</option>
+                                            <option value="SD">SD</option>
+                                            <option value="TN">TN</option>
+                                            <option value="TX">TX</option>
+                                            <option value="UT">UT</option>
+                                            <option value="VT">VT</option>
+                                            <option value="VA">VA</option>
+                                            <option value="WA">WA</option>
+                                            <option value="WV">WV</option>
+                                            <option value="WI">WI</option>
+                                            <option value="WY">WY</option>
+                                            </select>
+                                    </editor></div>
+                                </div>
+                                <div class="row">
+                                    <div class="table-header">ZIP Code</div>
+                                    <div class="table-value editable" key="ZIP Code" save="true"><val>CA 91030</val><editor><input type="text"></editor></div>
+                                </div>
+                                <div class="row">
+                                    <div class="table-header">Phone Number</div>
+                                    <div class="table-value editable" key="Primary Phone Number" save="true"><val>(626) 755-4801</val><editor><input type="text"></editor></div>
+                                </div>
+                                <div class="row">
+                                    <div class="table-header">Email</div>
+                                    <div class="table-value editable" key="Email" save="true"><val>peterstothejohn3@gmail.com</val><editor><input type="text"></editor></div>
+                                </div>
+                            </div>
+                            <div class="button-container">
+                                <button form="tab-contact" class="button edit-btn">Edit</button>
+                                <button form="tab-contact" class="button save-btn">Save</button>
+                                <button form="tab-contact" class="button cancel-btn">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </tab-content>
+                <tab-content id="tab-billing" class="displayNone">
+                    <h1 class="main-title">Billing</h1>
+                    <div class="card hflex">
+                        <div class="vflex credit-card form">
+                            <label for="card-element" style="display: flex;align-items: center;padding: 1em;gap:0.5em;">
+                                <icon style="width: 1.5em; height: 1.5em; -webkit-mask-image: url(&#39;/assets/img/portal/billing/credit_card.svg&#39;);mask-image: url(&#39;/assets/img/portal/billing/credit_card.svg&#39;);"></icon>
+                                <span style="flex-grow: 1;">Credit Card</span>
+                                <img src="assets/cards.png" style="width: 1.5em;height: 1.5em;object-fit: cover;object-position: left;">
+                                <img src="assets/cards.png" style="width: 1.5em;height: 1.5em;object-fit: cover;object-position: -1.5em;">
+                                <img src="assets/cards.png" style="width: 1.5em;height: 1.5em;object-fit: cover;object-position: right;">
+                            </label>
+                            <div class="view-only">
+                                <div class="brand">
+                                    <span>Brand: </span>
+                                    <span key="Card Type"></span>
+                                </div>
+                                <div class="last-4">
+                                    <span>Card Number: </span>
+                                    <span key="Card Number"></span>
+                                </div>
+                            </div>
+                            <form class="edit-only" action="https://castly.app/api/billing/save-card.php" method="post" id="payment-form">
+                                <div class="form-row">
+                                    <div id="card-element" style="margin: 1em 0;" class="StripeElement StripeElement--empty"><div class="__PrivateStripeElement" style="margin: 0px !important; padding: 0px !important; border: none !important; display: block !important; background: transparent !important; position: relative !important; opacity: 1 !important;"><iframe name="__privateStripeFrame3685" frameborder="0" allowtransparency="true" scrolling="no" allow="payment *" src="assets/elements-inner-card-b6b552c4fb5f92670eefc7ec2994959f.html" title="Secure card payment input frame" style="border: none !important; margin: 0px !important; padding: 0px !important; width: 1px !important; min-width: 100% !important; overflow: hidden !important; display: block !important; user-select: none !important; will-change: transform !important; height: 24px;"></iframe><input class="__PrivateStripeElement-input" aria-hidden="true" aria-label=" " autocomplete="false" maxlength="1" style="border: none !important; display: block !important; position: absolute !important; height: 1px !important; top: -1px !important; left: 0px !important; padding: 0px !important; margin: 0px !important; width: 100% !important; opacity: 0 !important; background: transparent !important; pointer-events: none !important; font-size: 16px !important;"></div></div>
+
+                                    <!-- Used to display Element errors. -->
+                                    <div id="card-errors" role="alert"></div>
+                                </div>
+                                <input type="hidden" name="stripeToken">
+                                <input type="hidden" name="brand">
+                                <input type="hidden" name="last4">
+                                <input type="hidden" name="talentID">
+                                <input type="hidden" name="email">
+                            </form>
+
+                            <div class="button-container">
+                                <button form="tab-billing" class="button edit-btn">Edit</button>
+                                <button form="tab-billing" class="button save-card-btn">Save</button>
+                                <button form="tab-billing" class="button cancel-btn">Cancel</button>
+                            </div>
+                        </div>
+                        <div class="vflex billing-history">
+                            <label style="display: flex;align-items: center;padding: 1em;gap:0.5em;">
+                                <icon style="width: 1.5em; height: 1.5em; -webkit-mask-image: url(&#39;/assets/img/portal/billing/billing_history.svg&#39;);mask-image: url(&#39;/assets/img/portal/billing/billing_history.svg&#39;);"></icon>
+                                Billing History
+                            </label>
+                            <div class="content-wrapper">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>SHOOT DATE</th>
+                                            <th>PROJECT NAME</th>
+                                            <th>PAYROLL COMPANY</th>
+                                            <th>TOTAL CHARGE</th>
+                                            <th>BOOKING FEE</th>
+                                            <th>DESCRIPTION</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="template">
+                                            <td shoot-date="">MM/DD/YYYY</td>
+                                            <td project-name="">-</td>
+                                            <td payroll-name="">-</td>
+                                            <td>
+                                                <div class="vflex">
+                                                    <b total="">-</b>
+                                                    <!-- <span>$300/12hrs</spon> -->
+                                                </div>
+                                            </td>
+                                            <td fee=""></td>
+                                            <td description=""></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </tab-content>
+                <tab-content id="tab-vehicles" class="displayNone">
+                    <h1 class="main-title">Vehicles</h1>
+                    <div class="card form">
+                        <h3>
+                            Vehicle 1
+                        </h3>
+                        <div class="content-wrapper">
+                            <div class="row">
+                                <div class="table-value editable">
+                                    <div class="vehicle-img-container img-container vehicle1" src="">
+                                        <img src="https://castly.app/profile.php?id=1419&amp;admin=1">
+                                        <div class="overlay">
+                                            <div class="remove-photo" onclick="removeVehiclePhoto(1)">REMOVE</div>
+                                        </div>
+                                    </div>
+                                    <div class="add-photo-area vehicle" type="vehicle1">
+                                        <span class="drop-label"><icon style="-webkit-mask-image: url(&#39;/assets/img/portal/photos/upload.svg&#39;);mask-image: url(&#39;/assets/img/portal/photos/upload.svg&#39;);"></icon></span>
+                                        <span class="uploading-label">Uploading ...</span>
+                                    </div>
+                                </div>
+                            </div>           
+                            <div class="grid">
+                                <div class="row">
+                                    <div class="table-header">Year</div>
+                                    <div class="table-value editable" key="Vehicle #1 Year" save="true"><val></val><editor><input type="text"></editor></div>
+                                </div>
+                                <div class="row">
+                                    <div class="table-header">Make</div>
+                                    <div class="table-value editable" key="Vehicle #1 Manufacturer" save="true"><val></val><editor><input type="text"></editor></div>
+                                </div>
+                                <div class="row">
+                                    <div class="table-header">Model</div>
+                                    <div class="table-value editable" key="Vehicle #1 Model" save="true"><val></val><editor><input type="text"></editor></div>
+                                </div>
+                                <div class="row">
+                                    <div class="table-header">Color</div>
+                                    <div class="table-value editable" key="Vehicle #1 Color" save="true"><val></val><editor><input type="text"></editor></div>
+                                </div>
+                            </div>
+                        </div>
+                        <h3 class="vehicle2 collapsed">
+                            Vehicle 2
+                        </h3>                
+                        <div class="content-wrapper">
+                            <div class="row">
+                                <div class="table-value editable">
+                                    <div class="vehicle-img-container img-container vehicle2" src="">
+                                        <img src="https://castly.app/profile.php?id=1419&amp;admin=1">
+                                        <div class="overlay">
+                                            <div class="remove-photo" onclick="removeVehiclePhoto(2)">REMOVE</div>
+                                        </div>
+                                    </div>
+                                    <div class="add-photo-area vehicle" type="vehicle2">
+                                        <span class="drop-label"><icon style="-webkit-mask-image: url(&#39;/assets/img/portal/photos/upload.svg&#39;);mask-image: url(&#39;/assets/img/portal/photos/upload.svg&#39;);"></icon></span>
+                                        <span class="uploading-label">Uploading ...</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid">
+                                <div class="row">
+                                    <div class="table-header">Year</div>
+                                    <div class="table-value editable" key="Vehicle #2 Year" save="true"><val></val><editor><input type="text"></editor></div>
+                                </div>
+                                <div class="row">
+                                    <div class="table-header">Make</div>
+                                    <div class="table-value editable" key="Vehicle #2 Manufacturer" save="true"><val></val><editor><input type="text"></editor></div>
+                                </div>
+                                <div class="row">
+                                    <div class="table-header">Model</div>
+                                    <div class="table-value editable" key="Vehicle #2 Model" save="true"><val></val><editor><input type="text"></editor></div>
+                                </div>
+                                <div class="row">
+                                    <div class="table-header">Color</div>
+                                    <div class="table-value editable" key="Vehicle #2 Color" save="true"><val></val><editor><input type="text"></editor></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="button-container">
+                            <button form="tab-vehicles" class="button edit-btn">Edit</button>
+                            <button form="tab-vehicles" class="button save-btn">Save</button>
+                            <button form="tab-vehicles" class="button cancel-btn">Cancel</button>
+                        </div>
+                    </div>
+                </tab-content>
+                <tab-content id="tab-availability" class="displayNone">
+                    <h1 class="main-title">Availability</h1>
+                    <div class="content-wrapper hflex" style="gap: 0.5em;">
+                        <div class="row template" style="width: 0; flex-grow: 1;gap: 0.5em;">
+                            <div class="table-header hflex">
+                                <div class="vflex" style="flex-grow: 1;">
+                                    <div class="month">APR</div>
+                                    <div class="day">10</div>
+                                </div>
+                                <div class="dayOfWeek">Monday</div>
+                            </div>
+                            <div class="table-value">
+                                <select class="avail-option">
+                                    <option value="">Not Sure</option>
+                                    <option value="available">Available</option>
+                                    <option value="unavailable">Unavailable</option>
+                                </select>
+                            </div>
+                        </div>
+                    <div class="row" style="width: 0; flex-grow: 1;gap: 0.5em;">
+                            <div class="table-header hflex">
+                                <div class="vflex" style="flex-grow: 1;">
+                                    <div class="month">June</div>
+                                    <div class="day">02</div>
+                                </div>
+                                <div class="dayOfWeek">Wednesday</div>
+                            </div>
+                            <div class="table-value">
+                                <select class="avail-option">
+                                    <option value="">Not Sure</option>
+                                    <option value="available">Available</option>
+                                    <option value="unavailable">Unavailable</option>
+                                </select>
+                            </div>
+                        </div><div class="row" style="width: 0; flex-grow: 1;gap: 0.5em;">
+                            <div class="table-header hflex">
+                                <div class="vflex" style="flex-grow: 1;">
+                                    <div class="month">June</div>
+                                    <div class="day">03</div>
+                                </div>
+                                <div class="dayOfWeek">Thursday</div>
+                            </div>
+                            <div class="table-value">
+                                <select class="avail-option">
+                                    <option value="">Not Sure</option>
+                                    <option value="available">Available</option>
+                                    <option value="unavailable">Unavailable</option>
+                                </select>
+                            </div>
+                        </div><div class="row" style="width: 0; flex-grow: 1;gap: 0.5em;">
+                            <div class="table-header hflex">
+                                <div class="vflex" style="flex-grow: 1;">
+                                    <div class="month">June</div>
+                                    <div class="day">04</div>
+                                </div>
+                                <div class="dayOfWeek">Friday</div>
+                            </div>
+                            <div class="table-value">
+                                <select class="avail-option">
+                                    <option value="">Not Sure</option>
+                                    <option value="available">Available</option>
+                                    <option value="unavailable">Unavailable</option>
+                                </select>
+                            </div>
+                        </div><div class="row" style="width: 0; flex-grow: 1;gap: 0.5em;">
+                            <div class="table-header hflex">
+                                <div class="vflex" style="flex-grow: 1;">
+                                    <div class="month">June</div>
+                                    <div class="day">05</div>
+                                </div>
+                                <div class="dayOfWeek">Saturday</div>
+                            </div>
+                            <div class="table-value">
+                                <select class="avail-option">
+                                    <option value="">Not Sure</option>
+                                    <option value="available">Available</option>
+                                    <option value="unavailable">Unavailable</option>
+                                </select>
+                            </div>
+                        </div><div class="row" style="width: 0; flex-grow: 1;gap: 0.5em;">
+                            <div class="table-header hflex">
+                                <div class="vflex" style="flex-grow: 1;">
+                                    <div class="month">June</div>
+                                    <div class="day">06</div>
+                                </div>
+                                <div class="dayOfWeek">Sunday</div>
+                            </div>
+                            <div class="table-value">
+                                <select class="avail-option">
+                                    <option value="">Not Sure</option>
+                                    <option value="available">Available</option>
+                                    <option value="unavailable">Unavailable</option>
+                                </select>
+                            </div>
+                        </div><div class="row" style="width: 0; flex-grow: 1;gap: 0.5em;">
+                            <div class="table-header hflex">
+                                <div class="vflex" style="flex-grow: 1;">
+                                    <div class="month">June</div>
+                                    <div class="day">07</div>
+                                </div>
+                                <div class="dayOfWeek">Monday</div>
+                            </div>
+                            <div class="table-value">
+                                <select class="avail-option">
+                                    <option value="">Not Sure</option>
+                                    <option value="available">Available</option>
+                                    <option value="unavailable">Unavailable</option>
+                                </select>
+                            </div>
+                        </div><div class="row" style="width: 0; flex-grow: 1;gap: 0.5em;">
+                            <div class="table-header hflex">
+                                <div class="vflex" style="flex-grow: 1;">
+                                    <div class="month">June</div>
+                                    <div class="day">08</div>
+                                </div>
+                                <div class="dayOfWeek">Tuesday</div>
+                            </div>
+                            <div class="table-value">
+                                <select class="avail-option">
+                                    <option value="">Not Sure</option>
+                                    <option value="available">Available</option>
+                                    <option value="unavailable">Unavailable</option>
+                                </select>
+                            </div>
+                        </div></div>
+                </tab-content>
+            </tab-contents>
+        </div>
+        <form id="attachment-form" action="https://castly.app/api/talent/upload-attachment.php" method="post">
+            <input type="hidden" name="ajax" value="yes">
+        </form>
+        <input type="file" class="displayNone" id="file_selector">        
+    
+<iframe name="__privateStripeMetricsController3680" frameborder="0" allowtransparency="true" scrolling="no" allow="payment *" src="assets/m-outer-ff599b5032b79ea1f89ba5416bea26e6.html" aria-hidden="true" tabindex="-1" style="border: none !important; margin: 0px !important; padding: 0px !important; width: 1px !important; min-width: 100% !important; overflow: hidden !important; display: block !important; visibility: hidden !important; position: fixed !important; height: 1px !important; pointer-events: none !important; user-select: none !important;"></iframe><iframe name="__privateStripeController3681" frameborder="0" allowtransparency="true" scrolling="no" allow="payment *" src="assets/controller-928a8eb85c4d51166c5bb4dc879321e4.html" aria-hidden="true" tabindex="-1" style="border: none !important; margin: 0px !important; padding: 0px !important; width: 1px !important; min-width: 100% !important; overflow: hidden !important; display: block !important; visibility: hidden !important; position: fixed !important; height: 1px !important; pointer-events: none !important; user-select: none !important;"></iframe><div class="loader displayNone" onclick="event.stopPropagation()">
+                <div class="icon"></div>
+                <div class="loader-progress-label displayNone"></div>
+            </div><iframe name="__privateStripeController3681" frameborder="0" allowtransparency="true" scrolling="no" allow="payment *" src="assets/controller-928a8eb85c4d51166c5bb4dc879321e4(1).html" aria-hidden="true" tabindex="-1" style="border: none !important; margin: 0px !important; padding: 0px !important; width: 1px !important; min-width: 100% !important; overflow: hidden !important; display: block !important; visibility: hidden !important; position: fixed !important; height: 1px !important; pointer-events: none !important; user-select: none !important;"></iframe><iframe name="__privateStripeMetricsController3680" frameborder="0" allowtransparency="true" scrolling="no" allow="payment *" src="assets/m-outer-ff599b5032b79ea1f89ba5416bea26e6(1).html" aria-hidden="true" tabindex="-1" style="border: none !important; margin: 0px !important; padding: 0px !important; width: 1px !important; min-width: 100% !important; overflow: hidden !important; display: block !important; visibility: hidden !important; position: fixed !important; height: 1px !important; pointer-events: none !important; user-select: none !important;"></iframe></body></html>

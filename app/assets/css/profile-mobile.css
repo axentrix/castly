@@ -1,0 +1,242 @@
+@media only screen and (max-device-width: 640px) {
+    :root {
+        font-size: 2.5em;
+    }
+    body {
+        padding: 0;
+        background: white;
+    }
+    .hi-label {
+        display: none;
+    }
+    tabs.navigation-menu {
+        position: fixed;
+        flex-direction: column;
+        z-index: 1;
+        height: 100%;
+    }
+    tabs.navigation-menu .spacer {
+        flex-grow: 1;
+        position: relative;
+    }
+    tabs.navigation-menu .spacer+tab,
+    tabs.navigation-menu tab+.spacer {
+        border-top: 1px solid #468BFB;
+    }
+
+    tabs.navigation-menu .close-navigation {
+        color: white;
+        font-size: 2em;
+        right: 0.5em;
+        bottom: 0;
+        position: absolute;
+    }
+    .header .show-navigation {
+        width: 1em;
+        height: 1em;
+        margin-left: 1em;
+        font-size: 1.5em;
+    }
+    .mobile-shown {
+        display: revert;
+    }
+    .mobile-hidden {
+        display: none;
+    }
+    tabs.navigation-menu tab {
+        width: 100%;
+        flex-direction: row;
+        padding: 1em 2em;
+        gap: 1em;
+        flex-grow: 0;
+    }
+    tabs.navigation-menu tab+tab {
+        border-top: 1px solid #468BFB;
+    }
+    #tab-dashboard .content-wrapper {
+        display: block;
+    }
+    #tab-dashboard .image-wrapper {
+        width: calc(100% - 4em);
+        margin: 2em;
+    }
+    /* Availability */
+    .avail-option {
+        display: inline-block;
+        padding: 0.6em;
+        padding-left: 1em;
+        padding-right: 1em;
+        margin-top: 0.75em;
+        font-size: 0.7em;
+    }
+    .avail-option:first-child {
+        margin-left: 1em;
+    }
+    #tab-availability .content-wrapper .table-value {
+        display: block;
+        width: 100%;
+        height: 4em;
+        padding-top: 0;
+    }
+    #tab-availability .row {
+        display: flex;
+        min-width: 400px;
+    }
+    #tab-availability .table-header {
+        width: 100%;
+        box-sizing: border-box;
+    }
+    #tab-availability .content-wrapper {
+        overflow-x: auto;
+        margin: 1em;
+    }
+    editor input, editor select {
+        font-size: 1em;
+    }
+    #tab-dashboard {
+        grid-template-columns: 49% 49%;
+        grid-gap: 2%;
+        padding: 0 1em 1em 1em;
+    }
+    #tab-dashboard>div:nth-child(1) {
+        grid-column-end: 3;
+    }
+    #tab-dashboard>div:nth-child(2) {
+        grid-column-end: 3;
+        grid-column-start: 1;
+    }
+    #tab-dashboard .project-item {
+        grid-column-end: 3;
+        grid-column-start: 1;
+    }
+    .arch::after {
+        display: none;
+    }
+    #tab-dashboard .card {
+        font-size: 0.7em;
+        min-height: 8em;
+    }
+    #tab-dashboard .card:nth-last-child(2) {
+        margin-bottom: 2em;
+    }
+    #tab-dashboard .welcome-label {
+        background: var(--theme-color-primary);
+        margin-left: -0.9em;
+        color: white;
+        padding: 0.3em 1em;
+        font-size: 1.2em;
+        width: calc(100% - 0.29em);
+    }
+    .chat-page .container {
+        width: 100%;
+    }
+    tab-content#appearance_general, tab-content#appearance_measurement, tab-content#appearance_physical, tab-content#photos_photos, tab-content#photos_videos, tab-content#tab-contact>.card.hflex, tab-content#tab-billing>.card.hflex {
+        flex-direction: column;
+    }
+    #tab-appearance tabs, #tab-photos tabs {
+        width: 100%;
+        overflow-y: auto;
+    }
+    #tab-appearance tab-contents, #tab-photos tab-contents {
+        border-top: 1px solid #97AAC9;
+        display: block;
+    }
+    tab-content>.main-title {
+        background-color: var(--theme-color-primary);
+        color: white;
+        padding: 0.3em 1em;
+        font-size: 1.2em;
+        margin: 0;
+    }
+    #tab-appearance tabs tab, #tab-photos tabs tab {
+        display: flex;
+        flex-direction: row;
+        flex-grow: 0;
+    }
+    #appearance_general .form .grid, #appearance_physical .form .grid {
+        grid-template-columns: 100%;
+    }
+    #appearance_measurement .form .grid {
+        grid-template-columns: calc(50% - 0.5em) calc(50% - 0.5em);
+    }
+    #tab-contact .form .grid {
+        grid-template-columns: 100%;
+    }
+
+    #tab-vehicles .grid {
+        grid-template-columns: 100%;
+    }
+    #appearance_general .form h3, #appearance_measurement .form h3, #appearance_physical .form h3 {
+        display: none;
+    }
+    .summary {
+        box-shadow: none;
+        padding: 0;
+    }
+    .summary>:not(.profile-picture) {
+        display: none !important;
+    }
+    .summary img {
+        width: 100%;
+        height: auto;
+    }
+    #tab-photos>.content-wrapper {
+        background: gray;
+        height: 8em;
+        margin-bottom: 0;
+        position: relative;
+        overflow-x: hidden;
+    }
+    #tab-photos>.content-wrapper .image-wrapper {
+        position: relative;
+        width: 6em;
+        top: 1em;
+        left: 1em;
+        display: inline-block;
+    }
+    #tab-photos>.content-wrapper .image-wrapper .info-container {
+        top: 25%;
+    }
+    #tab-photos>.content-wrapper .image-wrapper .info-container>div:nth-child(2) {
+        font-size: 0.6em;
+    }
+    .drop-label::after {
+        content: 'Add photo';
+    }
+    #photos_photos .summary, #photos_videos .summary {
+        display: none;
+    }
+    .galleries {
+        grid-template-columns: 32% 32% 32%;
+        margin: 1em;
+    }
+    #appearance_general, #appearance_measurement, #appearance_physical, #tab-contact .card, #tab-photos .card, #tab-billing .card, #tab-vehicles .card {
+        box-shadow: none !important;
+    }
+    #tab-appearance tabs, #tab-photos tabs {
+        margin-bottom: 0;
+        width: fit-content;
+        max-width: 100%;
+    }
+    .credit-card {
+        width: 100%;
+    }
+    .billing-history {
+        width: 100%;
+    }
+    #tab-billing>.card {
+        padding: 1em;
+        gap: 1em;
+    }
+    #tab-vehicles>.card {
+        padding: 1em;
+        gap: 1em;
+    }
+    #tab-vehicles .content-wrapper {
+        flex-direction: column;
+    }
+    .vehicle-img-container {
+        width: 100%;
+        height: auto;
+    }
+}

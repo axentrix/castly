@@ -20,7 +20,7 @@ header {
    position:fixed;
     display: flex;
     flex-direction: column;
-   
+  
     align-items:center;
     /*background-attachment: fixed;*/
     z-index: 999777;
@@ -3451,9 +3451,11 @@ iframe#youtube {
 label{
     &.error{
 opacity:1 !important;
+width:max-content;
+left:unset !important;
         position:absolute;
         right:5px;
-        top:12px;
+        top:16px;
         color:red;
         font-size:12px;
 
@@ -3591,7 +3593,7 @@ align-items:center;
 justify-content:flex-end;
     position:relative;
     font-size:0.7em;
-
+    flex-wrap:wrap;
     &:before{
     content: "info"; 
     font-family: 'Material Icons';
@@ -3603,7 +3605,7 @@ justify-content:flex-end;
 
   a{
 
-    flex:1;
+display:block;
   }
 }
 
@@ -3728,4 +3730,10 @@ justify-content:flex-end;
     100% {
       stroke-dasharray: 100 100;
     }
+  }
+
+  .error-text{
+
+    color:red !important;
+    font-weight:normal;
   }

@@ -3237,9 +3237,11 @@ form .form-outline {
 }
 form label.error {
   opacity: 1 !important;
+  width: max-content;
+  left: unset !important;
   position: absolute;
   right: 5px;
-  top: 12px;
+  top: 16px;
   color: red;
   font-size: 12px;
 }
@@ -3355,6 +3357,7 @@ form label.error:after {
   justify-content: flex-end;
   position: relative;
   font-size: 0.7em;
+  flex-wrap: wrap;
 }
 .info:before {
   content: "info";
@@ -3365,7 +3368,7 @@ form label.error:after {
   margin-right: 0.2em;
 }
 .info a {
-  flex: 1;
+  display: block;
 }
 .signup-screens a {
   color: #aeeff9;
@@ -3455,4 +3458,8 @@ form label.error:after {
   100% {
     stroke-dasharray: 100 100;
   }
+}
+.error-text {
+  color: red !important;
+  font-weight: normal;
 }

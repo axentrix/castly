@@ -1,0 +1,1044 @@
+let id = Utils.getParam("id");
+let tab = Utils.getParam("tab");
+let pid = Utils.getParam("pid");
+
+let offset = -1;
+let messages = {};
+
+let chatHistory;
+
+//Stripe variables
+var stripe = Stripe(CONFIG.STRIPE.PUBLIC_KEY);
+var elements = stripe.elements();
+
+let updateCompletenessIndicator = () => {    
+    let c_app = true;
+    let c_contact = true;
+    let c_photo = true;
+    let genderClass = (window.record.fields["Gender"] || "Female").toLowerCase();
+    let sagSelector = ":not(.sag-row)";
+    if(window.record.fields["Union Status"] == "SAGAFTRA" || window.record.fields["Union Status"] == "SAG+NU") {
+        sagSelector = "";
+        $('.sag-row.row').show();
+    } else $('.sag-row.row').hide();
+    if(genderClass == "female") genderClass = "male"; else genderClass = "female";
+    let requiredFieldsCount = 0;
+    let filledCount = 0;
+    $(`#tab-appearance div.row${sagSelector}:not(.${genderClass}) [key][key!="Tattoos / Piercings"] val`).each(function() {
+        requiredFieldsCount++;
+        if($(this).text() == "") c_app = false; else filledCount++;
+    });
+    $("#tab-contact [key] val").each(function() {
+        requiredFieldsCount++;
+        if($(this).text() == "") c_contact = false; else filledCount++;
+    });
+    requiredFieldsCount++;
+    if(!window.record.fields["Profile Picture"] || window.record.fields["Profile Picture"].length == 0) c_photo = false; else filledCount++;
+
+    $(".profile-completeness").text(`${Math.floor(filledCount/requiredFieldsCount*100)}%`);
+    if(!c_app) {
+        $(`[target="tab-appearance"] .incomplete-badge`).show();
+        $(`#tab-appearance .warning`).show();
+    }
+    else {
+        $(`[target="tab-appearance"] .incomplete-badge`).hide();
+        $(`#tab-appearance .warning`).hide();
+    }
+    if(!c_contact) {
+        $(`[target="tab-contact"] .incomplete-badge`).show();
+        $(`#tab-contact .warning`).show();
+    }
+    else {
+        $(`[target="tab-contact"] .incomplete-badge`).hide();
+        $(`#tab-contact .warning`).hide();
+    }
+    if(!c_photo) {
+        $(`[target="tab-photos"] .incomplete-badge`).show();
+        $(`#tab-photos .warning`).show();
+    }
+    else {
+        $(`[target="tab-photos"] .incomplete-badge`).hide();
+        $(`#tab-photos .warning`).hide();
+    }
+    if(c_app && c_contact && c_photo) {
+        $("[incomplete-indicator]").hide();
+        $(".fix-now").hide();
+        $(".fix-now-indicator").hide();
+        $(".profile-complete-indicator").show();
+        $(".profile-incomplete-indicator").hide();
+        $(".profile-completeness").addClass("complete");
+        $(".profile-activation-badge").addClass("active");
+    } else {
+        $("[incomplete-indicator]").show();
+        $(".fix-now").show();
+        $(".fix-now-indicator").show();
+        $(".profile-complete-indicator").hide();
+        $(".profile-incomplete-indicator").show();
+        $(".profile-completeness").removeClass("complete");
+        $(".profile-activation-badge").addClass("inactive");
+
+        //fix now
+        $(".fix-now").off('click');
+        $(".fix-now").click(function() {
+            if(!c_app) $("[target='tab-appearance']").click();
+            else if(!c_photo) $("[target='tab-photos']").click();
+            else if(!c_contact) $("[target='tab-contact']").click();
+        });
+    }
+
+    $(".close-warning").off('click');
+    $(".close-warning").click(function() {
+        $(this).parent().hide();
+    });
+}
+
+let refresh = () => {
+    let param = {talentID: window.record.fields["id"]};
+    if($(".project-item[projectID]").length == 0) return;
+    if(offset != -1) param.offset = offset;
+    Utils.postJson("/api/chat/list.php", param).then((res) => {
+        if(res.error) {
+            Utils.toast(res.msg);
+            return;
+        }
+        let unread = {};
+        res.messages.reverse().forEach(msg => {
+            let msg_pID = msg["Project ID"];
+            let msg_ID = parseInt(msg["ID"]);
+            if(offset < msg_ID) offset = msg_ID;
+            if(!messages[msg_pID]) messages[msg_pID] = [];
+            messages[msg_pID].push(msg);
+        });
+
+        Object.keys(messages).forEach(roomkey => {
+            let chathistory = messages[roomkey];
+            let room = chathistory[chathistory.length - 1];
+            let pid = room["Project ID"];
+            $(`.project-item[projectID="${pid}"]`).attr("last-message-id", room["ID"]);
+            chathistory.forEach(item => {
+                if(item["Unread"] == "1" && item["To Talent"] == "1") {
+                    //Has unread
+                    if(!unread[pid]) unread[pid] = 0;
+                    unread[pid]++;
+                }
+            });
+        });
+
+        //Sort project panels        
+        let sorted = true;
+        while(sorted) {
+            sorted = false;
+            let panels = $(`.project-item[projectID]`);
+            for(let i=0; i<panels.length - 1; i++) {
+                let myid = parseInt($(panels[i]).attr("last-message-id"));
+                let nextid = parseInt($(panels[i+1]).attr("last-message-id"));
+                if(myid<nextid) {
+                    $(panels[i+1]).insertBefore($(panels[i]));
+                    sorted = true;
+                    i = panels.length;
+                }
+            }
+        }
+
+        $(".project-item [new-message-indicator]").hide();
+        Object.keys(unread).forEach(pid => {
+            let unreadCount = unread[pid];
+            let selector = $(`.project-item[projectID="${pid}"] [new-message-indicator]`);
+            selector.text(unreadCount);
+            if(unreadCount != 0) selector.show();
+        });
+    });
+};
+
+function addPhotoNode(gallery, type) {
+    let removeFunctionName = 'removeGallery(';
+    if(type == "vehicle1") removeFunctionName = 'removeVehiclePhoto(1, ';
+    else if(type == "vehicle2") removeFunctionName = 'removeVehiclePhoto(2, ';
+    let newdiv = `<div class="gallery" gallery-url="${gallery.url}">
+            <img src="${gallery.url}" />
+            <div class="overlay">
+                <div class="remove-photo" onclick="${removeFunctionName}'${gallery.url}')">REMOVE</div>
+            </div>
+        </div>`;
+    $(newdiv).insertBefore(".add-photo-area[type='" + type + "']");
+}
+function addGalleryPhoto(saved_name) {
+    Loader.start();
+
+    let galleries = window.record.fields["Gallery Photo"] || [];
+    galleries.push({url: "images/" + saved_name});
+    
+    let updateParam = {
+        "Gallery Photo": galleries
+    };
+    
+    let url = "/api/talent/update.php";
+    record.fields = window.record.fields = {...window.record.fields, ...updateParam};
+    Utils.postText(url,[record]).then(text => {
+        Loader.stop();
+        window.record.fields["Gallery Photo"] = record.fields["Gallery Photo"];
+        let gal = record.fields["Gallery Photo"];
+        addPhotoNode(gal[gal.length - 1], "gallery");
+    });
+}
+function addProfilePhoto(saved_name) {
+    Loader.start();
+
+    let profilePictures = [{url: "images/" + saved_name}];
+    
+    let updateParam = {
+        "Profile Picture": profilePictures
+    };
+
+    let url = "/api/talent/update.php";
+    record.fields = window.record.fields = {...window.record.fields, ...updateParam};
+    Utils.postText(url,[record]).then(text => {
+        Loader.stop();
+        window.record.fields["Profile Picture"] = record.fields["Profile Picture"];
+        let profilePicture = record.fields["Profile Picture"][0].url;
+        $(".profile-picture>img").attr("src", profilePicture);
+        updateCompletenessIndicator();
+    });
+}
+function addVehiclePhoto(idx, saved_name) {
+    Loader.start();
+
+    let vehiclePhotos = [{url: "images/" + saved_name}];
+    
+    let updateParam = {};
+    updateParam[`Vehicle ${idx} Photos`] = vehiclePhotos;
+
+    let url = "/api/talent/update.php";
+    record.fields = window.record.fields = {...window.record.fields, ...updateParam};
+    Utils.postText(url,[record]).then(text => {
+        Loader.stop();
+        let photos = record.fields[`Vehicle ${idx} Photos`];
+        window.record.fields[`Vehicle ${idx} Photos`] = photos;
+        $(`.vehicle-img-container.vehicle${idx}`).attr("src", photos[0].url);
+        $(`.vehicle-img-container.vehicle${idx} img`).attr("src", photos[0].url);
+    });
+}
+function removeVehiclePhoto(idx) {
+    Loader.start();
+    $(`.vehicle-img-container.vehicle${idx}`).addClass('working');
+    
+    let updateParam = {};
+    updateParam[`Vehicle ${idx} Photos`] = [];
+
+    let url = "/api/talent/update.php";
+    record.fields = window.record.fields = {...window.record.fields, ...updateParam};
+    Utils.postText(url,[record]).then(text => {
+        Loader.stop();
+        window.record.fields[`Vehicle ${idx} Photos`] = [];
+        $(`.vehicle-img-container.vehicle${idx}`).attr("src", "");
+    });
+}
+function removeGallery(urlToRemove) {
+    Loader.start();
+    $(`.photo-container .gallery[gallery-url='${urlToRemove}']`).addClass('working');
+    
+    let updateParam = {
+        "Gallery Photo": window.record.fields["Gallery Photo"].filter(gallery => gallery.url != urlToRemove)
+    };
+
+    let url = "/api/talent/update.php";
+    record.fields = window.record.fields = {...window.record.fields, ...updateParam};
+    Utils.postText(url,[record]).then(text => {
+        Loader.stop();
+        window.record.fields["Gallery Photo"] = record.fields["Gallery Photo"];
+        $(`.photo-container .gallery[gallery-url='${urlToRemove}']`).remove();
+    });
+}
+$(document).ready(() => {
+    Loader.start();
+    $(".container").addClass('displayNone');
+    
+    //Load Data    
+    let url = "/api/talent/get.php?id=" + id;
+    Utils.getJson(url).then((record) => {
+        window.record = record;
+        Loader.stop();
+        if(!window.template) window.template = $("body").html();
+        let replaced = template;
+        //Text templates
+        Object.keys(record.fields).forEach(key => {
+            let value = record.fields[key];
+            if(value && typeof value == 'object' && typeof value[0] == 'object') {
+                replaced = replaced.replaceAll(`{{${key}}}`, value[0].url);
+            }
+            else if(key == 'Birth Date') replaced = replaced.replaceAll(`{{${key}}}`, value?moment(value).format("MM/DD/YYYY"):"");
+            else if(key == 'Card Number' && value) replaced = replaced.replaceAll(`{{${key}}}`, `************${value}`);
+            else replaced = replaced.replaceAll(`{{${key}}}`, value==null?"":value);
+        });
+        replaced = replaced.replaceAll(/\{\{[a-zA-Z0-9 \/\(\)\#]+\}\}/g, "");
+        $("body").html(replaced);
+
+        //Stripe card html
+        // Custom styling can be passed to options when creating an Element.
+        var style = {
+            base: {
+                // Add your base input styles here. For example:
+                fontSize: '20px',
+                color: '#32325d',
+            },
+        };
+        
+        // Create an instance of the card Element.
+        var card = elements.create('card', {style: style});
+        
+        // Add an instance of the card Element into the `card-element` <div>.
+        card.mount('#card-element');
+        
+        function stripeTokenHandler(token, brand, last4) {
+            // Insert the token ID into the form so it gets submitted to the server
+            $('#payment-form input[name="stripeToken"]').val(token.id);
+            $('#payment-form input[name="last4"]').val(token.card.last4);
+            $('#payment-form input[name="brand"]').val(token.card.brand);
+            $('#payment-form input[name="talentID"]').val(record.fields["id"]);
+            $('#payment-form input[name="email"]').val(record.fields["Email"]);
+          
+            // Submit the form     
+            let $form = $('#payment-form');
+            let ajaxData = new FormData($form.get(0));
+            $.ajax({
+                url: $form.attr('action'),
+                type: $form.attr('method'),
+                data: ajaxData,
+                dataType: 'json',
+                cache: false,
+                contentType: false,
+                processData: false,
+                complete: function() {
+                },
+                success: function(data) {
+                    console.log(data);
+                    Loader.stop();
+                    $(`#tab-billing`).removeClass("editing");
+                    $(`[key="Card Number"]`).text(`************${token.card.last4}`);
+                    $(`[key="Card Type"]`).text(token.card.brand);
+                },
+                error: function() {
+                    Loader.stop();
+                    // Log the error, show an alert, whatever works for you
+                }
+            });            
+        }
+        $(".save-card-btn").click(function() {
+            Loader.start();
+            stripe.createToken(card).then(function(result) {
+                if (result.error) {
+                    Loader.stop();
+                    // Inform the customer that there was an error.
+                    var errorElement = document.getElementById('card-errors');
+                    errorElement.textContent = result.error.message;
+                } else {
+                    // Send the token to your server.
+                    stripeTokenHandler(result.token);
+                }
+            });
+        });
+
+        //copy summary to all tabs
+        let summaryTemplate = $(".summary");
+        $("#appearance_measurement").prepend(summaryTemplate.clone());
+        $("#appearance_physical").prepend(summaryTemplate.clone());
+        $("#photos_photos").prepend(summaryTemplate.clone());
+        $("#photos_videos").prepend(summaryTemplate.clone());
+        $("#tab-contact .card").prepend(summaryTemplate.clone());
+
+        //Completeness
+        updateCompletenessIndicator();
+        //Verified badge
+        if(record.fields["Verified/Non-Verified"] == "Verified") {
+            $(".stamp-verified").show();
+            $(".stamp-unverified").hide();
+        }
+        else
+        {
+            $(".stamp-verified").hide();
+            $(".stamp-unverified").show();
+        }
+
+        //Image templates
+        let galleries = record.fields["Gallery Photo"] || [];
+        galleries.forEach(gallery => {
+            addPhotoNode(gallery, "gallery");
+        });
+
+        //expand/collapse accordian
+        $("tab-content .sub-tab").click(function() {
+            let editing = $("tab-content .sub-tab.edit");
+            if(editing.length > 0 && editing[0] == $(this)[0]) return;
+            if(editing.length > 0) {
+                let leave = confirm("Your changes have not been saved.\nAre you sure you want to proceed without saving?");
+                if(!leave) return;
+                editing.removeClass("editing");
+            }
+            $(this).parent().find(".sub-tab").removeClass("active");
+            $(this).addClass("active");
+            $(this).removeClass("editing");
+            updateCompletenessIndicator();
+        });
+
+        $('tab-contents>tab-content:not(:nth-child(1))').addClass('displayNone');
+        $('#tab-dashboard').removeClass('displayNone');
+        $(".container").removeClass('displayNone');
+        //select boxes initialization
+        $("select[min]").each(function() {
+            let min = $(this).attr('min');
+            let max = $(this).attr('max') || '9999';
+            let step = $(this).attr('step') || '1';
+            min = parseFloat(min);
+            max = parseFloat(max);
+            step = parseFloat(step);
+            $(this).append(`<option value=''>--Select--</option>`);
+            for(let i=min; i<=max; i+=step) {
+                $(this).append(`<option value='${i}'>${i}</option>`);
+            }
+        });
+
+        //Edit button handler
+        $(".edit-btn").click(function(ev) {
+            ev.stopPropagation();
+            let form = $(this).attr("form");
+            $(`#${form}`).addClass("editing");
+            
+            $(".editing select").each(function() {
+                let key = $(this).parent().parent().attr('key');
+                if(key) {
+                    $(this).val($(this).parent().parent().find('val').text());
+                }
+            });
+            
+            $(".editing input").each(function() {
+                let key = $(this).parent().parent().attr('key');
+                let val = $(this).parent().parent().find('val').text();
+                if(key) {
+                    if(key == 'Birth Date')
+                        $(this).val(moment(val).format('YYYY-MM-DD'));
+                    else
+                        $(this).val(val);
+                }
+            });
+            $("[height-selector]").each(function() {
+                let height = $(this).find('val').text();
+                let splitted = height.split("ft");
+                let ft = splitted[0] || '0';
+                let szIn = splitted[1] || '0';
+                let splitted2 = szIn.split("in");
+                let inch = splitted2[0] || '0';
+                ft = parseInt(ft);
+                inch = parseInt(inch);
+                $(this).find('select[inch]').val(inch);
+                $(this).find('select[feet]').val(ft);
+            });
+            $("[bust-selector]").each(function() {
+                let height = $(this).find('val').text();
+                let splitted = height.split(" / ");
+                let bust = splitted[0] || '';
+                let cup = splitted[1] || '';
+                $(this).find('select[bust]').val(bust);
+                $(this).find('select[cup]').val(cup);
+            });
+            $("[chest-selector]").each(function() {
+                let chestsuit = $(this).find('val').text();
+                let splitted = chestsuit.split(" / ");
+                let chest = splitted[0] || '';
+                let suit = splitted[1] || '';
+                $(this).find('select[chest]').val(chest);
+                $(this).find('select[suit]').val(suit);
+            });
+        });
+        $(".save-btn").click(function() {
+            event.stopPropagation();
+            let recordID = record.fields["id"];
+            let updateParam = {};
+            let form = $(this).attr("form");
+            $(`#${form}`).find("[save='true']:visible").each(function() {
+                let value = $(this).find("editor>*").val();
+                let key = $(this).attr("key");
+                //data generation
+                if(key == "Height (ft/in)") {
+                    value = $(this).find("editor>select[feet]").val() + " ft " + $(this).find("editor>select[inch]").val() + " in";
+                    if($(this).find("editor>select[feet]").val() == "" || $(this).find("editor>select[inch]").val() == "") value = "";
+                } else if(key == "Bust") {
+                    value = $(this).find("editor>select[bust]").val() + " / " + $(this).find("editor>select[cup]").val();
+                    if(value == " / ") value = "";
+                } else if(key == "Suit Type") {
+                    value = $(this).find("editor>select[chest]").val() + " / " + $(this).find("editor>select[suit]").val();
+                    if(value == " / ") value = "";
+                }
+                //
+                if(key) {
+                    updateParam[key] = value;
+                }
+            });
+            
+            //validation
+            Object.keys(updateParam).forEach((key) => {
+                let value = updateParam[key];
+                if(record.fields["Gender"] == "Female") {
+                    switch(key) {
+                        case "Shirt":
+                        case "Neck":
+                        case "Sleeve":
+                        case "Inseam":
+                        case "Suit Type":
+                            return;
+                    }
+                } else {
+                    switch(key) {
+                        case "Hips":
+                        case "Bust":
+                        case "Dress":
+                            return;
+                    }
+                }
+                if(key == "Tattoos / Piercings") return;
+                if(value == "") {
+                    switch(key) {
+                        case "SAG #":
+                            if(updateParam["Union Status"] == "SAGAFTRA" || updateParam["Union Status"] == "SAG+NU") {
+                                updateParam.error = true;
+                                updateParam.msg = "You must be a SAGAFTRA Member to list your Union Status as SAGAFTRA or SAG+NU.\nPlease enter your SAGAFTRA Number or select Non-Union as your Union Status.";
+                            }
+                            break;
+                        default:
+                            updateParam.error = true;
+                            updateParam.msg = `${key} is required.`;
+                    }
+                }
+                if(key == "Email" && !Utils.validateEmail(value)) {
+                    updateParam.error = true;
+                    updateParam.msg = `Please enter a valid email address.`;
+                }
+                if(key == "ZIP Code" && (!Utils.validateZip(value) || value.length != 5)) {
+                    updateParam.error = true;
+                    updateParam.msg = `Please enter a valid ZIP Code.`;
+                }
+                let phonedigits = (updateParam["Primary Phone Number"]??"").replace(/\D/g,'');
+                if(key == "Primary Phone Number" && phonedigits.length != 10) {
+                    updateParam.error = true;
+                    updateParam.msg = "Please enter a valid phone number.";
+                }
+            });
+            if(updateParam.error) {
+                Utils.toast(updateParam.msg);
+                return;
+            }
+            Loader.start();
+            let url = "/api/talent/update.php";
+            record.fields = window.record.fields = {...window.record.fields, ...updateParam};
+            Utils.postText(url,[record]).then(text => {
+                $(`#${form}`).removeClass("editing");
+                Loader.stop();
+                //Update labels
+                $("tab-content:not(#tab-dashboard) [key]").each(function() {
+                    let key = $(this).attr("key");
+                    let value = record.fields[key];
+                    $(this).find('val').text(value || "");
+                });
+                //Update Gender
+                //Gender attribute
+                $(".male,.female").addClass('displayNone');
+                $("." + (record.fields["Gender"]||"Female").toLowerCase()).removeClass('displayNone');
+                
+                //Completeness
+                updateCompletenessIndicator();
+            });
+        });
+        $(".cancel-btn").click(function() {
+            event.stopPropagation();
+            let form = $(this).attr("form");
+            $(`#${form}`).removeClass("editing");
+            updateCompletenessIndicator();
+        });
+        //Vehicle 2
+        $(".vehicle2").click(function() {
+            $(this).removeClass("collapsed");
+            $(this).off("click");
+        });
+        //Availability
+        $(".edit-availability").click(function() {
+            $("[target='tab-availability']").click();
+        });
+        let avilTemplate = $('#tab-availability .content-wrapper .row.template')[0];
+        for(let i=0; i<7; i++) {
+            let newnode = $(avilTemplate.cloneNode(true)).removeClass("template");
+            $('#tab-availability .content-wrapper').append(newnode);        
+            let after = moment().add(i, 'days');
+            let dayOfWeek = after.format('dddd');
+            newnode.find(`.day`).text(after.format('DD'));
+            newnode.find(`.month`).text(after.format('MMMM'));
+            newnode.find(`.dayOfWeek`).text(dayOfWeek);
+            newnode.find(`.avail-option`).removeClass('active');
+            let classname = '';
+            if(record.fields["On" + dayOfWeek] == "Available") classname = 'available';
+            else if(record.fields["On" + dayOfWeek] == "Unavailable") classname = 'unavailable';
+            
+            newnode.addClass(classname);
+            newnode.find(`select`).val(classname);
+            
+            //dashboard indicators
+            $(`.availability-dow:eq(${i})`).text(after.format('ddd').toUpperCase());
+            $(`.availability-indicator:eq(${i})`).addClass(classname);
+            
+            //Event handlers
+            newnode.find(`.avail-option`).on('change', function() {
+                Loader.start();
+                let updateParam = {};
+                let value = $(this).val();                
+                if(value == 'available') updateParam["On" + dayOfWeek] = "Available";
+                else if(value == 'unavailable') updateParam["On" + dayOfWeek] = "Unavailable";
+                else updateParam["On" + dayOfWeek] = "Not sure";
+                let url = "/api/talent/update.php";
+                record.fields = window.record.fields = {...window.record.fields, ...updateParam};
+                Utils.postText(url,[record]).then(text => {
+                    Loader.stop();
+                    window.record.fields["On" + dayOfWeek] = record.fields["On" + dayOfWeek];
+                    $(this).parent().parent().removeClass("available");
+                    $(this).parent().parent().removeClass("unavailable");
+                    $(this).parent().parent().addClass(value);
+                    $(`.availability-indicator:eq(${i})`).removeClass("available");
+                    $(`.availability-indicator:eq(${i})`).removeClass("unavailable");
+                    $(`.availability-indicator:eq(${i})`).addClass(value);
+                });
+            });
+        }
+        
+        //Covert container src to img src attribute
+        $('.img-container').each(function() {
+            $(this).find('img').attr("src", $(this).attr("src"));
+        });
+
+        //Gender attribute
+        $(".male,.female").addClass('displayNone');
+        $("." + (record.fields["Gender"]||"Female").toLowerCase()).removeClass('displayNone');
+    
+        var droppedFiles = false;
+        var $form = $("form#attachment-form");
+
+        var upload = function(droppedFiles, container) {
+            if(container.hasClass("uploading")) return;            
+            var ajaxData = new FormData($form.get(0));
+            let phototype = container.attr("type");
+            if(record.fields["Verified/Non-Verified"] == "Verified" && phototype == "profile") return;
+            container.addClass("uploading");
+
+            if (droppedFiles) {
+                $.each( droppedFiles, function(i, file) {
+                    ajaxData.append( 'files', file );
+                });
+            }
+            ajaxData.append( 'talent_id', record.fields["id"] );
+
+            $.ajax({
+                url: $form.attr('action'),
+                type: $form.attr('method'),
+                data: ajaxData,
+                dataType: 'json',
+                cache: false,
+                contentType: false,
+                processData: false,
+                complete: function() {
+                },
+                success: function(data) {
+                    if(!data.error) {
+                        if(phototype == "gallery") {
+                            addGalleryPhoto(data.saved_name);
+                        }
+                        else if(phototype == "vehicle1") {                            
+                            addVehiclePhoto(1, data.saved_name);
+                        }
+                        else if(phototype == "vehicle2") {
+                            addVehiclePhoto(2, data.saved_name);
+                        }
+                        else if(phototype == "profile") {
+                            addProfilePhoto(data.saved_name);
+                        }
+                    } else {
+                        console.error(data.msg);
+                    }
+                    container.removeClass("uploading");
+                },
+                error: function() {
+                    // Log the error, show an alert, whatever works for you
+                }
+            });            
+        }
+
+        if(record.fields["Verified/Non-Verified"]=='Verified') $('.add-photo-area[type="profile"]+div').addClass("displayNone");
+    
+        $('.add-photo-area').on('drag dragstart dragend dragover dragenter dragleave drop', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        })
+        .on('dragover dragenter', function() {
+            $(this).addClass('is-dragover');
+        })
+        .on('dragleave dragend drop', function() {
+            $(this).removeClass('is-dragover');
+        })
+        .on('drop', function(e) {            
+            droppedFiles = e.originalEvent.dataTransfer.files;
+            upload(droppedFiles, $(this));
+        })
+        .on('click', function(e) {
+            if($(this).attr("type") == 'profile' && record.fields["Verified/Non-Verified"]=='Verified') return;
+            $("#file_selector").click();
+            let container = this;
+            $("#file_selector").off();
+            $("#file_selector").on('change', function() {
+                if($(this)[0].files.length != 0) {
+                    upload($(this)[0].files, $(container));
+                }
+                $(this)[0].value = null;
+            });
+        });
+
+        //SAGAFTRA SAG#
+        $("[key='Union Status'] select").on('change', function(e) {
+            if($(this).val() == 'SAGAFTRA' || $(this).val() == 'SAG+NU') $('.sag-row.row').show();
+            else $('.sag-row.row').hide();
+        });
+
+        Utils.getJson(`/api/billing/history.php?id=${record.fields["id"]}`).then(data => {
+            if(data.error) {
+                Utils.toast(data.msg);
+                return;
+            }
+            $(".billing-history tbody tr:not(.template)").remove();
+            data.records.forEach(record => {
+                $(".billing-history tbody tr.template").clone().removeClass("template").appendTo($(".billing-history tbody")).each(function() {
+                    let node = $(this);
+                    node.find("[shoot-date]").text(moment(record["Shoot Date"]).format("MM/DD/YYYY"));
+                    node.find("[project-name]").text(record["Project Name"]);
+                    node.find("[total]").text(new Intl.NumberFormat('en-US', { currency: 'USD', style: 'currency' }).format(record["Total"]));
+                    node.find("[fee]").text(new Intl.NumberFormat('en-US', { currency: 'USD', style: 'currency' }).format(record["Fees"]));
+                    node.find("[description]").text(record["Description"]);
+                    // node.find(".payroll-name").text(record["Project Name"]);
+                });
+            });
+        });
+        Utils.postJson("/api/project-detail/all.php", {talentID:record.fields["id"]}).then(data => {        
+            let statusFilter = ["Not In Project", "In Project (Not Contacted)"];
+            window.castingDetails = data.records.filter(e => e["Status"] && !statusFilter.includes(e["Status"]));
+            let template = $("#tab-dashboard .project-item.template");
+            let newreq = 0;
+            window.castingDetails.forEach(cdetail => {
+                //Check if project is new
+                let statusMap = {
+                    "Availability Check Sent": "Please Update Your Availability",
+                    "Booking Email Sent": "Please Confirm Your Booking",
+                    "Final Details Sent": "Please Confirm Your Final Details",
+                }
+                let status = cdetail["Status"];                
+                let dayDiff = moment(cdetail["Shoot Date"] || "").diff(moment(), 'second');
+                if(dayDiff>=0 && (status == "Availability Check Sent" || status == "Booking Email Sent" || status == "Final Details Sent")) newreq++;
+                //
+                let newnode = template.clone().insertBefore("#tab-dashboard .project-item.template").removeClass("template").attr("projectID", cdetail["Project"]);
+                newnode.find("[key='Project Name'] val").text(cdetail["Project Name"] || "");
+                newnode.find("[key='Shoot Date'] val").text(cdetail["Shoot Date"]?(moment(cdetail["Shoot Date"]).format("dddd, MM/DD/YYYY")):"");
+                newnode.find("[key='Status'] val").text(statusMap[status] || status);
+                newnode.find("[key='Base Rate + General Location'] val").text(cdetail["Base Rate + General Location"] || "");
+                newnode.find(".chat-page").attr("pid", cdetail["Project"]);
+                //show notes for status
+                newnode.find("button[positive]").removeClass("active");
+                if(status == "Available" || status == "Booking Confirmed" || status == "Available to Hold" || status == "Final Details Confirmed") {
+                    newnode.find("button[positive]").addClass("active");
+                }
+                newnode.find("button[negative]").removeClass("active");
+                if(status == "Unavailable" || status == "Remove from Booking Selects" || status == "Unavailable to Hold" || status == "Emergency") {
+                    newnode.find("button[negative]").addClass("active");
+                }
+                newnode.find("[key='General Location']").hide();
+                switch(status) {
+                    case "Availability Check Sent":
+                    case "Available":
+                    case "Unavailable":
+                    case "Booking Email Sent":
+                    case "Booking Confirmed":
+                    case "Remove from Booking Selects":
+                    case "Hold Requested":
+                    case "Available to Hold":
+                    case "Unavailable to Hold":
+                        newnode.find("[key='Project Notes'] val").text(cdetail["Avail Check Notes"] || "");
+                        newnode.find("[key='General Location'] val").text(cdetail["General Location"] || "");
+                        newnode.find("[key='General Location']").show();
+                        break;
+                    case "Final Details Sent":
+                    case "Final Details Confirmed":
+                    case "Emergency":
+                        newnode.find("[key='Project Notes'] val").text(cdetail["Final Details Notes"] || "");
+                        break;
+                }
+                
+                switch(status) {
+                    case "Availability Check Sent":
+                    case "Available":
+                    case "Unavailable":             
+                        newnode.find("[positive]").text("Available");
+                        newnode.find("[positive]").attr("status", "Available");
+                        newnode.find("[negative]").text("Unavailable");
+                        newnode.find("[negative]").attr("status", "Unavailable");
+                        newnode.find("b[button-guide]").text("Please leave your availability for this project.");
+                        newnode.find("b[button-guide-desc]").text("Please make sure you keep this information up to date until the shoot date.");
+                        break;
+                    case "Booking Email Sent":
+                    case "Booking Confirmed":
+                    case "Remove from Booking Selects":          
+                        newnode.find("[positive]").text("Accept Booking");
+                        newnode.find("[positive]").attr("status", "Booking Confirmed");
+                        newnode.find("[negative]").text("Decline Booking");
+                        newnode.find("[negative]").attr("status", "Remove from Booking Selects");
+                        if(status == "Booking Confirmed") {
+                            newnode.find("[negative]").text("Emergency");
+                            newnode.find("[negative]").attr("status", "Emergency");
+                        }
+                        newnode.find("b[button-guide]").text("Please confirm or deny this booking.");
+                        newnode.find("b[button-guide-desc]").text("Please make sure you keep this information up to date until the shoot date.");
+                        break;
+                    case "Hold Requested":
+                    case "Available to Hold":
+                    case "Unavailable to Hold":     
+                        newnode.find("[positive]").text("Available");
+                        newnode.find("[positive]").attr("status", "Holding");
+                        newnode.find("[negative]").text("Unavailable");
+                        newnode.find("[negative]").attr("status", "Unavailable");
+                        if(status == "Available to Hold") {
+                            newnode.find("[negative]").text("Emergency");
+                            newnode.find("[negative]").attr("status", "Emergency");
+                        }
+                        newnode.find("b[button-guide]").text("Please leave your availability to hold.");
+                        newnode.find("b[button-guide-desc]").text("Please make sure you keep this information up to date until the shoot date.");
+                        break;
+                    case "Final Details Sent":
+                    case "Final Details Confirmed":
+                        newnode.find("[positive]").text("Confirm");
+                        newnode.find("[positive]").attr("status", "Final Details Confirmed");
+                        newnode.find("[negative]").text("Emergency");
+                        newnode.find("[negative]").attr("status", "Emergency");
+                        newnode.find("b[button-guide]").text("Please confirm you have read and understood these details.");
+                        newnode.find("b[button-guide-desc]").text("Please make sure you keep this information up to date until the shoot date.");
+                        break;
+                    case "Emergency":
+                        newnode.find("[positive]").hide();
+                        newnode.find("[negative]").text("Emergency");
+                        newnode.find("[negative]").attr("status", "Emergency");
+                        newnode.find("b[button-guide]").text("");
+                        newnode.find("b[button-guide-desc]").text("");
+                        break;
+                }
+
+                let loffset;
+                let refreshChatWindow = () => {
+                    let data = messages[cdetail["Project"]]??[];
+                    let autoScroll = loffset==undefined;
+                    let chatProjectId = cdetail["Project"];
+
+                    if($(".chat-page:visible[pid='" + chatProjectId + "'] .list").length == 0) return;
+                    if(loffset == offset) return;                    
+                                        
+                    let scrollHeight = $(".chat-page:visible[pid='" + chatProjectId + "'] .list")[0].scrollHeight;
+                    let scrollTop = $(".chat-page:visible[pid='" + chatProjectId + "'] .list").scrollTop();
+                    let height = $(".chat-page:visible[pid='" + chatProjectId + "'] .list").height();
+
+                    $(".chat-page:visible[pid='" + chatProjectId + "'] .list .msg-item:not(.template)").remove();
+                    data.forEach(item => {
+                        let newnode = $(".chat-page:visible[pid='" + chatProjectId + "'] .list .msg-item.template").clone();
+                        newnode.removeClass("template");
+                        if(item["To Talent"] == 0) {
+                            newnode.find("img").attr("src", Utils.getAvatar(item["Profile Picture"]));
+                        } else {
+                            newnode.find("img").attr("src", `assets/img/icon.png`);
+                        }
+                        newnode.find(".time").text(moment.unix(parseInt(item["Timestamp"])).fromNow());
+                        newnode.find("div.content").text(item["Content"]);
+                        if(item["To Talent"] == 1) newnode.addClass("received");
+                        else newnode.removeClass("received");
+                        $(".chat-page:visible[pid='" + chatProjectId + "'] .list").append(newnode);
+                    });
+
+                    if(scrollTop + height >= scrollHeight || autoScroll) {
+                        let newHeight = Math.max($(".chat-page:visible[pid='" + chatProjectId + "'] .list")[0].scrollHeight - scrollHeight + scrollTop, 0);
+                        if(autoScroll) newHeight = $(".chat-page:visible[pid='" + chatProjectId + "'] .list")[0].scrollHeight;
+                        $(".chat-page:visible[pid='" + chatProjectId + "'] .list").scrollTop(newHeight);
+                    } else {
+                        $(".chat-page:visible[pid='" + chatProjectId + "'] .list").scrollTop(scrollTop);
+                    }
+
+                    let unreadData = data.filter(e => e["To Talent"] == 1 && e["Unread"] == "1");
+                    if(unreadData.length != 0) {
+                        Utils.postJson("/api/chat/read.php", {projectID: chatProjectId, talentID: unreadData[0]["Talent ID"], offset: unreadData[unreadData.length - 1]["ID"], toTalent: 1}).then((res) => {
+                            if(res.error) console.log(res.msg);
+                            else {
+                                unreadData.forEach(item => {
+                                    item["Unread"] = "0";
+                                });
+                            }
+                        });
+                    }
+
+                    loffset = offset;
+                };
+                setInterval(refreshChatWindow, 10);
+                refreshChatWindow();
+
+                //Chat
+                function _sendChatMessage(content, chatProjectId, success) {
+                    if(content) {
+                        Utils.postJson("/api/chat/send.php", {projectID: chatProjectId, talentID: window.record.fields["id"], toTalent: 0, content: content, projectName: cdetail["Project Name"][0]}).then(() => {        
+                            success && success();
+                        });
+                    } else {
+                        success && success();
+                    }
+                }
+
+                newnode.find(".input input").on("keyup", function(event) {
+                    let inputbox = $(this);
+                    let content = inputbox.val();
+                    // Number 13 is the "Enter" key on the keyboard
+                    if (event.keyCode === 13) {
+                        // Cancel the default action, if needed
+                        event.preventDefault();
+                        // Trigger the button element with a click
+                        _sendChatMessage(content, cdetail["Project"], function() {
+                            inputbox.val("");
+                        });
+                    }    
+                });
+                newnode.find(".input button").on("click", function() {
+                    let inputbox = $(this).parent().find("input");
+                    let content = inputbox.val();
+                    _sendChatMessage(content, cdetail["Project"], function() {
+                        inputbox.val("");
+                    });
+                });
+                newnode.find("[positive],[negative]").on("click", function() {
+                    if($(this).hasClass("active")) return;
+                    Loader.start();
+                    let status = $(this).attr("status");
+                    let param = {
+                        talentIDs: [record.fields["id"]],
+                        projectID: cdetail["Project"],
+                        status: status,
+                    };
+
+                    Utils.postJson("/api/talent/update-status.php", param).then((response) => {
+                        if(response.error) {
+                            Loader.stop();
+                            Utils.toast(response.msg);
+                            return;
+                        }
+                        Loader.stop();
+                        newnode.find("[key='Status'] val").text(status);
+                        switch(status) {
+                            case "Available":
+                                $("i[thanks]").text("Thanks for leaving your availability! We'll let you know when we have more info.");
+                                break;
+                            case "Unavailable":
+                                $("i[thanks]").text("Thanks for leaving your availability! We'll let you know when we have more info.");
+                                break;
+                            case "Booking Confirmed":
+                                $("i[thanks]").text("Thanks for accepting our booking!");
+                                break;
+                            case "Remove from Booking Selects":          
+                                $("i[thanks]").text(":( Sorry to hear that.");
+                                break;
+                            case "Available to Hold":
+                                $("i[thanks]").text("Thanks for updating.");
+                                break;
+                            case "Unavailable to Hold":
+                                $("i[thanks]").text("Thanks for updating.");
+                                break;
+                            case "Final Details Confirmed":
+                                $("i[thanks]").text("Thanks for confirming the details.");
+                                break;
+                            case "Emergency":
+                                $("i[thanks]").text("Please let me know the reason of emergency via chat.");
+                                break;                   
+                        }                
+                        newnode.find("button[positive]").removeClass("active");
+                        if(status == "Available" || status == "Booking Confirmed" || status == "Available to Hold" || status == "Final Details Confirmed") {
+                            newnode.find("button[positive]").addClass("active");
+                        }
+                        newnode.find("button[negative]").removeClass("active");
+                        if(status == "Unavailable" || status == "Remove from Booking Selects" || status == "Unavailable to Hold" || status == "Emergency") {
+                            newnode.find("button[negative]").addClass("active");
+                        }
+
+                        switch(status) {
+                            case "Booking Confirmed":
+                            case "Available to Hold":
+                            case "Final Details Confirmed":
+                                newnode.find("[negative]").text("Emergency");
+                                newnode.find("[negative]").attr("status", "Emergency");
+                                break;
+                            case "Emergency":
+                                newnode.find("[positive]").hide();
+                        }
+                    });
+                });
+                
+                //Chat icon
+                newnode.find("project-title .icon-chat, .chat-page .bg, .chat-page .close-popup").on("click", function() {
+                    newnode.find(".chat-page").toggleClass("displayNone");
+                });
+
+                if(pid == cdetail["Project"]) {
+                    newnode.find("project-title .icon-chat, .chat-page .bg, .chat-page .close-popup").click();
+                    newnode.find(".chat-page .input>input").focus();
+                }
+            });
+            $(".new-request-label").text(newreq);
+            if(castingDetails.length>0) {
+                $("#tab-dashboard .empty-label").addClass("displayNone");
+            } else {
+                $("#tab-dashboard .empty-label").removeClass("displayNone");
+            }
+            
+            //Notification loop
+            refresh();
+            window.chatInterval && clearInterval(window.chatInterval);
+            window.chatInterval = setInterval(refresh, CONFIG.NOTIFICATION.INTERVAL);
+        });
+        
+        //Tab switch
+        let switchTab = function(target) {  
+            let editing = $("tab-content .editing");
+            let newedit = $(`#${target}`).find(".sub-tab:first-child")[0];
+            if(editing.length > 0 && editing[0] == newedit) return;
+            if(editing.length > 0) {
+                let leave = confirm("Your changes have not been saved.\nAre you sure you want to proceed without saving?");
+                if(!leave) return;
+                editing.removeClass("editing");
+            }          
+            $(this).parent().find('tab').attr('active', false);
+            $(`[target="${target}"]`).attr('active', true);
+            $(this).parent().next().find('tab-content').addClass('displayNone');
+            $(`#${target}`).removeClass('displayNone');
+
+            //accordians
+            $(`#${target}`).find("tab:first-child").click();
+            updateCompletenessIndicator();
+        }
+        $('tab').click(function() {
+            $(".navigation-menu").addClass("mobile-hidden");
+            let target = $(this).attr('target');
+            switchTab.apply(this, [target]);
+        });
+        $('.show-navigation,.close-navigation').click(function() {
+            $(".navigation-menu").toggleClass("mobile-hidden");
+        });
+
+        if(tab) {
+            switchTab.apply(this, [tab]);
+        }
+    });
+    setInterval(() => {
+        let imageCount = $('.galleries .gallery').length - 1;
+        $('[key="images"]').text(imageCount);
+        $('[key="videos"]').text(0);
+    }, 100)
+});

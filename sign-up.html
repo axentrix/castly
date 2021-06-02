@@ -181,9 +181,9 @@
              <div>
             
                     <ol class="carousel-dots carousel-indicators signup-dots">
-                        <li class="carousel-dots-each active" data-target="#carousel-screens" >Create Profile</li>
-                        <li class="carousel-dots-each" data-target="#carousel-screens" >Submit for Projects</li>
-                        <li class="carousel-dots-each" data-target="#carousel-screens">Work. Repeat.</li>
+                        <li class="carousel-dots-each active" id="carousel-dots-1" data-target="#carousel-screens" data-slide-to="0">Create Profile</li>
+                        <li class="carousel-dots-each" id="carousel-dots-2" data-target="#carousel-screens" data-slide-to="1">Submit for Projects</li>
+                        <li class="carousel-dots-each" id="carousel-dots-3" data-target="#carousel-screens" data-slide-to="2">Work. Repeat.</li>
                     
                         
                     </ol>
@@ -208,7 +208,7 @@
                                 <div class="js--image-preview"></div>
                                 <div class="upload-options">
                                   <label>
-                                    <input type="file" class="image-upload" id="talent-photo" name="talent-image" accept="image/*" required=""/>
+                                    <input type="file" class="image-upload" id="talent-photo" name="talentphoto" accept="image/*" required=""/>
                                   </label>
                                 </div>
                                
@@ -251,7 +251,7 @@
                                 </select>
                               </div>
                             <div>
-                            <button class="btn btn-primary justify-content-center text-center d-block w-100 mt-3"  data-target="#carousel-screens" data-slide="next">Send<span class="d-inline"><img src="images/mainarrow.svg"></span></button>
+                            <button class="btn btn-primary justify-content-center text-center d-block w-100 mt-3" id="btn1" data-target="#carousel-screens" data-slide="next">Send<span class="d-inline"><img src="images/mainarrow.svg"></span></button>
                        
                      
                         </div>
@@ -279,7 +279,7 @@
                                             <input type="text" id="email"  name="email" class="form-control active" placeholder=""  required="" value="anotovska@axentrix.com"/>
                                             <label class="form-label" for="email">Email</label>
                                           </div>
-                                        <button class="btn btn-primary justify-content-center text-center d-block w-100 mt-3" data-target="#carousel-screens" data-slide="next">Verify<span class="d-inline"><img src="images/mainarrow.svg"></span></button>
+                                        <button class="btn btn-primary justify-content-center text-center d-block w-100 mt-3" data-target="#carousel-screens" data-slide="next" id="btn2">Verify<span class="d-inline"><img src="images/mainarrow.svg"></span></button>
                       <p class="info mt-4">You may also check your spam or junk folder for the email.<br><a href="#">Haven't received anything? Resend.</a></p>
 
                                     </form>
@@ -318,12 +318,15 @@
                                     
                                         </svg>
 
-                                        <div class="chartinfo d-flex justify-content-between"><img src="images/userprofile.svg"><h5 class="error">15%</h5></div>
+                                        <div class="chartinfo d-flex justify-content-center align-items-center" style="margin-top:-50px;"><img src="images/userprofile.svg">
+                                            
+                                            <h3 class="error-text">15%</h3></div>
 
-
+                                            <button class="btn btn-primary justify-content-center text-center d-block w-100 mt-3" data-target="#carousel-screens" data-slide="next" id="btn3">Go to Dashboard<span class="d-inline"><img src="images/mainarrow.svg"></span></button>
+                    
                                    </div>
                                       
-                                    <span class="mb-4">Your profile is now 15% completed.
+                                    <span class="mb-4 mt-4">Your profile is now 15% completed.
                                     </span>
 <p class="small">Please, note that your profile is still not active and visible to casting. You need to fill in all your information to get available for casting.</p>
                                 </div> </div> </div>
@@ -480,6 +483,47 @@
 <script>
     $(document).ready(function () {
        
+        $('#carousel-dots-2').prop('disabled', true);
+        $('#carousel-dots-3').prop('disabled', true);
+        $('#btn1').prop('disabled', true);
+
+function validateNextButton() {
+  var buttonDisabled = $('#username').val().trim() === '' || $('#password').val().trim() === ''
+  || $('#password1').val().trim() === ''
+
+  || $('#password1').val() !== $('#password').val()
+
+  || $("#talent-photo").val().trim() === ''
+  || $('#first-name').val().trim() === ''
+  || $('#last-name').val().trim() === ''
+  || $('#gender').val().trim() === '';
+
+  $('#btn1').prop('disabled', buttonDisabled);
+  $('#carousel-dots-2').prop('disabled', buttonDisabled);
+  $('#carousel-dots-3').prop('disabled', buttonDisabled);
+}
+
+$('#btn2').on('click', function(){
+    $('#carousel-dots-1').prop('disabled', true);
+    $('#carousel-dots-2').prop('disabled', true);
+    $('#carousel-dots-3').prop('disabled', true);
+});
+
+
+$('#btn1').on('click', function(){
+  
+    $('#carousel-dots-3').prop('disabled', true);
+});
+
+$('#username').on('keyup', validateNextButton);
+$('#password').on('keyup', validateNextButton);
+$('#talent-photo').on('change', validateNextButton);
+$('#password1').on('keyup', validateNextButton);
+$('#first-name').on('keyup', validateNextButton);
+$('#last-name').on('keyup', validateNextButton);
+$('#gender').on('keyup', validateNextButton);
+
+
         $('#carousel-screens').on('slide.bs.carousel', function () {
             currentIndex = $('div.active').index() + 1;
 console.log('slid event'+currentIndex);
@@ -716,7 +760,9 @@ JQUERY4U.UTIL = {
         $("#signupform").validate({
 
             onfocusout: function (element) {
+               
                 $(element).valid();
+                
             },
 
             rules: {
@@ -724,11 +770,20 @@ JQUERY4U.UTIL = {
                     required: true
                 },
 
-
+                password: {
+            required: true,
+            minlength: 6
+        },
+        password1: {
+            required: true,
+            equalTo: "#password"
+        }
             },
             messages: {
-
+                password: "Password should have min 6 char.",
                username: "Username field is required",
+               password1: "Password doesn't match",
+               talentphoto: "!"
             },
             errorPlacement: function (error, element) {
                 if (element.is(":radio") || element.is(":checkbox")) {
