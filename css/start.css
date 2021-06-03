@@ -2587,8 +2587,10 @@ footer .navbar-nav-footer .fab {
   bottom: 0;
 }
 footer .navbar-brand {
-  width: 36px;
+  width: 136px;
   height: auto;
+  position: relative;
+  margin: auto;
 }
 .title-h2 {
   font-weight: bold;
@@ -2871,11 +2873,31 @@ ul.faq {
     justify-content: center;
     align-items: center;
   }
+  #home .portfoliotitleholder {
+    display: inline-flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
 }
 .navbar-nav {
   flex-direction: row;
 }
 @media (max-width: 767px) {
+  .screens-slider .carousel-dots.carousel-indicators.signup-dots {
+    display: none;
+  }
+  #home {
+    align-items: flex-start;
+    margin-top: 0px;
+    height: auto;
+  }
+  #home.rsvp-section h4 {
+    font-size: 7.2vw;
+    line-height: 7.6vw;
+  }
+  #home .container {
+    margin-top: 100px;
+  }
   .card {
     margin-bottom: 15px;
   }
@@ -2927,6 +2949,15 @@ ul.faq {
 @media (max-width: 501px) {
   .nav-pills .nav-item {
     width: 49%;
+    display: inline-flex;
+    flex-direction: row;
+  }
+  .nav-pills .nav-item .nav-link {
+    width: 100%;
+    min-width: unset;
+  }
+  .nav-pills .nav-item .nav-link {
+    min-width: unset;
   }
 }
 .video-banner {
@@ -3358,11 +3389,14 @@ form label.error:after {
   position: relative;
   font-size: 0.7em;
   flex-wrap: wrap;
+  padding-left: 15px;
 }
 .info:before {
   content: "info";
   font-family: 'Material Icons';
-  position: relative;
+  position: absolute;
+  left: 0;
+  top: 2px;
   font-size: 1.5em;
   color: #ffffff;
   margin-right: 0.2em;
@@ -3372,6 +3406,9 @@ form label.error:after {
 }
 .signup-screens a {
   color: #aeeff9;
+}
+.signup-screens a.btn {
+  color: #ffffff;
 }
 #success {
   width: 100px;
@@ -3462,4 +3499,26 @@ form label.error:after {
 .error-text {
   color: red !important;
   font-weight: normal;
+}
+.signup-screens.screens-main {
+  width: unset;
+  flex: unset;
+  max-width: unset;
+  left: 0;
+  margin: 0 auto;
+  position: relative;
+}
+@media (max-width: 1024px) {
+  .signup-screens.screens-main {
+    margin-left: 0;
+  }
+}
+@media (max-width: 450px) {
+  header .navbar-toggler {
+    position: absolute;
+    right: 0;
+  }
+  #virgotalent {
+    width: 280px;
+  }
 }

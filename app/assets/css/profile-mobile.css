@@ -115,9 +115,61 @@
     #tab-dashboard .card {
         font-size: 0.7em;
         min-height: 8em;
+        width:unset;
+    }
+
+    .first-time-list li{
+
+        margin-top:1em;
+        margin-bottom:1em;
+        line-height:1.2em;
+    }
+
+    .first-time-list li img{
+
+        width:2em;
+        height:2em;
+        top:-4px;
+    }
+
+    .btn{font-size:0.8em;
+        max-height:unset;
+        min-height:60px;
     }
     #tab-dashboard .card:nth-last-child(2) {
         margin-bottom: 2em;
+    }
+
+    .first-time.dashboard-card .actor{
+
+        font-size:0.6em;
+    }
+
+    .chartinfo {
+flex-wrap:wrap;
+flex-wrap: wrap;
+flex-direction: column;
+margin-top:-5em !important;
+    }
+
+    .dashboard-card .header{
+
+        margin-top:0.5em;
+        margin-bottom:0.5em;
+    }
+
+    .fix-now-indicator{
+
+        margin-top:0.5em !important;
+    }
+    .circular-chart{
+
+        max-width:unset;
+       max-height:unset;
+        width:280px;
+        height:380px;
+        margin-top:-3em;
+
     }
     #tab-dashboard .welcome-label {
         background: var(--theme-color-primary);

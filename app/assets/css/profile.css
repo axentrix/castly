@@ -974,6 +974,7 @@ margin-top:0.5em;
     margin-bottom: 2em;
     min-height:unset;
     margin-top:1em;
+    z-index:5;
     
 }
 

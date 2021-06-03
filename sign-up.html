@@ -207,8 +207,8 @@
                             <div class="box d-column">
                                 <div class="js--image-preview"></div>
                                 <div class="upload-options">
-                                  <label>
-                                    <input type="file" class="image-upload" id="talent-photo" name="talentphoto" accept="image/*" required=""/>
+                                  <label for="talentphoto">
+                                    <input type="file" class="image-upload" id="talentphoto" name="talentphoto" accept="image/*" required=""/>
                                   </label>
                                 </div>
                                
@@ -371,7 +371,7 @@
     <div class="container">
         <div class="row d-flex justify-content-between w-100">
             
-<div class="col-md-2 d-flex justify-content-center"> <a class="navbar-brand" href="index.html"><img border=0 src="images/vlogo.svg" ></a>
+<div class="col-md-2 d-flex justify-content-center"> <a class="navbar-brand" href="index.html"><img src="images/logo.svg" alt="Virgo Talent"></a>
    </div>
     <div class="col-md-10"> 
         <ul class="navbar-nav-footer navbar-nav d-flex d-row justify-content-between white">
@@ -493,7 +493,7 @@ function validateNextButton() {
 
   || $('#password1').val() !== $('#password').val()
 
-  || $("#talent-photo").val().trim() === ''
+  || $("#talentphoto").val().trim() === ''
   || $('#first-name').val().trim() === ''
   || $('#last-name').val().trim() === ''
   || $('#gender').val().trim() === '';
@@ -517,7 +517,7 @@ $('#btn1').on('click', function(){
 
 $('#username').on('keyup', validateNextButton);
 $('#password').on('keyup', validateNextButton);
-$('#talent-photo').on('change', validateNextButton);
+$('#talentphoto').on('change', validateNextButton);
 $('#password1').on('keyup', validateNextButton);
 $('#first-name').on('keyup', validateNextButton);
 $('#last-name').on('keyup', validateNextButton);
@@ -535,31 +535,7 @@ $("#success").delay(2000).addClass("active");
   });
 
 
-        if ($(".faq").length) {
-
-var allPanels = $('.faq > li > div.collapsible-body').hide();
-
-$('.faq > li > a').click(function () {
-
-
-
-    if (!$(this).next().hasClass("open")) {
-        $(this).addClass("open");
-        $(this).next().addClass("open");
-        $(this).next().slideDown();
-    }
-    else {
-        $(this).removeClass("open");
-        $(this).next().removeClass("open");
-        $(this).next().slideUp();
-    }
-
-
-    return false;
-});
-}
-
-
+        
 
         $('a[href*="#"]')
   // Remove links that don't actually link to anything
@@ -610,33 +586,7 @@ $('.faq > li > a').click(function () {
         var statistics = $(".statistic");
 
 // For each Statistic we find, animate it
-statistics.each(function (index) {
-    // Find the value we want to animate (what lives inside the p tags)
-    var value = $(statistics[index]).html();
-    // Start animating
-    var statisticAnimation = new CountUp(statistics[index], 0, value, 0, 5);
-    //statisticAnimation.start();
 
-    console.log(value);
-    var waypoint1 = new Waypoint({
-        element: document.getElementById('photo-registration'),
-        handler: function (direction) {
-        
-            if (direction == "up") {
-                statisticAnimation.reset();
-            } else {
-                statisticAnimation.start();
-            }
-
-        },
-        offset: '50%'
-    });
-
-
-
-
-
-});
 
 $("#navBar a").on('click', function () {
                 $("#navBar").removeClass("show");
