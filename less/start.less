@@ -1430,6 +1430,22 @@ section{
 
 
 /*Landing page*/
+
+
+.extralogin {
+
+    .color-overlay{
+
+        background:linear-gradient(0deg, rgba(0,0,0,0.7) 20%, rgba(0,0,0,0.4) 80%);
+        position: fixed;
+    
+        height: 100%;
+        top:0;
+        width: 100%;
+    }
+}
+
+
 .bg-wrap {
     clip: rect(0, auto, auto, 0);
     position: absolute;
@@ -1452,6 +1468,25 @@ section{
     transform: translateZ(0);
     will-change: transform;
     z-index:-1;
+
+
+    .carousel-item{
+
+        img{
+
+            width: 1920px;
+    height: 1080px;
+    max-width: 1920px;
+    max-height: 1080px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+
+        }
+    }
 }
 .color-overlay{
 
@@ -3814,3 +3849,312 @@ display:block;
         width:280px;
     }
   }
+
+
+  .extrafooter{
+.footer-menu{
+    justify-content:center;
+}
+    background:black;
+text-align:center;
+    .copyright{
+color:rgba(255,255,255,0.8);
+    }
+  }
+
+
+  svg #extraextra{
+
+
+    fill:@white;
+  }
+
+  svg #casting{
+
+
+    fill:@white;
+  }
+#x{
+    animation: rotate 1.5s ease-in;
+
+
+}
+  #topleft{
+    display:inline;fill:none;stroke:white !important;stroke-width:56;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;
+    stroke-dasharray:500;    stroke-dashoffset: 500;
+    animation: draw 1.0s forwards;
+  }
+
+  #topright{
+    display:inline;fill:none;stroke:white !important;stroke-width:56;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;
+    stroke-dasharray:500; stroke-dashoffset: 500;
+    animation: draw 1.0s  forwards;
+  }
+  #bottomleft{
+    display:inline;fill:none;stroke:white !important;stroke-width:56;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;
+    stroke-dasharray:500; stroke-dashoffset: 500;
+    animation: draw 1.0s  forwards;
+  }
+  #bottomright{
+    display:inline;fill:none;stroke:white !important;stroke-width:56;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;
+    stroke-dasharray:500; stroke-dashoffset: 500;
+    animation: draw 1.0s forwards;
+  }
+
+  @keyframes draw {
+
+    50%{
+
+    
+    }
+   100% {
+    
+      stroke-dashoffset: 0;
+    }
+    
+  }
+
+
+
+
+  @keyframes beat {
+    25% {opacity:1;
+      transform: scale(1);
+    }
+  50% {opacity:0.5;
+        transform: scale(1.1);
+     }
+
+     60%{
+        opacity:1;
+     }
+   
+    100% {opacity:1;
+       transform: scale(1);
+    }
+   
+  }
+#x{
+    transform-origin:50% 40%;
+    animation: beatscales 1.0s forwards;
+
+}
+.logoholder{
+
+    max-height:150px;
+
+
+    svg{max-height:150px;}
+}
+#extraextra{  
+
+    path{  stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;
+        fill:none;
+        stroke:white;
+        
+        stroke-dasharray:200; stroke-dashoffset: 200;
+    animation: drawnew 1.2s 0.5s forwards alternate;}
+
+
+}
+
+
+@keyframes drawnew {
+
+    50%{
+
+        stroke-dashoffset: 0;
+    }
+   100% {
+    
+      stroke-dashoffset: 200;
+      fill:white;
+    }
+    
+  } 
+  
+  @keyframes beatscale {
+    0% {opacity:0;
+      transform: scale(0.6);
+    }
+    50% {
+       transform: scale(2);
+    }
+    100% {opacity:1;
+      transform: scale(1);
+    }
+  }
+
+
+ #casting { 
+
+    path{
+
+        stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;
+        fill:none;
+        stroke:white;
+        
+        stroke-dasharray:200; stroke-dashoffset: 200;
+        animation: drawnew 1.2s 0.5s forwards alternate;
+    }
+    transform: scale(0);
+    transform-origin:50% 40%;
+    animation: beat 1.2s 0.5s forwards;
+   
+   
+  }
+  @keyframes drawnew1 {
+    50% {
+      stroke-dashoffset: 0;
+    }
+  }
+  
+
+#x{ 
+    animation: rotateAnimation 1s 0.5s linear;
+
+
+}
+  @keyframes rotateAnimation {
+
+
+    50%{transform: rotateY(159deg);}
+
+}
+@keyframes scalecard {
+0%{
+
+    transform: scale(0.8);
+
+}
+
+    50%{
+      
+        transform: scale(1.1);}
+
+}
+.logoholder:hover{
+
+
+#x{
+
+   
+	animation: rotateAnimation 1s linear infinite;
+}
+
+
+
+
+
+    #extraextra{  
+
+        path{  stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;
+            fill:none;
+            stroke:white;
+            
+            stroke-dasharray:200; stroke-dashoffset: 200;
+        animation: drawnew 1.2s 0.5s infinite alternate;}
+    }
+    #casting { 
+
+        path{
+    
+            stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;
+            fill:none;
+            stroke:white;
+            
+            stroke-dasharray:200; stroke-dashoffset: 200;
+            animation: drawnew 1.2s 0.5s finfinite alternate;
+        }
+        transform: scale(0);
+        transform-origin:50% 40%;
+        animation: beat 1.2s 0.5s infinite;
+       
+       
+      }
+    #topleft{
+        display:inline;fill:none;stroke:white !important;stroke-width:56;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;
+        stroke-dasharray:100;    stroke-dashoffset: 100;
+        animation: drawnew1 1.0s infinite;
+      }
+    
+      #topright{
+        display:inline;fill:none;stroke:white !important;stroke-width:56;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;
+        stroke-dasharray:100; stroke-dashoffset: 500;
+        animation: drawnew1 1.0s 0.2s infinite;
+      }
+      #bottomleft{
+        display:inline;fill:none;stroke:white !important;stroke-width:56;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;
+        stroke-dasharray:100; stroke-dashoffset: 500;
+        animation: drawnew1 1.0s  infinite;
+      }
+      #bottomright{
+        display:inline;fill:none;stroke:white !important;stroke-width:56;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;
+        stroke-dasharray:100; stroke-dashoffset: 1500;
+        animation: drawnew1 1.0s 0.4s infinite;
+      }
+    
+
+}
+
+.extralogin{
+
+
+    .card.transparent{
+        background:rgba(0,0,0,0.6);
+        animation: scalecard 1.0s forwards;
+        .btn-primary{
+
+            background:transparent;
+            border:solid 1px rgba(255,255,255,0.4);
+transition:all 0.3s;
+letter-spacing:0.2em;
+padding: 15px 42px;
+
+            &:hover{
+                border:solid 1px rgba(255,255,255,1);
+            
+
+            }
+        }
+.white-text{
+
+    font-weight:300;
+    font-size:0.8em;
+    text-align:center;
+}
+        a{
+font-size:0.8em;
+            color:rgba(255,255,255,0.8);
+&:active{
+
+    color:#C71212;
+}
+            &:hover{
+
+                color:white;
+            }
+            &:focus{
+
+                color:white;
+            }
+        }
+h5{
+border-top:solid 1px rgba(255,255,255,0.4);
+padding-top:0.6em;
+    font-size:15px;
+    letter-spacing:1em;
+    text-transform:uppercase;
+}
+        .form-outline .form-control{
+
+            background:transparent;
+            border:solid 1px rgba(255,255,255,0.4);
+        }
+
+        .form-outline .form-control~.form-label{
+
+            color:white !important;
+        }
+    }
+}
