@@ -3710,83 +3710,85 @@ svg #casting {
     transform: scale(1.1);
   }
 }
-.logoholder:hover #x {
-  animation: rotateAnimation 1s linear infinite;
-}
-.logoholder:hover #extraextra path {
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-miterlimit: 10;
-  fill: none;
-  stroke: white;
-  stroke-dasharray: 200;
-  stroke-dashoffset: 200;
-  animation: drawnew 1.2s 0.5s infinite alternate;
-}
-.logoholder:hover #casting {
-  transform: scale(0);
-  transform-origin: 50% 40%;
-  animation: beat 1.2s 0.5s infinite;
-}
-.logoholder:hover #casting path {
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-miterlimit: 10;
-  fill: none;
-  stroke: white;
-  stroke-dasharray: 200;
-  stroke-dashoffset: 200;
-  animation: drawnew 1.2s 0.5s finfinite alternate;
-}
-.logoholder:hover #topleft {
-  display: inline;
-  fill: none;
-  stroke: white !important;
-  stroke-width: 56;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-miterlimit: 10;
-  stroke-dasharray: 100;
-  stroke-dashoffset: 100;
-  animation: drawnew1 1.0s infinite;
-}
-.logoholder:hover #topright {
-  display: inline;
-  fill: none;
-  stroke: white !important;
-  stroke-width: 56;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-miterlimit: 10;
-  stroke-dasharray: 100;
-  stroke-dashoffset: 500;
-  animation: drawnew1 1.0s 0.2s infinite;
-}
-.logoholder:hover #bottomleft {
-  display: inline;
-  fill: none;
-  stroke: white !important;
-  stroke-width: 56;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-miterlimit: 10;
-  stroke-dasharray: 100;
-  stroke-dashoffset: 500;
-  animation: drawnew1 1.0s  infinite;
-}
-.logoholder:hover #bottomright {
-  display: inline;
-  fill: none;
-  stroke: white !important;
-  stroke-width: 56;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-miterlimit: 10;
-  stroke-dasharray: 100;
-  stroke-dashoffset: 1500;
-  animation: drawnew1 1.0s 0.4s infinite;
+@media (min-width: 991px) {
+  .logoholder:hover #x {
+    animation: rotateAnimation 1s linear infinite;
+  }
+  .logoholder:hover #extraextra path {
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-miterlimit: 10;
+    fill: none;
+    stroke: white;
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
+    animation: drawnew 1.2s 0.5s infinite alternate;
+  }
+  .logoholder:hover #casting {
+    transform: scale(0);
+    transform-origin: 50% 40%;
+    animation: beat 1.2s 0.5s infinite;
+  }
+  .logoholder:hover #casting path {
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-miterlimit: 10;
+    fill: none;
+    stroke: white;
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
+    animation: drawnew 1.2s 0.5s finfinite alternate;
+  }
+  .logoholder:hover #topleft {
+    display: inline;
+    fill: none;
+    stroke: white !important;
+    stroke-width: 56;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-miterlimit: 10;
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    animation: drawnew1 1.0s infinite;
+  }
+  .logoholder:hover #topright {
+    display: inline;
+    fill: none;
+    stroke: white !important;
+    stroke-width: 56;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-miterlimit: 10;
+    stroke-dasharray: 100;
+    stroke-dashoffset: 500;
+    animation: drawnew1 1.0s 0.2s infinite;
+  }
+  .logoholder:hover #bottomleft {
+    display: inline;
+    fill: none;
+    stroke: white !important;
+    stroke-width: 56;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-miterlimit: 10;
+    stroke-dasharray: 100;
+    stroke-dashoffset: 500;
+    animation: drawnew1 1.0s  infinite;
+  }
+  .logoholder:hover #bottomright {
+    display: inline;
+    fill: none;
+    stroke: white !important;
+    stroke-width: 56;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-miterlimit: 10;
+    stroke-dasharray: 100;
+    stroke-dashoffset: 1500;
+    animation: drawnew1 1.0s 0.4s infinite;
+  }
 }
 .extralogin .card.transparent {
   background: rgba(0, 0, 0, 0.6);
