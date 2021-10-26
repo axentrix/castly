@@ -19,17 +19,133 @@
     <script src="assets/js/casting.js"></script>
 </head>
 <body>
+   
     <div class="header" >
-<a href="/"><img class="logo" src="assets/img/logo.svg" style="margin-right: 2em; width:180px;"></a>
+<a href="/" class="brand"><img class="logo" src="assets/img/logo.svg" style="margin-right: 2em; width:180px;"></a>
 <nav class="nav">
     <div class="nav-mobile"><a id="nav-toggle" href="#!"><span></span></a></div>
     <ul class="menu nav-dropdown">
    <li> <a href="/casting.php"><i class="icon-dashboard"></i> DASHBOARD</a></li>
-   <li> <a href="/client.php"><i class="icon-directory"></i> CLIENT DIRECTORY</a> <li></li>
-
+   <li> <a href="/client.php"><i class="icon-directory"></i> CLIENT DIRECTORY</a> </li>
+  
 </ul>
 </nav>
-<div style="display: flex; gap: 1.2em; align-items: center;">
+<div style="display: flex; gap: 1.2em; align-items: center;" class="nav-icons">
+
+
+    <div class="ml-10">
+       
+    
+        <a href="#" class="iconlink" onclick="javascript:showMoreMenu(this)" >
+        <i class="icon-notifications"></i><span class="badge badge-error"></span>
+        
+       
+    </a>
+    <div id="notifications-menu" class="displayNone" onmousedown="event.preventDefault();">
+        
+<div class="d-column w-100 p-2">
+    <div class="d-flex align-items-center pb-2 "><h2 class="pl-2">Notifications</h2><div class="ml-auto pr-2 pt-1"> Show all</div>
+      <div class="button-switch"> 
+            <input type="checkbox" id="switch-blue" class="switch" checked />
+            <label for="switch-blue" class="lbl-off">Off</label>
+            <label for="switch-blue" class="lbl-on">On</label>
+          </div>
+         
+        </div>
+        <div class="notification unread hflex">
+            
+          <div class="badge">
+            </div>
+                <div class="thumb"><img src="https://dl.airtable.com/.attachmentThumbnails/618720c902d20b285f44258e86cd7540/bf1cf92e" style="width: 3em; height: 3em; border-radius: 2em; object-fit: cover; object-position: top; border: 0.2em solid #EEF2F930;"></div>
+                <div class="name">Kierra Johnson 
+<p >What time does it start? How much does it pay?What time is the COVID test?</p>
+<div class="notification-date">3 hours ago</div>
+
+                </div>
+                <div class="status pt-3"><img src="assets/img/avail3.svg" width="24" height="24"></div>    
+            </div>
+          
+            <div class="notification unread hflex">
+            
+                <div class="badge">
+                  </div>
+                      <div class="thumb"><img src="assets/img/18876107401575841081.jpeg" style="width: 3em; height: 3em; border-radius: 2em; object-fit: cover; object-position: top; border: 0.2em solid #EEF2F930;"></div>
+                      <div class="name">Kierra Johnson 
+      <p >What time does it start? How much does it pay?What time is the COVID test?</p>
+      <div class="notification-date">3 hours ago</div>
+        
+                      </div>
+                      <div class="status pt-3"><img src="assets/img/avail2.svg" width="24" height="24"></div>    
+                  </div>
+                  <div class="notification unread hflex">
+            
+                    <div class="badge">
+                      </div>
+                          <div class="thumb"><img src="https://dl.airtable.com/.attachmentThumbnails/618720c902d20b285f44258e86cd7540/bf1cf92e" style="width: 3em; height: 3em; border-radius: 2em; object-fit: cover; object-position: top; border: 0.2em solid #EEF2F930;"></div>
+                          <div class="name">Kierra Johnson 
+          <p >What time does it start? How much does it pay?What time is the COVID test?</p>
+          <div class="notification-date">3 hours ago</div>
+          
+                          </div>
+                          <div class="status pt-3"><img src="assets/img/avail1.svg" width="24" height="24"></div>    
+                      </div>
+                      <div class="notification hflex">
+            
+                        <div class="badge">
+                          </div>
+                              <div class="thumb"><img src="https://dl.airtable.com/.attachmentThumbnails/618720c902d20b285f44258e86cd7540/bf1cf92e" style="width: 3em; height: 3em; border-radius: 2em; object-fit: cover; object-position: top; border: 0.2em solid #EEF2F930;"></div>
+                              <div class="name">Kierra Johnson 
+              <p >What time does it start? How much does it pay?What time is the COVID test?</p>
+              <div class="notification-date">3 hours ago</div>
+              
+                              </div>
+                             
+                          </div>
+                          <div class="notification hflex">
+            
+                            <div class="badge">
+                              </div>
+                                  <div class="thumb"><img src="https://dl.airtable.com/.attachmentThumbnails/618720c902d20b285f44258e86cd7540/bf1cf92e" style="width: 3em; height: 3em; border-radius: 2em; object-fit: cover; object-position: top; border: 0.2em solid #EEF2F930;"></div>
+                                  <div class="name">Kierra Johnson 
+                  <p >What time does it start? How much does it pay?What time is the COVID test?</p>
+                  <div class="notification-date">3 hours ago</div>
+                  
+                                  </div>
+                                 
+                              </div>
+                              <div class="notification hflex">
+            
+                                <div class="badge">
+                                  </div>
+                                      <div class="thumb"><img src="assets/img/18876107401575841081.jpeg" style="width: 3em; height: 3em; border-radius: 2em; object-fit: cover; object-position: top; border: 0.2em solid #EEF2F930;"></div>
+                                      <div class="name">Kierra Johnson 
+                      <p >What time does it start? How much does it pay?What time is the COVID test?</p>
+                      <div class="notification-date">3 hours ago</div>
+                        
+                                      </div>
+                                      <div class="status pt-3"><img src="assets/img/avail2.svg" width="24" height="24"></div>    
+                                  </div>
+                                  <div class="notification hflex">
+            
+                                    <div class="badge">
+                                      </div>
+                                          <div class="thumb"><img src="assets/img/18876107401575841081.jpeg" style="width: 3em; height: 3em; border-radius: 2em; object-fit: cover; object-position: top; border: 0.2em solid #EEF2F930;"></div>
+                                          <div class="name">Kierra Johnson 
+                          <p >What time does it start? How much does it pay?What time is the COVID test?</p>
+                          <div class="notification-date">3 hours ago</div>
+                            
+                                          </div>
+                                          <div class="status pt-3"><img src="assets/img/avail2.svg" width="24" height="24"></div>    
+                                      </div>
+
+
+    </div>
+
+    </div>
+    
+</div>
+
+
     <div><i class="clickable icon-more"></i></div>
     <div><img src="https://dl.airtable.com/.attachmentThumbnails/618720c902d20b285f44258e86cd7540/bf1cf92e" style="width: 2em; height: 2em; border-radius: 2em; object-fit: cover; object-position: top; border: 0.2em solid #EEF2F930;"></div>
 </div>
@@ -834,8 +950,35 @@
 
 <script>
 
+function showMoreMenu(node) {
 
+    if( $(node).next("div").hasClass("displayNone")){
+            $(node).next("div").removeClass("displayNone");
+            $(node).addClass("clicked");
+    }
+
+    else{
+
+        $(node).next("div").addClass("displayNone");
+        $(node).removeClass("clicked");
+
+    }
+        }
+    
+        function hideMoreMenu(node) {
+            $(node).next("div").addClass("displayNone");
+
+            $(node).removeClass("clicked");
+        }
 $(document).ready(function() {
+
+
+
+      
+
+
+
+
     $.fn.moveTo = function(selector){
         return this.each(function(){
             var self = $(this);
@@ -873,6 +1016,9 @@ else{ console.log("i am unchecked"+  $("#done").children().length);
 
 });
 $(function() { // DOM ready
+
+
+
     // If a link has a dropdown, add sub menu toggle.
     $('nav ul li a:not(:only-child)').click(function(e) {
      // $(this).siblings('.nav-dropdown').toggle();
