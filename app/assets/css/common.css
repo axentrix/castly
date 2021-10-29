@@ -1643,7 +1643,7 @@ margin-right:0 !important;
 @media only screen and (min-width: 1200px) {
     #notifications-menu{
 
-        width:20vw;
+        width:35vw;
     }
 
 }
@@ -1835,4 +1835,32 @@ margin-right:5px;
   #notifications-menu h2{
       margin-bottom:5px;
       margin-top:3px;
+  }
+
+  .notification .name .project-name{
+
+    background:var(--theme-color-lightgrey);
+    padding:2px;
+    color:var(--theme-color-hover);
+    border-radius:6px;
+    font-weight:normal;
+    display:flex;
+    align-items:center;
+    width:max-content;
+    flex:1 0 30vmin;
+  }
+  .notification .name .project-name .icon{
+      font-size:14px;
+  }
+
+
+  .notification .name img{
+      border-radius:12px;
+      display: flex;
+      flex: 1;
+      max-width: 30vmin;
+      height:auto;
+      margin-top:5px;
+      margin-bottom:5px;
+      
   }

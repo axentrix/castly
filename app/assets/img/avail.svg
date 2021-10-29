@@ -1,0 +1,11 @@
+<svg id="avail" xmlns="http://www.w3.org/2000/svg" width="22.002" height="23" viewBox="0 0 22.002 23">
+  <g id="Rectangle_4826" data-name="Rectangle 4826" transform="translate(0 2)" fill="#fff" stroke="#a2cc4b" stroke-width="1">
+    <rect width="22" height="21" rx="3" stroke="none"/>
+    <rect x="0.5" y="0.5" width="21" height="20" rx="2.5" fill="none"/>
+  </g>
+  <path id="Union_2" data-name="Union 2" d="M-8375-12762v-8a4,4,0,0,1,4-4h1v-.5a1.5,1.5,0,0,1,1.5-1.5,1.5,1.5,0,0,1,1.5,1.5v.5h6v-.5a1.5,1.5,0,0,1,1.5-1.5,1.5,1.5,0,0,1,1.5,1.5v.5h2a3,3,0,0,1,3,3v9Z" transform="translate(8375.001 12776)" fill="#a2cc4b"/>
+  <g id="Group_22983" data-name="Group 22983" transform="translate(-237.5 -504.5)">
+    <text id="avail-2" data-name="avail" transform="translate(241.5 524.5)" fill="#a2cc4b" font-size="6" font-family="Poppins-SemiBold, Poppins" font-weight="600" letter-spacing="-0.05em"><tspan x="0" y="0">avail</tspan></text>
+  </g>
+  <path id="Path_13485" data-name="Path 13485" d="M8625.42,13312.994l1.771-1.584,1.563,1.4,7.071-6.421h.369l-7.44,9.5Z" transform="translate(-8619.193 -13302.892)" fill="#fff"/>
+</svg>
